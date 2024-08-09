@@ -1,2 +1,2 @@
-# MastersThesis
-An Implementation of Augmented Reality-based Heads-Up Display for Transportation Applications.
+# DashAR - An Augmented Reality-based Heads Up Display for Automobiles. 
+DashAR is a virtual dashboard, implemented as an AR HUD.
