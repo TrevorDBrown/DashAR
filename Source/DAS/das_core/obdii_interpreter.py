@@ -10,25 +10,39 @@
 import obd
 import datetime
 from uuid import uuid4
+import textwrap
+
+import obd.elm327
 
 class OBDIIContext:
 
+    # Variables
     __id: str
-    __dateCreated: float
+    __timestampCreated: float
     __obdiiInterfaceDevicePath: str
     __obdiiContext: obd.OBD
     __obdiiAvailableCommands: dict
 
-    def __init__(self, newOBDIIInterfaceDevicePath: str, autoConnect: bool = True) -> None:
+    def __init__(self, newOBDIIInterfaceDevicePath: str = "", autoConnect: bool = True) -> None:
+        # Disable logging.
+        obd.logger.removeHandler(obd.console_handler)
+
         self.__id = uuid4()   # Generate a unique identifier for the interpreter object.
-        self.__dateCreated = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
+        self.__timestampCreated = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
         self.__obdiiInterfaceDevicePath = newOBDIIInterfaceDevicePath
 
         if (autoConnect):
             self.establishConnection()
 
     def establishConnection(self) -> bool:
-        self.__obdiiContext = obd.OBD(self.__obdiiInterfaceDevicePath)
+        if (self.__obdiiInterfaceDevicePath == ""):
+            # ports = obd.scan_serial()      # return list of valid USB or RF ports
+            # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
+            # connection = obd.OBD(ports[0]) # connect to the first port in the list
+
+            self.__obdiiContext = obd.Async()
+        else:
+            self.__obdiiContext = obd.Async(self.__obdiiInterfaceDevicePath)
 
         if (self.connectionStatus() == 'Connected'):
             return True
@@ -41,12 +55,18 @@ class OBDIIContext:
 
     def connectionStatus(self) -> str:
         try:
-            return 'Connected' if self.__obdiiContext.is_connected() else 'Disconnected'
+            return self.__obdiiContext.status()
         except:
             return 'Unknown'
 
     def __str__(self) -> str:
-        return f"\nObject: OBDIIContext\nID: {self.__id}\nDate Created (Epoch): {self.__dateCreated}\nDevice Path: {self.__obdiiInterfaceDevicePath}\nStatus: {self.connectionStatus()}\n"
+        return textwrap.dedent(f"""
+                Object: OBDIIContext
+                ID: {self.__id}
+                Date Created (Epoch): {self.__timestampCreated}
+                Device Path: {self.__obdiiInterfaceDevicePath}
+                Status: {self.connectionStatus()}
+                """)
 
 
 def main() -> None:
