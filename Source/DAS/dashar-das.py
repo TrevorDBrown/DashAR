@@ -7,7 +7,7 @@
 #   Purpose:    This script is the backend/middleware service for the DashAR system.
 #
 
-import das_core.obdii_interpreter
+from das_core.obdii_interpreter import OBDIIContext
 import datetime
 import sys
 import signal
@@ -16,37 +16,26 @@ import tornado
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        dasharOBDIIObject = das_core.obdii_interpreter.OBDIIContext()
-        currentSpeed = dasharOBDIIObject.getSpeed()
-        self.write("The current speed is: %s" % currentSpeed)
+        if (dashar_object_obdii.is_connected()):
+            currentSpeed = dashar_object_obdii.getSpeed()
+            self.write("The current speed is: %s" % currentSpeed)
+        else:
+            self.write("No data available from OBDII.")
 
 def make_app() -> None:
     return tornado.web.Application([
         (r"/", MainHandler)
     ])
 
-# def ctrl_c_pressed(sig, frame):
-#     # Set the active loop flag to False.
-#     global flagActiveLoop
-#     flagActiveLoop = False
-
 async def main() -> None:
 
     # Initialization
-    global flagActiveLoop
-    flagActiveLoop = True
-
-    # Register CTRL+C signal.
-    #signal.signal(signal.SIGINT, ctrl_c_pressed)
+    global dashar_object_obdii
+    dashar_object_obdii = OBDIIContext()
 
     app = make_app()
     app.listen(3000)
     await asyncio.Event().wait()
-
-    # Main Loop
-    # while (flagActiveLoop):
-    #     # print(dasharOBDIIObject, end="\033[F\033[A\033[A\033[A\033[A\033[A")
-    #     print(f"Date Fetched (Epoch): {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()}", end="\033[F\033[A")
 
 if (__name__ == "__main__"):
     asyncio.run(main())
