@@ -3,7 +3,7 @@
 #   (c)2024 Trevor D. Brown. All rights reserved.
 #   This project is distributed under the MIT license.
 #
-#   File:       dashar-das.py
+#   File:       dashar_das_service.py
 #   Purpose:    This script is the backend/middleware service for the DashAR system.
 #
 
