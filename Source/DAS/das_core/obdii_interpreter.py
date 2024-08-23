@@ -12,63 +12,61 @@ import datetime
 from uuid import uuid4
 import textwrap
 
-import obd.elm327
-
 class OBDIIContext:
 
     # Variables
     __id: str
-    __timestampCreated: float
-    __obdiiInterfaceDevicePath: str
-    __obdiiContext: obd.OBD
-    __obdiiAvailableCommands: dict
+    __created_timestamp: float
+    __obdii_interface_device_path: str
+    __obdii_context: obd.OBD
+    __obdii_available_commands: dict
 
-    def __init__(self, newOBDIIInterfaceDevicePath: str = "", autoConnect: bool = True) -> None:
+    def __init__(self, new_obdii_interface_device_path: str = "", auto_connect: bool = True) -> None:
         # Disable logging.
         obd.logger.removeHandler(obd.console_handler)
 
         self.__id = uuid4()   # Generate a unique identifier for the interpreter object.
-        self.__timestampCreated = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
-        self.__obdiiInterfaceDevicePath = newOBDIIInterfaceDevicePath
+        self.__created_timestamp = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
+        self.__obdii_interface_device_path = new_obdii_interface_device_path
 
-        if (autoConnect):
-            self.establishConnection()
+        if (auto_connect):
+            self.establish_connection()
 
-    def establishConnection(self) -> bool:
-        if (self.__obdiiInterfaceDevicePath == ""):
+    def establish_connection(self) -> bool:
+        if (self.__obdii_interface_device_path == ""):
             # ports = obd.scan_serial()      # return list of valid USB or RF ports
             # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
             # connection = obd.OBD(ports[0]) # connect to the first port in the list
 
-            self.__obdiiContext = obd.Async()
+            self.__obdii_context = obd.Async()
         else:
-            self.__obdiiContext = obd.Async(self.__obdiiInterfaceDevicePath)
+            self.__obdii_context = obd.Async(self.__obdii_interface_device_path)
 
-        if (self.connectionStatus() == 'Connected'):
-            return True
-        else:
-            return False
+        return self.__obdii_context.is_connected()
 
-    def learnConnection(self) -> bool:
+    def learn_connection(self) -> bool:
         # TODO: loop through OBDII commands, verify they exist. If they do, store in "available commands" dict.
         return False
 
-    def connectionStatus(self) -> str:
+    def connection_status(self) -> str:
         try:
-            return self.__obdiiContext.status()
+            return self.__obdii_context.status()
         except:
             return 'Unknown'
 
-    def getSpeed(self) -> str:
-        return str(self.__obdiiContext.query(obd.commands.SPEED).value.to("mph"))
+    def is_connected(self) -> bool:
+        return self.__obdii_context.is_connected()
+
+    def get_speed(self) -> str:
+        return str(self.__obdii_context.query(obd.commands.SPEED).value.to("mph"))
 
     def __str__(self) -> str:
         return textwrap.dedent(f"""
                 Object: OBDIIContext
                 ID: {self.__id}
-                Date Created (Epoch): {self.__timestampCreated}
-                Device Path: {self.__obdiiInterfaceDevicePath}
-                Status: {self.connectionStatus()}
+                Date Created (Epoch): {self.__created_timestamp}
+                Device Path: {self.__obdii_interface_device_path}
+                Status: {self.connection_status()}
                 """)
 
 def main() -> None:
