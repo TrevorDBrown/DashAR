@@ -59,6 +59,9 @@ class OBDIIContext:
         except:
             return 'Unknown'
 
+    def getSpeed(self) -> str:
+        return str(self.__obdiiContext.query(obd.commands.SPEED).value.to("mph"))
+
     def __str__(self) -> str:
         return textwrap.dedent(f"""
                 Object: OBDIIContext
@@ -67,7 +70,6 @@ class OBDIIContext:
                 Device Path: {self.__obdiiInterfaceDevicePath}
                 Status: {self.connectionStatus()}
                 """)
-
 
 def main() -> None:
 

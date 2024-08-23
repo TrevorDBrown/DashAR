@@ -16,7 +16,9 @@ import tornado
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("Hello, world!")
+        dasharOBDIIObject = das_core.obdii_interpreter.OBDIIContext()
+        currentSpeed = dasharOBDIIObject.getSpeed()
+        self.write("The current speed is: %s" % currentSpeed)
 
 def make_app() -> None:
     return tornado.web.Application([
@@ -36,8 +38,6 @@ async def main() -> None:
 
     # Register CTRL+C signal.
     #signal.signal(signal.SIGINT, ctrl_c_pressed)
-
-    dasharOBDIIObject = das_core.obdii_interpreter.OBDIIContext()
 
     app = make_app()
     app.listen(3000)
