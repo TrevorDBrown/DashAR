@@ -14,12 +14,11 @@ import textwrap
 
 class OBDIIContext:
 
-    # Variables
-    __id: str
-    __created_timestamp: float
-    __obdii_interface_device_path: str
-    __obdii_context: obd.OBD
-    __obdii_available_commands: dict
+    # Object Variables
+    __id: str                               # __id - a UUIDv4 value, used to uniquely identify the context.
+    __created_timestamp: float              # __created_timestamp - the Unix timestamp of when the object was created.
+    __obdii_interface_device_path: str      # __obdii_interface_device_path - the manually defined file path (Unix-esque) or COM port (Windows) of the OBDII device.
+    __obdii_context: obd.OBD                # __obdii_context - the connection context for the current session.
 
     def __init__(self, obdii_interface_device_path: str = "", auto_connect: bool = True, debug_mode = False) -> None:
 
@@ -39,9 +38,6 @@ class OBDIIContext:
         else:
             # TODO: handle manual connect condition.
             None
-
-        if (self.is_connected()):
-            self.__obdii_available_commands = self.__obdii_context.supported_commands
 
     def __del__(self):
         # TODO: if not used, remove.
@@ -75,15 +71,23 @@ class OBDIIContext:
     def is_connected(self) -> bool:
         return self.__obdii_context.is_connected()
 
+    def available_commands(self) -> set:
+
+        self.__obdii_context.print_commands()
+
+        return self.__obdii_context.supported_commands
+
     def get_speed(self, in_kph = False) -> int:
         try:
             # Ensure the connection is established before proceeding.
             if (self.__obdii_context.is_connected()):
+                # Assume MPH, UNODIR.
                 if (in_kph):
                     currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
                 else:
                     currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
             else:
+                # The OBDII device is not active.
                 currentSpeed: int = -1
         except:
             currentSpeed: int = -1
