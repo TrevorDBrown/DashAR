@@ -21,34 +21,52 @@ class OBDIIContext:
     __obdii_context: obd.OBD
     __obdii_available_commands: dict
 
-    def __init__(self, new_obdii_interface_device_path: str = "", auto_connect: bool = True) -> None:
-        # Disable logging.
-        obd.logger.removeHandler(obd.console_handler)
+    def __init__(self, obdii_interface_device_path: str = "", auto_connect: bool = True, debug_mode = False) -> None:
+
+        if (debug_mode):
+            # Enable logging.
+            obd.logger.setLevel(obd.logging.DEBUG) # enables all debug information
+        else:
+            # Disable logging.
+            obd.logger.removeHandler(obd.console_handler)
 
         self.__id = uuid4()   # Generate a unique identifier for the interpreter object.
         self.__created_timestamp = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
-        self.__obdii_interface_device_path = new_obdii_interface_device_path
+        self.__obdii_interface_device_path = obdii_interface_device_path
 
         if (auto_connect):
             self.establish_connection()
+        else:
+            # TODO: handle manual connect condition.
+            None
+
+        if (self.is_connected()):
+            self.__obdii_available_commands = self.__obdii_context.supported_commands
+
+    def __del__(self):
+        # TODO: if not used, remove.
+        None
 
     def establish_connection(self) -> bool:
-        if (self.__obdii_interface_device_path == ""):
-            # ports = obd.scan_serial()      # return list of valid USB or RF ports
-            # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
-            # connection = obd.OBD(ports[0]) # connect to the first port in the list
+        try:
+            if (self.__obdii_interface_device_path == ""):
+                # TODO: determine best method for figuring out which device is the OBDII device automatically.
+                # ports = obd.scan_serial()      # return list of valid USB or RF ports
+                # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
+                # connection = obd.OBD(ports[0]) # connect to the first port in the list
 
-            self.__obdii_context = obd.Async()
-        else:
-            self.__obdii_context = obd.Async(self.__obdii_interface_device_path)
+                self.__obdii_context = obd.OBD()
+            else:
+                self.__obdii_context = obd.OBD(self.__obdii_interface_device_path, start_low_power=True, check_voltage=True, fast=False)
 
-        return self.__obdii_context.is_connected()
+            return self.__obdii_context.is_connected()
 
-    def learn_connection(self) -> bool:
-        # TODO: loop through OBDII commands, verify they exist. If they do, store in "available commands" dict.
-        return False
+        except:
+            # Error - connection failed to be established.
+            return False
 
     def connection_status(self) -> str:
+        # str-based status: Connected, Disconnected, etc.
         try:
             return self.__obdii_context.status()
         except:
@@ -57,8 +75,22 @@ class OBDIIContext:
     def is_connected(self) -> bool:
         return self.__obdii_context.is_connected()
 
-    def get_speed(self) -> str:
-        return str(self.__obdii_context.query(obd.commands.SPEED).value.to("mph"))
+    def get_speed(self, in_kph = False) -> int:
+        try:
+            # Ensure the connection is established before proceeding.
+            if (self.__obdii_context.is_connected()):
+                if (in_kph):
+                    currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
+                else:
+                    currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
+            else:
+                currentSpeed: int = -1
+        except:
+            currentSpeed: int = -1
+
+        print(f"Current Speed: {currentSpeed}")
+
+        return currentSpeed
 
     def __str__(self) -> str:
         return textwrap.dedent(f"""
