@@ -17,8 +17,7 @@ import tornado
 class OBDIIHandler(tornado.web.RequestHandler):
     def get(self):
         if (dashar_object_obdii.is_connected()):
-            currentSpeed = dashar_object_obdii.get_speed()
-            self.write(f"Current Speed: {currentSpeed} - Time: {datetime.datetime.now()}")
+            self.write(f"Status: {dashar_object_obdii.connection_status()} - Current Speed: {dashar_object_obdii.get_speed()} - Time: {datetime.datetime.now()}")
         else:
             self.write("OBDII is not connected.")
 
@@ -35,8 +34,12 @@ def make_app() -> None:
 async def main() -> None:
 
     # Initialization
+    global debug_mode
     global dashar_object_obdii
-    dashar_object_obdii = OBDIIContext()
+
+    debug_mode = False
+
+    dashar_object_obdii = OBDIIContext(obdii_interface_device_path='/dev/tty.usbserial-D395GRKM', debug_mode=debug_mode)
 
     app = make_app()
     app.listen(3000)
