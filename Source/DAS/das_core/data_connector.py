@@ -3,14 +3,13 @@
 #   (c)2024 Trevor D. Brown. All rights reserved.
 #   This project is distributed under the MIT license.
 #
-#   File:       obdii_interpreter.py
+#   File:       data_connector.py
 #   Purpose:    This script manages the data connections, such as the database and to any files.
 #
 
 def main() -> None:
 
-    print("DashAR Data Connector Module")
-    print("This should be invoked as an import.")
+    print(f"This module ({__file__}) should be invoked as an import.")
 
     return
 

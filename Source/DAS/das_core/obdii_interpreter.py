@@ -71,8 +71,7 @@ class OBDIIContext:
 
 def main() -> None:
 
-    print("DashAR OBDII Interpreter Module")
-    print("This should be invoked as an import.")
+    print(f"This module ({__file__}) should be invoked as an import.")
 
     return
 
