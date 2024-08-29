@@ -9,8 +9,7 @@
 
 def main() -> None:
 
-    print("DashAR Third-Party API Executive Module")
-    print("This should be invoked as an import.")
+    print(f"This module ({__file__}) should be invoked as an import.")
 
     return
 
