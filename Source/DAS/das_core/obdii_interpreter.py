@@ -7,9 +7,10 @@
 #   Purpose:    This script manages the OBDII connection and context while the service is running.
 #
 
+from das_core.helper import Constants, SharedFunctions, ServiceMode, DefaultDataFormat, DatabaseStatements, DebugConstants
+from das_core.data_connector import DataConnection
 import obd
 import datetime
-from uuid import uuid4
 import textwrap
 
 class OBDIIContext:
@@ -17,21 +18,32 @@ class OBDIIContext:
     # Object Variables
     __id: str                               # __id - a UUIDv4 value, used to uniquely identify the context.
     __created_timestamp: float              # __created_timestamp - the Unix timestamp of when the object was created.
+    __service_mode: int                     # __service_mode - the current service mode of the system (PRODUCTION or DEBUG).
     __obdii_interface_device_path: str      # __obdii_interface_device_path - the manually defined file path (Unix-esque) or COM port (Windows) of the OBDII device.
     __obdii_context: obd.OBD                # __obdii_context - the connection context for the current session.
+    __database_context: DataConnection      # __database_context - the database context for storing current session data.
 
-    def __init__(self, obdii_interface_device_path: str = "", auto_connect: bool = True, debug_mode = False) -> None:
+    def __init__(self, obdii_interface_device_path: str = "", auto_connect: bool = True, service_mode: int = ServiceMode.DEBUG) -> None:
 
-        if (debug_mode):
+        # Store the Service Mode (PRODUCTION or DEBUG)
+        __service_mode = service_mode
+
+        if (service_mode == ServiceMode.DEBUG):
             # Enable logging.
             obd.logger.setLevel(obd.logging.DEBUG) # enables all debug information
         else:
             # Disable logging.
             obd.logger.removeHandler(obd.console_handler)
 
-        self.__id = uuid4()   # Generate a unique identifier for the interpreter object.
-        self.__created_timestamp = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()      # Store the current date/time (UTC) as a UNIX timestamp.
+        self.__id = SharedFunctions.generate_object_id()
+        self.__created_timestamp = SharedFunctions.get_current_timestamp()  # Store the current date/time (UTC) as a UNIX timestamp.
         self.__obdii_interface_device_path = obdii_interface_device_path
+
+        self.__database_context = DataConnection(data_filename=Constants.DATABASE_PATH, service_mode=__service_mode)
+
+        vin = DebugConstants.TEST_VIN
+
+        self.__database_context.insert_into_database(DebugConstants.generate_test_insert(self.__id, vin, self.__created_timestamp))
 
         if (auto_connect):
             self.establish_connection()
@@ -77,24 +89,46 @@ class OBDIIContext:
 
         return self.__obdii_context.supported_commands
 
-    def get_speed(self, in_kph = False) -> int:
+    def __get_speed(self, data_format = DefaultDataFormat.AMERICA) -> float:
         try:
             # Ensure the connection is established before proceeding.
             if (self.__obdii_context.is_connected()):
                 # Assume MPH, UNODIR.
-                if (in_kph):
-                    currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
-                else:
+                if (data_format == DefaultDataFormat.AMERICA):
                     currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
+                else:
+                    currentSpeed: int = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
             else:
                 # The OBDII device is not active.
                 currentSpeed: int = -1
         except:
             currentSpeed: int = -1
 
-        print(f"Current Speed: {currentSpeed}")
+        # print(f"Current Speed: {currentSpeed}")
 
         return currentSpeed
+
+    def __get_rpms(self) -> float:
+        return -1
+
+    def __get_fuel_level(self) -> float:
+        return -1
+
+    def capture_data_points(self) -> dict:
+        current_speed: float = self.__get_speed()
+        current_rpms: float = self.__get_rpms()
+        current_fuel_level: float = self.__get_fuel_level()
+
+        # Insert the data point into the SQLite3 database.
+        self.__database_context.insert_into_database(DatabaseStatements.dashar_session_insert_data_point(SharedFunctions.generate_object_id(), self.__id, SharedFunctions.get_current_timestamp(), current_speed, current_rpms, current_fuel_level))
+
+        client_response_data_points: dict = {
+            "speed": current_speed,
+            "rpms": current_rpms,
+            "fuel_level": current_fuel_level
+        }
+
+        return client_response_data_points
 
     def __str__(self) -> str:
         return textwrap.dedent(f"""
