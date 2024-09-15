@@ -43,7 +43,7 @@ class OBDIIContext:
 
         vin = DebugConstants.TEST_VIN
 
-        self.__database_context.insert_into_database(DebugConstants.generate_test_insert(self.__id, vin, self.__created_timestamp))
+        self.__database_context.insert_into_database(DatabaseStatements.dashar_session_start(self.__id, vin, self.__created_timestamp))
 
         if (auto_connect):
             self.establish_connection()
