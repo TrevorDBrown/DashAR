@@ -12,17 +12,22 @@ from pathlib import Path
 from enum import Enum
 from uuid import uuid4
 import datetime
+import json
 
 class Constants():
+    FUEL_LEVEL_REFRESH_FREQUENCY_SECONDS: int = 60
     DATABASE_PATH: str = os.path.join(os.getcwd(), "data", "dashar-data.sqlite3")
 
 class SharedFunctions():
     def generate_object_id() -> str:
         # Generate a UUIDv4 for the calling object.
-        return uuid4()
+        return str(uuid4())
 
     def get_current_timestamp() -> float:
         return datetime.datetime.now(tz=datetime.timezone.utc).timestamp()
+
+    def convert_dict_to_json(dict_to_convert: dict) -> str:
+        return json.dumps(dict_to_convert)
 
 class ServiceMode(Enum):
     PRODUCTION: int = 1

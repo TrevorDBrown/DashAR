@@ -9,27 +9,39 @@
 
 from das_core.helper import Constants, SharedFunctions, ServiceMode
 from das_core.obdii_interpreter import OBDIIContext
-import datetime
 import sys
 import signal
 import asyncio
 import tornado
 
 class OBDIIHandler(tornado.web.RequestHandler):
+
     def get(self):
+        client_response_json: str
+
         if (dashar_object_obdii.is_connected()):
             obdii_data: dict = dashar_object_obdii.capture_data_points()
 
-            client_response_json: dict = {
+            client_response_json: str = SharedFunctions.convert_dict_to_json({
                 "response_id": SharedFunctions.generate_object_id(),
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
                 "obdii_data": obdii_data
-            }
+            })
 
+            self.set_header("Content-Type", "application/json")
+            self.set_status(200, "OK")
             self.write(f"{client_response_json}")
 
         else:
-            self.write("OBDII is not connected.")
+            client_response_json: str = SharedFunctions.convert_dict_to_json({
+                "response_id": SharedFunctions.generate_object_id(),
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": "Not Available"
+            })
+
+            self.set_header("Content-Type", "application/json")
+            self.set_status(503, "OBDII is not available.")
+            self.write(f"{client_response_json}")
 
 class ThirdPartyAPIHandler(tornado.web.RequestHandler):
     def get(self):
