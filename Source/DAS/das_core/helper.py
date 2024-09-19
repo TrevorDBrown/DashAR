@@ -15,17 +15,19 @@ import datetime
 import json
 
 class Constants():
-    FUEL_LEVEL_REFRESH_FREQUENCY_SECONDS: int = 200
-    DATABASE_PATH: str = os.path.join(os.getcwd(), "data", "dashar-data.sqlite3")
+    None
 
 class SharedFunctions():
+    @staticmethod
     def generate_object_id() -> str:
         # Generate a UUIDv4 for the calling object.
         return str(uuid4())
 
+    @staticmethod
     def get_current_timestamp() -> float:
         return datetime.datetime.now(tz=datetime.timezone.utc).timestamp()
 
+    @staticmethod
     def convert_dict_to_json(dict_to_convert: dict) -> str:
         return json.dumps(dict_to_convert)
 
@@ -41,11 +43,10 @@ class DataSourceType(Enum):
     DIRECT_FILE: int = 2
 
 class DatabaseStatements():
+    @staticmethod
     def dashar_session_start(session_uuid: str, vin: str, session_start_timestamp: float) -> str:
         return f"INSERT INTO DASHAR_SESSION VALUES ('{session_uuid}', '{vin}', {session_start_timestamp})"
 
+    @staticmethod
     def dashar_session_insert_data_point(session_data_point_uuid: str, session_uuid: str, session_data_point_timestamp: float, mph: float, rpm: float, fuel_level: float) -> str:
         return f"INSERT INTO DASHAR_SESSION_DATA VALUES ('{session_data_point_uuid}', '{session_uuid}', {session_data_point_timestamp}, {mph}, {rpm}, {fuel_level})"
-
-class DebugConstants():
-    TEST_VIN: str = ""
