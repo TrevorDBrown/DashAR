@@ -15,7 +15,7 @@ import datetime
 import json
 
 class Constants():
-    FUEL_LEVEL_REFRESH_FREQUENCY_SECONDS: int = 60
+    FUEL_LEVEL_REFRESH_FREQUENCY_SECONDS: int = 200
     DATABASE_PATH: str = os.path.join(os.getcwd(), "data", "dashar-data.sqlite3")
 
 class SharedFunctions():
