@@ -6,7 +6,7 @@
 #   File:       das_service.py
 #   Purpose:    This script is the backend/middleware service (Data Aggregator and Server) for the DashAR system.
 #
-
+from das_core.configuration import Configuration
 from das_core.helper import Constants, SharedFunctions, ServiceMode
 from das_core.obdii_interpreter import OBDIIContext
 import sys
@@ -15,17 +15,20 @@ import asyncio
 import tornado
 
 class OBDIIHandler(tornado.web.RequestHandler):
+    dashar_configuration: Configuration
 
-    def get(self):
+    def initialize(self, dashar_configuration: Configuration) -> None:
+        self.dashar_configuration = dashar_configuration
+
+    def get(self) -> None:
         client_response_json: str
 
-        if (dashar_object_obdii.is_connected()):
-            obdii_data: dict = dashar_object_obdii.capture_data_points()
+        if (self.dashar_configuration.obdii_context.is_connected()):
+            current_obdii_data_snapshot: dict = self.dashar_configuration.obdii_context.capture_data_points()
 
-            client_response_json: str = SharedFunctions.convert_dict_to_json({
-                "response_id": SharedFunctions.generate_object_id(),
+            client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": obdii_data
+                "obdii_data": current_obdii_data_snapshot
             })
 
             self.set_header("Content-Type", "application/json")
@@ -33,8 +36,7 @@ class OBDIIHandler(tornado.web.RequestHandler):
             self.write(f"{client_response_json}")
 
         else:
-            client_response_json: str = SharedFunctions.convert_dict_to_json({
-                "response_id": SharedFunctions.generate_object_id(),
+            client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
                 "obdii_data": "Not Available"
             })
@@ -44,26 +46,22 @@ class OBDIIHandler(tornado.web.RequestHandler):
             self.write(f"{client_response_json}")
 
 class ThirdPartyAPIHandler(tornado.web.RequestHandler):
-    def get(self):
+    def get(self) -> None:
         self.write("This is a test!")
 
-def make_app() -> None:
+def make_app(dashar_configuration: Configuration) -> tornado.web.Application:
     return tornado.web.Application([
-        (r"/data/obdii", OBDIIHandler),
-        (r"/data/api/google-maps", ThirdPartyAPIHandler)
+        (r"/data/obdii", OBDIIHandler, {"dashar_configuration": dashar_configuration}),
+        (r"/data/api/google-maps", ThirdPartyAPIHandler, {"dashar_configuration": dashar_configuration})
     ])
 
 async def main() -> None:
 
     # Initialization
-    global service_mode
-    global dashar_object_obdii
+    dashar_configuration: Configuration = Configuration()
+    dashar_configuration.load_configuration()
 
-    service_mode = ServiceMode.DEBUG
-
-    dashar_object_obdii = OBDIIContext(obdii_interface_device_path='/dev/tty.usbserial-D395GRKM', service_mode=service_mode)
-
-    app = make_app()
+    app: tornado.web.Application = make_app(dashar_configuration)
     app.listen(3000)
     await asyncio.Event().wait()
 

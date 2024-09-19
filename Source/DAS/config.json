@@ -1,0 +1,11 @@
+{
+    "config_version": "0.1",
+    "service_mode": "DEBUG",
+    "datapath": "",
+    "constants": [
+        {
+            "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
+            "value": 200
+        }
+    ]
+}
