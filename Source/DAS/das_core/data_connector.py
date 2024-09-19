@@ -15,7 +15,7 @@ class DataConnection:
     # Object Variables
     __id: str                                   # __id - a UUIDv4 value, used to uniquely identify the data connection context.
     __created_timestamp: float                  # __created_timestamp - the Unix timestamp of when the object was created.
-    __data_source: int                          # __data_source_type - the type of data source being used (e.g. DATABASE, DIRECT_FILE)
+    __data_source: DataSourceType               # __data_source - the type of data source being used (e.g. DATABASE, DIRECT_FILE)
     __data_filename: str                        # __data_filename - the filename of the data source.
 
     # Data Source-specific Variables
@@ -25,7 +25,7 @@ class DataConnection:
     # Direct File
     __direct_file: str  # TODO: determine best data type hint for this.
 
-    def __init__(self, data_filename: str, data_source_type: int = DataSourceType.DIRECT_FILE, service_mode: int = ServiceMode.DEBUG) -> None:
+    def __init__(self, data_filename: str, data_source_type: DataSourceType = DataSourceType.DIRECT_FILE, service_mode: ServiceMode = ServiceMode.DEBUG) -> None:
 
         self.__id = SharedFunctions.generate_object_id()
         self.__created_timestamp = SharedFunctions.get_current_timestamp()
@@ -59,6 +59,10 @@ class DataConnection:
             database_cursor.execute(insert_statement)
             self.__database_connection.commit()
             self.__disconnect_from_database()
+        else:
+            return False
+
+        return True
 
 
 def main() -> None:
