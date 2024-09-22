@@ -59,7 +59,6 @@ async def main() -> None:
 
     # Initialization
     dashar_configuration: Configuration = Configuration()
-    dashar_configuration.load_configuration()
 
     app: tornado.web.Application = make_app(dashar_configuration)
     app.listen(3000)
