@@ -7,14 +7,18 @@
 #   Purpose:    This script contains helpers (constants, enums, functions, etc.) shared amongst multiple modules.
 #
 
-import os
-from pathlib import Path
 from enum import Enum
 from uuid import uuid4
 import datetime
 import json
 
 class Constants():
+    DASHAR_VERSION: str = "0.1"
+    HUD_VERSION: str = "0.1"
+    COMPANION_APP_VERSION: str = "0.1"
+    EXPECTED_CONFIGURATION_VERSION: str = "0.1"
+
+class Variables():
     None
 
 class SharedFunctions():

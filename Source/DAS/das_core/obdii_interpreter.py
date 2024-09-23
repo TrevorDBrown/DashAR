@@ -47,12 +47,12 @@ class OBDIIContext:
         self.__obdii_interface_device_path = obdii_interface_device_path
 
         if (auto_connect):
-            successfulConnection = self.establish_connection()
+            successful_obdii_connection = self.establish_connection()
         else:
             # TODO: handle manual connect condition.
             None
 
-        if (successfulConnection):
+        if (successful_obdii_connection):
             self.__vehicle_vin = self.__obdii_context.query(obd.commands.VIN).value.decode()
             self.__database_context = DataConnection(data_filename=database_path, service_mode=self.__service_mode)
             self.__database_context.insert_into_database(DatabaseStatements.dashar_session_start(self.__id, self.__vehicle_vin, self.__created_timestamp))

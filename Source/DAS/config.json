@@ -1,11 +1,16 @@
 {
     "config_version": "0.1",
     "service_mode": "DEBUG",
-    "data_path": "$DAS_ROOT/data/",
-    "constants": [
+    "data_path": "{DAS_ROOT}/data/",
+    "database_path": "{DATA_PATH}/dashar-data.sqlite3",
+    "variables": [
         {
             "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
-            "value": 200
+            "value": 300
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_PATH",
+            "value": "/dev/tty.usbserial-D395GRKM"
         }
     ]
 }
