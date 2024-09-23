@@ -10,6 +10,7 @@
 from typing import Final
 import os
 import json
+import argparse
 
 from das_core.helper import Constants, SharedFunctions, ServiceMode
 from das_core.obdii_interpreter import OBDIIContext
@@ -26,6 +27,10 @@ class ConfigurationVariables():
     data_path: str = os.path.join(os.getcwd(), "data")
     database_path: str = os.path.join(data_path, "dashar-data.sqlite3")
     service_mode: ServiceMode
+    headless_operation: bool = False
+    verbose_operation: bool = False
+    single_run_operation: bool = False
+
     obdii_elm327_device_path: str
 
     def __init__(self) -> None:
@@ -37,11 +42,12 @@ class Configuration():
 
     obdii_context: OBDIIContext
 
-    def __init__(self) -> None:
+    def __init__(self, arguments: argparse.Namespace) -> None:
         # Initialize Variables and Constants classes.
         self.configuration_variables = ConfigurationVariables()
         self.configuration_constants = ConfigurationConstants()
 
+        # Splash Message.
         print(f"DashAR Automotive HUD System")
         print(f"DAS version {Constants.DASHAR_VERSION}")
         print(f"HUD version {Constants.HUD_VERSION}")
@@ -52,11 +58,29 @@ class Configuration():
         self.set_default_configuration()
 
         # Load configuration from file.
-        self.load_configuration()
+        self.load_configuration(arguments)
 
         return
 
-    def load_configuration(self) -> None:
+    def load_configuration(self, arguments: argparse.Namespace) -> None:
+
+        # Check the arguments passed in.
+        # Headless Mode.
+        if (arguments.headless):
+            self.configuration_variables.headless_operation = True
+        else:
+            self.configuration_variables.headless_operation = False
+
+        if (arguments.verbose):
+            self.configuration_variables.verbose_operation = True
+        else:
+            self.configuration_variables.verbose_operation = False
+
+        if (arguments.single_run):
+            self.configuration_variables.single_run_operation = True
+        else:
+            self.configuration_variables.single_run_operation = False
+
         # Load the configuration from JSON.
         json_configuration_content: dict
 
