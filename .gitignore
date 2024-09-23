@@ -216,3 +216,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Python ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvv Project vvvvvvvvvvvvvvvvvvvvvvvvvvvv
+data
+!Testing/
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Project ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
