@@ -103,8 +103,8 @@
     <Compile Include="Assets\NRSDK\Scripts\Capture\Encoder\EncodeTypes.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Android\NRAndroidPermissionsManager.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\Encoder\VideoEncoder.cs" />
-    <Compile Include="Assets\NRSDK\Scripts\Interfaces\Wrappers\NativeHandTracking.cs" />
     <Compile Include="Assets\NRSDK\Emulator\Scripts\NRTrackableImageBehaviour.cs" />
+    <Compile Include="Assets\NRSDK\Scripts\Interfaces\Wrappers\NativeHandTracking.cs" />
     <Compile Include="Assets\NRSDK\Demos\RenderForFocus\Scripts\FocusDistPanel.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Controller\ControllerVisualManager.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\Encoder\NativeEncoder.cs" />
@@ -116,15 +116,15 @@
     <Compile Include="Assets\NRSDK\Plugins\LitJson\JsonMapper.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Types\LostTrackingReason.cs" />
     <Compile Include="Assets\NRSDK\Demos\HelloMR\Scripts\CameraSmoothFollow.cs" />
-    <Compile Include="Assets\NRSDK\Scripts\Capture\Models\CamMode.cs" />
     <Compile Include="Assets\NRSDK\Scripts\MultiResume\NRFloatingViewReplace.cs" />
+    <Compile Include="Assets\NRSDK\Scripts\Capture\Models\CamMode.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Hands\HandState.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Wrappers\NativeTrackableImage.cs" />
     <Compile Include="Assets\NRSDK\Scripts\NRVersionInfo.cs" />
     <Compile Include="Assets\NRSDK\Scripts\NRRGBCamTexture.cs" />
     <Compile Include="Assets\NRSDK\Demos\RenderForFocus\Scripts\FocusManager.cs" />
-    <Compile Include="Assets\NRSDK\Scripts\NRVisualProfiler.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Subsystems\HeadTracking\Provider\NRTrackingDataProvider.cs" />
+    <Compile Include="Assets\NRSDK\Scripts\NRVisualProfiler.cs" />
     <Compile Include="Assets\NRSDK\Scripts\NRTrackingImageDatabaseEntry.cs" />
     <Compile Include="Assets\NRSDK\Plugins\LitJson\IJsonWrapper.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Android\NRMultiResumeMediator.cs" />
@@ -174,8 +174,8 @@
     <Compile Include="Assets\NRSDK\Scripts\Capture\Encoder\IEncoder.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\NativeInterface.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Hands\NRHand.cs" />
-    <Compile Include="Assets\NRSDK\Scripts\Capture\Models\CameraParameters.cs" />
     <Compile Include="Assets\NRSDK\Demos\RGBCamera\Scripts\CameraCaptureController.cs" />
+    <Compile Include="Assets\NRSDK\Scripts\Capture\Models\CameraParameters.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Subsystems\Display\NRDisplaySubsystem.cs" />
     <Compile Include="Assets\NRSDK\Demos\Meshing\Scripts\ObjectEmitter.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Subsystems\ISubsystemInterface.cs" />
@@ -186,8 +186,8 @@
     <Compile Include="Assets\NRSDK\Scripts\Input\Controller\PhoneControllerDisplay\NRPhoneScreenProvider.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\FrameProvider\RGBCameraFrameProvider.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\NRVideoCapture.cs" />
-    <Compile Include="Assets\NRSDK\Plugins\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Subsystems\Trackable\NRTrackableSubsystem.cs" />
+    <Compile Include="Assets\NRSDK\Plugins\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\NRSDK\Demos\HandTracking\ArtResources\Pens\Scripts\Pens\LinePen.cs" />
     <Compile Include="Assets\NRSDK\Demos\Mapping\Scripts\LocalMapExample.cs" />
     <Compile Include="Assets\NRSDK\Demos\HelloMR\Scripts\SetFocusPlaneTool.cs" />
@@ -238,8 +238,8 @@
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Types\NativeTransform.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\NRDevice.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\EventSystem\Raycasters\EventCameraRaycaster.cs" />
-    <Compile Include="Assets\NRSDK\Scripts\Android\NRXRDisplayListenerProxy.cs" />
     <Compile Include="Assets\NRSDK\Emulator\Scripts\NREmulatorController.cs" />
+    <Compile Include="Assets\NRSDK\Scripts\Android\NRXRDisplayListenerProxy.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Hands\HandVisuals\NRHandSimpleVisual.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Hands\HandVisuals\NRHandMeshJointConfig.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\NativeErrorListener.cs" />
@@ -263,8 +263,8 @@
     <Compile Include="Assets\NRSDK\Scripts\Capture\NRCameraInitializer.cs" />
     <Compile Include="Assets\NRSDK\Demos\HandTracking\Scripts\HandTrackingExample.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Types\NRDistortionParams.cs" />
-    <Compile Include="Assets\NRSDK\Demos\Record\Scripts\VideoRecordConfigPanel.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\NRPreviewer.cs" />
+    <Compile Include="Assets\NRSDK\Demos\Record\Scripts\VideoRecordConfigPanel.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Controller\ControllerStateParseUtility.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Types\GlassesTemperatureLevel.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Capture\FrameBlender\BlenderBase.cs" />
@@ -322,8 +322,8 @@
     <Compile Include="Assets\NRSDK\Demos\HelloMR\Scripts\EnsureSlamTrackingMode.cs" />
     <Compile Include="Assets\NRSDK\Demos\HelloMR\Scripts\SessionEventsListener.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Controller\ControllerVisualFactory.cs" />
-    <Compile Include="Assets\NRSDK\Demos\Mapping\Scripts\AnchorItem.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Utility\MainThreadDispather.cs" />
+    <Compile Include="Assets\NRSDK\Demos\Mapping\Scripts\AnchorItem.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Interfaces\Wrappers\NativeMapping.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Subsystems\Trackable\Provider\ITrackableDataProvider.cs" />
     <Compile Include="Assets\NRSDK\Scripts\Input\Hands\HandJointPoseDataUtility.cs" />
@@ -754,6 +754,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\NRSDK\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
@@ -788,10 +792,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.2\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>Assets\NRSDK\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
