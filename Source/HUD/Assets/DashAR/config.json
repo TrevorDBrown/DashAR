@@ -1,0 +1,8 @@
+{
+  "version": "0.1",
+  "dasServer": {
+    "address": "192.168.3.1",
+    "fallback": "127.0.0.1",
+    "port": 3880
+  }
+}
