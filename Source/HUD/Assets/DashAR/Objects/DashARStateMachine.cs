@@ -31,9 +31,9 @@ public class DashARStateMachine : MonoBehaviour
 
     public void PollForUpdate()
     {
-        string resultFromServer = this._dasAPI.GetUpdateFromServer();
-        string displayableValue = this.UpdateGauge(this._gaugeSpeed, resultFromServer);
-        return; 
+        DashARDataAggregatorServerResponse resultFromServer = this._dasAPI.GetUpdateFromServer();
+        string displayableValue = this.UpdateGauge(this._gaugeSpeed, resultFromServer.getSpeed());
+        return;
     }
 
     public string UpdateGauge (DashARGauge gaugeToUpdate, string newValue)
