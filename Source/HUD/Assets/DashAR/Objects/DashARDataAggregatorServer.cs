@@ -9,6 +9,8 @@
 
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 public class DashARDataAggregatorServer
 {
@@ -18,12 +20,32 @@ public class DashARDataAggregatorServer
     public DashARDataAggregatorServer ()
     {
         this._id = Guid.NewGuid();
+        this._httpClient = new HttpClient();
     }
 
-    public string GetUpdateFromServer()
+    public DashARDataAggregatorServerResponse GetUpdateFromServer()
     {
-        return "";
+        this._httpClient.DefaultRequestHeaders.Accept.Clear();
+        this._httpClient.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("text/json")
+        );
+        this._httpClient.DefaultRequestHeaders.Add("User-Agent", "DashAR HUD");
+
+        string responseJsonAsString = ""; //TODO: figure this out... -> await this.GetUpdateFromServerAsync(this._httpClient);
+
+        return new DashARDataAggregatorServerResponse(responseJsonAsString);
+
     }
+
+    // private async Task GetUpdateFromServerAsync(HttpClient client){
+    //     string response = await client.GetStringAsync(
+    //         "http://127.0.0.1:3000/data/obdii"
+    //     );
+
+    //     return response;
+    // }
+
+
 
 
 }
