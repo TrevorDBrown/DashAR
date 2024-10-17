@@ -9,37 +9,46 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using UnityEngine;
 
 public class DashARStateMachine : MonoBehaviour
 {
     private Guid _id;
+    private GameObject _origin;
     private DashARDataAggregatorServer _dasAPI;
 
     // Gauge List
-    private DashARGauge _gaugeSpeed;    // Test Gauge - will eventually be included in _gauges array.
-    private List<DashARGauge> _gauges;
+    private DashARGauge _gaugeSpeed;    // Speedometer (Test Gauge) - will eventually be included in _gauges list.
+    //private List<DashARGauge> _gauges;
 
     public DashARStateMachine ()
     {
         this._id = Guid.NewGuid();
+        this._origin = GameObject.Find("Origin");
+
         this._gaugeSpeed = new DashARGauge("Speedometer", "string", "mph", "current_speed");
-        this._gauges = new List<DashARGauge>();
+        //this._gauges = new List<DashARGauge>();
         this._dasAPI = new DashARDataAggregatorServer();
+
         return;
     }
 
-    public void PollForUpdate()
+    public async void PollForUpdate()
     {
-        DashARDataAggregatorServerResponse resultFromServer = this._dasAPI.GetUpdateFromServer();
-        string displayableValue = this.UpdateGauge(this._gaugeSpeed, resultFromServer.getSpeed());
+        DashARDataAggregatorServerResponse responseFromServer = await this._dasAPI.GetUpdateFromServerAsync();
+
+        this.UpdateGauge(this._gaugeSpeed, responseFromServer.obdii_data.speed);
+
         return;
     }
 
-    public string UpdateGauge (DashARGauge gaugeToUpdate, string newValue)
+    public void UpdateGauge (DashARGauge gaugeToUpdate, string newValue)
     {
         gaugeToUpdate.Value = newValue;
-        return gaugeToUpdate.GetGaugeDisplayValue();
+        gaugeToUpdate.SetGaugeDisplayValue();
+        return;
     }
 
 }
