@@ -143,7 +143,7 @@ class Configuration():
         # Set default configuration, to be overwritten by the JSON config load process.
         self.configuration_constants.CONFIGURATION_VERSION = Constants.EXPECTED_CONFIGURATION_VERSION
         self.configuration_variables.fuel_level_refresh_frequency_data_points = 200
-        self.configuration_variables.service_mode = ServiceMode["DEBUG"]
+        self.configuration_variables.service_mode = ServiceMode["TEST"]
         self.configuration_variables.obdii_elm327_device_path = "/dev/tty.usbserial-D395GRKM"
 
     def test_configuration(self) -> bool:

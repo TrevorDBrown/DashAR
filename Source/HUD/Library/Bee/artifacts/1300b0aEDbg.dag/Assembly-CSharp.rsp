@@ -329,6 +329,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Gradle.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.GradleProject.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/PlaybackEngines/AndroidPlayer/Unity.Android.Types.dll"
+-r:"Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1/Runtime/Newtonsoft.Json.dll"
 -r:"Library/PackageCache/com.unity.testtools.codecoverage@1.2.5/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.2/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/NRSDK.ref.dll"
@@ -361,6 +362,7 @@
 "Assets/DashAR/CodeTest.cs"
 "Assets/DashAR/HUD.cs"
 "Assets/DashAR/Objects/DashARDataAggregatorServer.cs"
+"Assets/DashAR/Objects/DashARDataAggregatorServerResponse.cs"
 "Assets/DashAR/Objects/DashARGauge.cs"
 "Assets/DashAR/Objects/DashARStateMachine.cs"
 -langversion:9.0

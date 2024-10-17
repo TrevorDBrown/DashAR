@@ -14,6 +14,7 @@ import argparse
 import asyncio
 import tornado
 import time
+import random
 
 class OBDIIHandler(tornado.web.RequestHandler):
     dashar_configuration: Configuration
@@ -24,7 +25,18 @@ class OBDIIHandler(tornado.web.RequestHandler):
     def get(self) -> None:
         client_response_json: str
 
-        if (self.dashar_configuration.obdii_context.is_connected()):
+        if (self.dashar_configuration.configuration_variables.service_mode == ServiceMode.TEST):
+            client_response_json = SharedFunctions.convert_dict_to_json({
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": {"speed": random.randint(0, 100)}
+            })
+
+            self.set_header("Content-Type", "application/json")
+            self.set_status(200, "OK")
+            self.write(f"{client_response_json}")
+
+
+        elif (self.dashar_configuration.obdii_context.is_connected()):
             current_obdii_data_snapshot: dict = self.dashar_configuration.obdii_context.capture_data_points()
 
             client_response_json = SharedFunctions.convert_dict_to_json({
@@ -61,7 +73,7 @@ def check_for_arguments():
     argument_parser = argparse.ArgumentParser(  prog='das_service.py',
                                                 description='The Data Aggregator and Server Component of the DashAR System.')
 
-    argument_parser.add_argument("-m", "--mode", choices=["DEBUG", "PRODUCTION"], help="The service mode to operate under: 'DEBUG' or 'PRODUCTION'.")
+    argument_parser.add_argument("-m", "--mode", choices=["DEBUG", "PRODUCTION", "TEST"], help="The service mode to operate under: 'DEBUG', 'PRODUCTION', or 'TEST'.")
     argument_parser.add_argument("-s", "--single-run", action="store_true", help="Flag indicating a single instance store in a SQLite Database.")
     argument_parser.add_argument("-v", "--verbose", action="store_true", help="Output additional information at runtime.")
     argument_parser.add_argument("--headless", action="store_true", help="Capture data points without external requests.")
@@ -77,6 +89,7 @@ async def main() -> None:
     dashar_configuration: Configuration = Configuration(arguments)
 
     if (not dashar_configuration.configuration_variables.headless_operation):
+
         app: tornado.web.Application = make_app(dashar_configuration)
         app.listen(3000)
         await asyncio.Event().wait()

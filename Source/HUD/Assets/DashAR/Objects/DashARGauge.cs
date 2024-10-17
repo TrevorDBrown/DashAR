@@ -8,10 +8,14 @@
  */
 
 using System;
+using TMPro;
+using UnityEngine;
 
 public class DashARGauge
 {
     Guid _id;
+    private GameObject _gameObject;
+    private string _gameObjectName;
     private string _name;
     private string _valueType;
     private string _unitOfMeasure;
@@ -21,6 +25,9 @@ public class DashARGauge
     public DashARGauge(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure, string dasDataMappedValue)
     {
         this._id = Guid.NewGuid();
+        this._gameObjectName = "Widget_" + gaugeName;
+        this._gameObject = GameObject.Find(this._gameObjectName);
+
         this._name = gaugeName;
         this._valueType = gaugeValueType;
         this._unitOfMeasure = gaugeUnitOfMeasure;
@@ -52,6 +59,22 @@ public class DashARGauge
     public string GetGaugeDisplayValue()
     {
         return this._valueString + "\n" + this._unitOfMeasure;
+    }
+
+    public void SetGaugeDisplayValue()
+    {
+        string textGameObjectName = this._gameObjectName + "_Text";
+        GameObject textObject = GameObject.Find(textGameObjectName);
+
+        TextMeshPro textMeshProComponent = textObject.GetComponent<TextMeshPro>();
+
+        Debug.Log("Current Text: " + textMeshProComponent.text);
+
+        textMeshProComponent.text = this.GetGaugeDisplayValue();
+
+        Debug.Log("New Text: " + textMeshProComponent.text);
+        
+        return;
     }
 
 }
