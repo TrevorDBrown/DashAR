@@ -38,6 +38,7 @@ class SharedFunctions():
 class ServiceMode(Enum):
     PRODUCTION: int = 1
     DEBUG: int = 2
+    TEST: int = 3
 
 class DefaultDataFormat(Enum):
     AMERICA: int = 1
