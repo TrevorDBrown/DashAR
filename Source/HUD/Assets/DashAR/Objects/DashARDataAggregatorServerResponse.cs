@@ -9,18 +9,14 @@
 
 using System;
 
+public class OBDIIData
+{
+    public string speed { get; set; }    
+}
+
 public class DashARDataAggregatorServerResponse
 {
-    private Guid _responseId;
-    private string _responseSpeed;
-
-    public DashARDataAggregatorServerResponse (string responseJsonAsString){
-        this._responseId = Guid.Parse("");
-        this._responseSpeed = "";
-    }
-
-    public string getSpeed(){
-        return this._responseSpeed;
-    }
+    public string current_timestamp { get; set; }
+    public OBDIIData obdii_data { get; set; }
 
 }
