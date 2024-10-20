@@ -11,7 +11,9 @@ using System;
 
 public class OBDIIData
 {
-    public string speed { get; set; }    
+    public string speed { get; set; }
+    public string rpms { get; set; }
+    public string fuel_level { get; set; }
 }
 
 public class DashARDataAggregatorServerResponse
