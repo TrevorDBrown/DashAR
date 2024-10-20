@@ -17,6 +17,11 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Enable compass.
+        // TODO: figure out how to get the compass to work...
+        Input.compass.enabled = true;
+        Input.location.Start();
+
         this._dsm = new DashARStateMachine();
     }
 
@@ -25,9 +30,7 @@ public class HUD : MonoBehaviour
     {
         if (Time.frameCount % 60 == 0)
         {
-            Debug.Log("Polling for updates...");
             this._dsm.PollForUpdate();
-            Debug.Log("Polling done!");
         }
     }
 }
