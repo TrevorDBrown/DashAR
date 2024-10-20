@@ -28,7 +28,7 @@ class OBDIIHandler(tornado.web.RequestHandler):
         if (self.dashar_configuration.configuration_variables.service_mode == ServiceMode.TEST):
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": {"speed": random.randint(0, 100)}
+                "obdii_data": {"speed": random.randint(0, 100), "rpm": random.randint(500, 5000), "fuel_level": random.randint(0,100)}
             })
 
             self.set_header("Content-Type", "application/json")
@@ -51,7 +51,7 @@ class OBDIIHandler(tornado.web.RequestHandler):
         else:
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": "Not Available"
+                "obdii_data": {"Message": "Not Available."}
             })
 
             self.set_header("Content-Type", "application/json")
@@ -73,7 +73,6 @@ def check_for_arguments():
     argument_parser = argparse.ArgumentParser(  prog='das_service.py',
                                                 description='The Data Aggregator and Server Component of the DashAR System.')
 
-    argument_parser.add_argument("-m", "--mode", choices=["DEBUG", "PRODUCTION", "TEST"], help="The service mode to operate under: 'DEBUG', 'PRODUCTION', or 'TEST'.")
     argument_parser.add_argument("-s", "--single-run", action="store_true", help="Flag indicating a single instance store in a SQLite Database.")
     argument_parser.add_argument("-v", "--verbose", action="store_true", help="Output additional information at runtime.")
     argument_parser.add_argument("--headless", action="store_true", help="Capture data points without external requests.")
