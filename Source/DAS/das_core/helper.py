@@ -7,7 +7,7 @@
 #   Purpose:    This script contains helpers (constants, enums, functions, etc.) shared amongst multiple modules.
 #
 
-from enum import Enum
+from enum import Enum, IntEnum
 from uuid import uuid4
 import datetime
 import json
@@ -35,7 +35,7 @@ class SharedFunctions():
     def convert_dict_to_json(dict_to_convert: dict) -> str:
         return json.dumps(dict_to_convert)
 
-class ServiceMode(Enum):
+class ServiceMode(IntEnum):
     PRODUCTION: int = 1
     DEBUG: int = 2
     TEST: int = 3
