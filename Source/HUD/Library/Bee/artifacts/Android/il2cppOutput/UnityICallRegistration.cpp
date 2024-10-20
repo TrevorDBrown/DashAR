@@ -2408,6 +2408,30 @@ void RegisterAllStrippedInternalCalls()
 
 	//End Registrations for type : UnityEngine.LineRenderer
 
+	//Start Registrations for type : UnityEngine.LocationService
+
+		//System.Void UnityEngine.LocationService::GetLastHeading_Injected(UnityEngine.LocationService/HeadingInfo&)
+		void Register_UnityEngine_LocationService_GetLastHeading_Injected();
+		Register_UnityEngine_LocationService_GetLastHeading_Injected();
+
+		//System.Void UnityEngine.LocationService::SetDesiredAccuracy(System.Single)
+		void Register_UnityEngine_LocationService_SetDesiredAccuracy();
+		Register_UnityEngine_LocationService_SetDesiredAccuracy();
+
+		//System.Void UnityEngine.LocationService::SetDistanceFilter(System.Single)
+		void Register_UnityEngine_LocationService_SetDistanceFilter();
+		Register_UnityEngine_LocationService_SetDistanceFilter();
+
+		//System.Void UnityEngine.LocationService::SetHeadingUpdatesEnabled(System.Boolean)
+		void Register_UnityEngine_LocationService_SetHeadingUpdatesEnabled();
+		Register_UnityEngine_LocationService_SetHeadingUpdatesEnabled();
+
+		//System.Void UnityEngine.LocationService::StartUpdatingLocation()
+		void Register_UnityEngine_LocationService_StartUpdatingLocation();
+		Register_UnityEngine_LocationService_StartUpdatingLocation();
+
+	//End Registrations for type : UnityEngine.LocationService
+
 	//Start Registrations for type : UnityEngine.Material
 
 		//System.Boolean UnityEngine.Material::HasProperty(System.Int32)
@@ -3009,6 +3033,14 @@ void RegisterAllStrippedInternalCalls()
 		//System.Int64 UnityEngine.Profiling.Profiler::GetTotalAllocatedMemoryLong()
 		void Register_UnityEngine_Profiling_Profiler_GetTotalAllocatedMemoryLong();
 		Register_UnityEngine_Profiling_Profiler_GetTotalAllocatedMemoryLong();
+
+		//System.Void UnityEngine.Profiling.Profiler::BeginSampleImpl(System.String,UnityEngine.Object)
+		void Register_UnityEngine_Profiling_Profiler_BeginSampleImpl();
+		Register_UnityEngine_Profiling_Profiler_BeginSampleImpl();
+
+		//System.Void UnityEngine.Profiling.Profiler::EndSample()
+		void Register_UnityEngine_Profiling_Profiler_EndSample();
+		Register_UnityEngine_Profiling_Profiler_EndSample();
 
 	//End Registrations for type : UnityEngine.Profiling.Profiler
 

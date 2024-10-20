@@ -17,20 +17,28 @@ public class DashARStateMachine : MonoBehaviour
 {
     private Guid _id;
     private GameObject _origin;
+
+    private DashARHUDDevice _hudDevice;
     private DashARDataAggregatorServer _dasAPI;
 
     // Gauge List
-    private DashARGauge _gaugeSpeed;    // Speedometer (Test Gauge) - will eventually be included in _gauges list.
-    //private List<DashARGauge> _gauges;
+    private List<DashARGauge> _gauges;      // Built-in gauges include: Speedometer (N), Tachometer (N), Fuel Level (N), and Compass (Y).
 
     public DashARStateMachine ()
     {
         this._id = Guid.NewGuid();
-        this._origin = GameObject.Find("Origin");
+        this._origin = GameObject.Find("HUD");
 
-        this._gaugeSpeed = new DashARGauge("Speedometer", "string", "mph", "current_speed");
-        //this._gauges = new List<DashARGauge>();
-        this._dasAPI = new DashARDataAggregatorServer();
+        this._gauges = new List<DashARGauge>();
+        this._gauges.Add(new DashARGauge(gaugeName: "Speedometer", gaugeValueType: "string", gaugeUnitOfMeasure: "mph", dataSource: "DAS", dataSourceMappedValue: "current_speed"));
+        this._gauges.Add(new DashARGauge(gaugeName: "Compass", gaugeValueType: "string", gaugeUnitOfMeasure: "cardinal", dataSource: "HUD Device", suppressUnitOfMeasureOnDisplay: true));
+
+        this._hudDevice = new DashARHUDDevice();
+        
+        //string httpHost = "http://192.168.3.1:3000/";   // The IP address of the network self-hosted by the Raspberry Pi 5.
+        string httpHost = "http://localhost:3000/";     // The local machine (testing on development machine only...)
+
+        this._dasAPI = new DashARDataAggregatorServer(httpHost);
 
         return;
     }
@@ -39,16 +47,27 @@ public class DashARStateMachine : MonoBehaviour
     {
         DashARDataAggregatorServerResponse responseFromServer = await this._dasAPI.GetUpdateFromServerAsync();
 
-        this.UpdateGauge(this._gaugeSpeed, responseFromServer.obdii_data.speed);
+        foreach (DashARGauge currentGauge in this._gauges)
+        {
+
+            if (currentGauge.DataSource == "DAS")
+            {
+                if (currentGauge.Name == "Speedometer")
+                {
+                    Debug.Log("Updating speed...");
+                    currentGauge.UpdateGauge(responseFromServer.obdii_data.speed);
+                }
+            } else if (currentGauge.DataSource == "HUD Device") {
+                if (currentGauge.Name == "Compass")
+                {
+                    Debug.Log("Updating compass...");
+                    currentGauge.UpdateGauge(this._hudDevice.GetCompassHeading());
+
+                }
+            }
+
+        }
 
         return;
     }
-
-    public void UpdateGauge (DashARGauge gaugeToUpdate, string newValue)
-    {
-        gaugeToUpdate.Value = newValue;
-        gaugeToUpdate.SetGaugeDisplayValue();
-        return;
-    }
-
 }

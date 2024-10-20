@@ -19,13 +19,15 @@ public class DashARDataAggregatorServer : MonoBehaviour
 {
     private Guid _id;
     private HttpClient _httpClient;
+    private string _httpHost;
 
-    public DashARDataAggregatorServer ()
+    public DashARDataAggregatorServer (string httpHost)
     {
         this._id = Guid.NewGuid();
         this._httpClient = new HttpClient();
+        this._httpHost = httpHost;
 
-        this._httpClient.BaseAddress = new Uri("http://localhost:3000/");
+        this._httpClient.BaseAddress = new Uri(httpHost);
     }
 
     public async Task<DashARDataAggregatorServerResponse> GetUpdateFromServerAsync()
@@ -38,8 +40,6 @@ public class DashARDataAggregatorServer : MonoBehaviour
 
         string responseInJson = await this.GetAsync("/data/obdii");
 
-        Debug.Log("Response: " + responseInJson);
-        
         DashARDataAggregatorServerResponse response = JsonConvert.DeserializeObject<DashARDataAggregatorServerResponse>(responseInJson);
 
         return response;
@@ -55,6 +55,7 @@ public class DashARDataAggregatorServer : MonoBehaviour
         }
         else
         {
+            // TODO: implement error handling.
             return "";
         }
     }

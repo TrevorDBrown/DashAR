@@ -364,6 +364,7 @@
 "Assets/DashAR/Objects/DashARDataAggregatorServer.cs"
 "Assets/DashAR/Objects/DashARDataAggregatorServerResponse.cs"
 "Assets/DashAR/Objects/DashARGauge.cs"
+"Assets/DashAR/Objects/DashARHUDDevice.cs"
 "Assets/DashAR/Objects/DashARStateMachine.cs"
 -langversion:9.0
 

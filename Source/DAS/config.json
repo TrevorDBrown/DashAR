@@ -1,6 +1,6 @@
 {
     "config_version": "0.1",
-    "service_mode": "DEBUG",
+    "service_mode": "TEST",
     "data_path": "{DAS_ROOT}/data/",
     "database_path": "{DATA_PATH}/dashar-data.sqlite3",
     "variables": [

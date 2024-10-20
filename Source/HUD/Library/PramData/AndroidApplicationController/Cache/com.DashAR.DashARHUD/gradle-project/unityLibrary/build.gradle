@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name: 'protectedsession-release', ext:'aar')
+    implementation(name: 'nr_hand_tracking', ext:'aar')
+    implementation(name: 'nrunityandroidpermission-release', ext:'aar')
+    implementation(name: 'nrvirtualcontroller', ext:'aar')
+    implementation(name: 'nr_common', ext:'aar')
+    implementation(name: 'nr_api', ext:'aar')
+    implementation(name: 'nr_dual_agent_tracking', ext:'aar')
+    implementation(name: 'nr_image_tracking', ext:'aar')
+    implementation(name: 'nr_spatial_anchor', ext:'aar')
+    implementation(name: 'nr_loader', ext:'aar')
+    implementation(name: 'nr_meshing', ext:'aar')
+
+}
+
+android {
+    ndkPath "C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK"
+
+    compileSdkVersion 33
+    buildToolsVersion '32.0.0'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        minSdkVersion 29
+        targetSdkVersion 33
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+        versionCode 1
+        versionName '0.1'
+        consumerProguardFiles 'proguard-unity.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    aaptOptions {
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb', '.bundle', '.unityexp'] + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    packagingOptions {
+        doNotStrip '*/arm64-v8a/*.so'
+    }
+}
+
+
+
