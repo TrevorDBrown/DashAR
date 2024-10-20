@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/HUD.unity
-    guid: 45e1b292473046e49bd7a216a072d500
+    path: Assets/Scenes/DashAR HUD.unity
+    guid: 31cfc4f7dd103504e82ceaef51d26357
   m_configObjects: {}

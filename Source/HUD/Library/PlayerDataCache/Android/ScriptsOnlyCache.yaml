@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CapsuleTest
+    - HUD
     NRSDK:
     - NRKernal.CanvasRaycastTarget
     - NRKernal.MockHandJointsPoseAsset
@@ -122,7 +123,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve: []
   sceneClasses:
-    Assets/Scenes/HUD.unity:
+    Assets/Scenes/DashAR HUD.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -156,117 +157,119 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16660}
+      Script: {instanceID: 16690}
     - Class: 114
-      Script: {instanceID: 17236}
+      Script: {instanceID: 16724}
     - Class: 114
-      Script: {instanceID: 17362}
+      Script: {instanceID: 16726}
     - Class: 114
-      Script: {instanceID: 17654}
+      Script: {instanceID: 16728}
     - Class: 114
-      Script: {instanceID: 17856}
+      Script: {instanceID: 16730}
     - Class: 114
-      Script: {instanceID: 18144}
+      Script: {instanceID: 16778}
     - Class: 114
-      Script: {instanceID: 18476}
+      Script: {instanceID: 16784}
     - Class: 114
-      Script: {instanceID: 18566}
+      Script: {instanceID: 16790}
     - Class: 114
-      Script: {instanceID: 19120}
+      Script: {instanceID: 16984}
     - Class: 114
-      Script: {instanceID: 19370}
+      Script: {instanceID: 17420}
+    - Class: 114
+      Script: {instanceID: 17586}
+    - Class: 114
+      Script: {instanceID: 17602}
+    - Class: 114
+      Script: {instanceID: 17772}
+    - Class: 114
+      Script: {instanceID: 17840}
+    - Class: 114
+      Script: {instanceID: 17886}
+    - Class: 114
+      Script: {instanceID: 17960}
+    - Class: 114
+      Script: {instanceID: 18110}
+    - Class: 114
+      Script: {instanceID: 18394}
+    - Class: 114
+      Script: {instanceID: 18406}
+    - Class: 114
+      Script: {instanceID: 18460}
+    - Class: 114
+      Script: {instanceID: 18612}
+    - Class: 114
+      Script: {instanceID: 18790}
+    - Class: 114
+      Script: {instanceID: 18798}
+    - Class: 114
+      Script: {instanceID: 18894}
+    - Class: 114
+      Script: {instanceID: 18968}
+    - Class: 114
+      Script: {instanceID: 18978}
+    - Class: 114
+      Script: {instanceID: 19038}
+    - Class: 114
+      Script: {instanceID: 19088}
+    - Class: 114
+      Script: {instanceID: 19444}
+    - Class: 114
+      Script: {instanceID: 19514}
+    - Class: 114
+      Script: {instanceID: 19554}
+    - Class: 114
+      Script: {instanceID: 19622}
+    - Class: 114
+      Script: {instanceID: 19800}
+    - Class: 114
+      Script: {instanceID: 19804}
+    - Class: 114
+      Script: {instanceID: 19860}
+    - Class: 114
+      Script: {instanceID: 19958}
+    - Class: 114
+      Script: {instanceID: 20038}
     - Class: 114
       Script: {instanceID: 20058}
     - Class: 114
-      Script: {instanceID: 20304}
+      Script: {instanceID: 20316}
     - Class: 114
-      Script: {instanceID: 20600}
+      Script: {instanceID: 20518}
     - Class: 114
-      Script: {instanceID: 21064}
+      Script: {instanceID: 20538}
     - Class: 114
-      Script: {instanceID: 24046}
+      Script: {instanceID: 20592}
     - Class: 114
-      Script: {instanceID: 24994}
+      Script: {instanceID: 20842}
     - Class: 114
-      Script: {instanceID: 25026}
+      Script: {instanceID: 20924}
     - Class: 114
-      Script: {instanceID: 25046}
+      Script: {instanceID: 21358}
     - Class: 114
-      Script: {instanceID: 25062}
+      Script: {instanceID: 21578}
     - Class: 114
-      Script: {instanceID: 25084}
+      Script: {instanceID: 21656}
     - Class: 114
-      Script: {instanceID: 25100}
+      Script: {instanceID: 21706}
     - Class: 114
-      Script: {instanceID: 25112}
+      Script: {instanceID: 21988}
     - Class: 114
-      Script: {instanceID: 25124}
+      Script: {instanceID: 23140}
     - Class: 114
-      Script: {instanceID: 25144}
+      Script: {instanceID: 23242}
     - Class: 114
-      Script: {instanceID: 25152}
+      Script: {instanceID: 23374}
     - Class: 114
-      Script: {instanceID: 25158}
+      Script: {instanceID: 23466}
     - Class: 114
-      Script: {instanceID: 25162}
+      Script: {instanceID: 23480}
     - Class: 114
-      Script: {instanceID: 25202}
+      Script: {instanceID: 23580}
     - Class: 114
-      Script: {instanceID: 25214}
+      Script: {instanceID: 23636}
     - Class: 114
-      Script: {instanceID: 25264}
-    - Class: 114
-      Script: {instanceID: 25272}
-    - Class: 114
-      Script: {instanceID: 25280}
-    - Class: 114
-      Script: {instanceID: 25300}
-    - Class: 114
-      Script: {instanceID: 25356}
-    - Class: 114
-      Script: {instanceID: 25392}
-    - Class: 114
-      Script: {instanceID: 25458}
-    - Class: 114
-      Script: {instanceID: 25506}
-    - Class: 114
-      Script: {instanceID: 25518}
-    - Class: 114
-      Script: {instanceID: 25674}
-    - Class: 114
-      Script: {instanceID: 25678}
-    - Class: 114
-      Script: {instanceID: 25698}
-    - Class: 114
-      Script: {instanceID: 25720}
-    - Class: 114
-      Script: {instanceID: 25794}
-    - Class: 114
-      Script: {instanceID: 25802}
-    - Class: 114
-      Script: {instanceID: 25830}
-    - Class: 114
-      Script: {instanceID: 25866}
-    - Class: 114
-      Script: {instanceID: 25890}
-    - Class: 114
-      Script: {instanceID: 25946}
-    - Class: 114
-      Script: {instanceID: 26002}
-    - Class: 114
-      Script: {instanceID: 26170}
-    - Class: 114
-      Script: {instanceID: 26194}
-    - Class: 114
-      Script: {instanceID: 26202}
-    - Class: 114
-      Script: {instanceID: 26206}
-    - Class: 114
-      Script: {instanceID: 26218}
-    - Class: 114
-      Script: {instanceID: 26234}
-    - Class: 114
-      Script: {instanceID: 36810}
+      Script: {instanceID: 23654}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -274,8 +277,6 @@ ScriptsOnlyBuild:
     - Class: 128
       Script: {instanceID: 0}
     - Class: 135
-      Script: {instanceID: 0}
-    - Class: 136
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -298,6 +299,60 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: e69fe7c55ffedf373a8be770a5d48743
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: VideoCapture2LocalExample
+  - hash:
+      serializedVersion: 2
+      Hash: 9b2fa6f480cdde8f13dd2dd0c5bffc56
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: GestureRecordUI
+  - hash:
+      serializedVersion: 2
+      Hash: f006b30f160a69c3e5851175e111687c
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: CaptureBehaviourBase
+  - hash:
+      serializedVersion: 2
+      Hash: 264631a08ba55ef7752764e8da52a0b4
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRSwapChainManager
+  - hash:
+      serializedVersion: 2
+      Hash: 5428e469d43f6ac2327928039eef38f2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DashARHUDDevice
+  - hash:
+      serializedVersion: 2
+      Hash: 540882762544409cc4530e60db00e951
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 1ab136900c0edaeeb49424c852595030
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: b5007673bbbdb9d12597a1d8201370f5
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 915204dac8acad99f076d6e72ada0a0f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
       Hash: 55060a7bf226ac385ce19ebd450f199f
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
@@ -308,6 +363,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: c3d8fc6f773d5e9a0b03abf1b901e8e1
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: EnsureSlamTrackingMode
+  - hash:
+      serializedVersion: 2
+      Hash: b2eae06177aca2d35440213ecf312fd0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: PolygonPlaneVisualizer
   - hash:
       serializedVersion: 2
       Hash: f45600bcc886206dd55a3208474aad61
@@ -334,10 +401,28 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 06dc335a4e74518228d839b05a0a49cf
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRTrackableImageBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: 8703b6ae2b0eefd9dafbc44d8d333fb1
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: 0ead29b96aa1510d891d3eb98dc6f372
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRMultiDisplayManager
+  - hash:
+      serializedVersion: 2
+      Hash: 559e8838179300cb7f4129561502c8c8
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: SetFocusPlaneTool
   - hash:
       serializedVersion: 2
       Hash: f778e23b6ff26b8de4721be0eb1fa240
@@ -346,10 +431,46 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionStayMessageListener
   - hash:
       serializedVersion: 2
+      Hash: d8aa445db54cbddef05c337500e70f1f
+    assemblyName: NRSDK
+    namespaceName: 
+    className: DelayAutoDestroySelf
+  - hash:
+      serializedVersion: 2
       Hash: f854af586011dd194574f89546642e29
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: f9a8df1f5afffdbefdfa691f647e658b
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: UserDefineButton
+  - hash:
+      serializedVersion: 2
+      Hash: da59425798c8915c252a2d99c860f3ed
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HiddenDebugPanel
+  - hash:
+      serializedVersion: 2
+      Hash: 76b7dcd84280099d66f90b9cd1c28d72
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MeshObjGeneratorInspector
+  - hash:
+      serializedVersion: 2
+      Hash: 1015eeb8b0675ec9468bd8aab76a2ebf
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRBackGroundRender
+  - hash:
+      serializedVersion: 2
+      Hash: 2e9e1a5c31bb3a97787aa61dc3efd92b
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TargetModelDisplayCtrl
   - hash:
       serializedVersion: 2
       Hash: b12640dfdb5966813e9dd838893e6c4a
@@ -370,10 +491,22 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 57eebabf9dc0812e161c5f7d6b094ca0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CustomVirtualControlerUI
+  - hash:
+      serializedVersion: 2
       Hash: 1bc6ff8d02d2d68019aa6a028f8d409d
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerUpMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a54abc8713c54460174ca5e31742f979
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHandPointer
   - hash:
       serializedVersion: 2
       Hash: 7e93247d600e115dac0cdd880de94e99
@@ -388,16 +521,64 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 1ab136900c0edaeeb49424c852595030
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: RawImage
+      Hash: be86b2aad7a63f04b45c3e40629c5dd1
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CubeInteractiveTest
+  - hash:
+      serializedVersion: 2
+      Hash: b5382ab9abc7db88de2ad213c74c6c13
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HUD
+  - hash:
+      serializedVersion: 2
+      Hash: 069a1a12486d1a01c1e6cc500c37724e
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRSessionConfig
+  - hash:
+      serializedVersion: 2
+      Hash: cd48dacc7a20d6a3a792c2bf401d16c0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: AudioRecordTool
+  - hash:
+      serializedVersion: 2
+      Hash: 209158eda5e3efc779cff539ace3846f
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: FollowMouseMove
   - hash:
       serializedVersion: 2
       Hash: 1321993db8249e1e05e1e0492b2bbdc3
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 19f08f4ed303ece76ba629d7acf4a7b0
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRLaserReticle
+  - hash:
+      serializedVersion: 2
+      Hash: d83f8f0289b575556d942f1214566d08
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: RawImagePixelPicker
+  - hash:
+      serializedVersion: 2
+      Hash: 9f8669e8a6a28a662c455773c5a3c994
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ScreenApapter
+  - hash:
+      serializedVersion: 2
+      Hash: 3b929c6b5ac654b06137637adb3b26ec
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHomeMenu
   - hash:
       serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
@@ -434,6 +615,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 51ee5b8455e5993f336faa7d8c3b71b1
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CameraSmoothFollow
+  - hash:
+      serializedVersion: 2
+      Hash: 12484591005983121487e63997692539
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TrackablePlaneBehaviour
   - hash:
       serializedVersion: 2
       Hash: fce9b835d1e8b08e7ecea8da19f21986
@@ -478,6 +671,12 @@ ScriptsOnlyBuild:
     className: UnityOnButtonClickMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 3941aa6ee9e34913f3f97a6cf477cbc3
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ChangeModeController
+  - hash:
+      serializedVersion: 2
       Hash: e23d2210701e34e6850023cabe554c1f
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -496,16 +695,58 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 5f3c70a242e9abdbd5953273ef67f8bf
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: bc2d0701a4f0b4ce413387c64ea59e29
+    assemblyName: NRSDK
+    namespaceName: 
+    className: ParticlePen
+  - hash:
+      serializedVersion: 2
+      Hash: fa900d2664431a364ac728a0676b202a
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRTrackingModeChangedTip
+  - hash:
+      serializedVersion: 2
+      Hash: 6018a8841aca228b39d3c49975986154
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: MultiScreenController
+  - hash:
+      serializedVersion: 2
       Hash: a1ac4c50e55874de16eee3db71aa9784
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ToggleGroup
   - hash:
       serializedVersion: 2
-      Hash: 915204dac8acad99f076d6e72ada0a0f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Button
+      Hash: 2139ac34973e8fd66fcbb5d59658d2cc
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TrackingImageVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: 55c67d875eaebe4c7160db17619e602b
+    assemblyName: NRSDK
+    namespaceName: 
+    className: HandInspector
+  - hash:
+      serializedVersion: 2
+      Hash: 6ac50b01dd8b1c532200232cb7fe3c35
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: FPSDisplay
+  - hash:
+      serializedVersion: 2
+      Hash: 1211854b04254a84ad88de816dbf6bcb
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: NRCaptureBehaviour
   - hash:
       serializedVersion: 2
       Hash: d90629714fa6b0145fcaffc87f5c6559
@@ -514,10 +755,22 @@ ScriptsOnlyBuild:
     className: UnityOnInputFieldValueChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 06c2d1d599eb3015ab2e2e31cf6d70e0
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRKernalUpdater
+  - hash:
+      serializedVersion: 2
       Hash: bb8d968ef4474e71aaad4a4dce279f90
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseDownMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: a07680a72f79edc3b02cc2a9a2dcd279
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HandJointFollowTarget
   - hash:
       serializedVersion: 2
       Hash: b6307dfc54cca9ba44f47185c578b0ce
@@ -538,10 +791,28 @@ ScriptsOnlyBuild:
     className: UnityOnTransformParentChangedMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 77fb51992f3bb463021536829f627e44
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ItemsCollector
+  - hash:
+      serializedVersion: 2
       Hash: d41ab9b5ea92474f9c0a6937a0607ce1
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ContentSizeFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 594abe90b0de8312fbf4237bc483c09a
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRProjectConfig
+  - hash:
+      serializedVersion: 2
+      Hash: c486acf9579f874df2e5d34aca2ba5a0
+    assemblyName: NRSDK
+    namespaceName: 
+    className: ConfirmDialog
   - hash:
       serializedVersion: 2
       Hash: c6369b4cc3be620d6c9300e920bc3d52
@@ -562,10 +833,28 @@ ScriptsOnlyBuild:
     className: UnityOnSelectMessageListener
   - hash:
       serializedVersion: 2
+      Hash: a17a6c99de3767338f9924bed518d561
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HandJointPoseRecorder
+  - hash:
+      serializedVersion: 2
       Hash: 5b8b7230ad968399f6726aa1269dcdcb
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayerQuitHandler
+  - hash:
+      serializedVersion: 2
+      Hash: dac902f10ac6fa4b60a18c3721b61328
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MeshClassificationFrackingInspector
+  - hash:
+      serializedVersion: 2
+      Hash: 9f36c066dc910e754ef1ec3f4cd8efcb
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MapQualityIndicator
   - hash:
       serializedVersion: 2
       Hash: cf32d98954e63b8e30e9334b152e9b8e
@@ -574,10 +863,28 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
+      Hash: 4e9d2fd7889d15eed6f237b97b3d75bd
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HelloMRController
+  - hash:
+      serializedVersion: 2
+      Hash: 22553068eb445943d1cf92ac38be5ec2
+    assemblyName: NRSDK
+    namespaceName: 
+    className: FocusItem
+  - hash:
+      serializedVersion: 2
       Hash: e6f8333cc8a800e2866870a5ef7efc35
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnControllerColliderHitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ad44306f291a7b7ef99682edda0c1ca5
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TrackableImageBehaviour
   - hash:
       serializedVersion: 2
       Hash: 960935b102b3064f4b924de16426e340
@@ -592,16 +899,70 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: c73eba57c3daf6d7d4f9a2b17aa41c7e
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: SimpleControllerVibration
+  - hash:
+      serializedVersion: 2
       Hash: 6217b1287eca7eed313cf0b864249a30
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: eb2558c90c8ea6a7dc7d51121fd5c403
+    assemblyName: NRSDK
+    namespaceName: 
+    className: FocusManager
+  - hash:
+      serializedVersion: 2
+      Hash: fcacf3207b9dd0c7a40c6bce74532a21
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NREmulatorController
+  - hash:
+      serializedVersion: 2
+      Hash: 5a635a0ccad7c6fd8f9da67157614a20
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: NRPreviewer
+  - hash:
+      serializedVersion: 2
+      Hash: 8d82e471eb44d7a1df03ba24f828ffbb
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHandCapsuleVisual
+  - hash:
+      serializedVersion: 2
+      Hash: 8be91dddab28e2f58487f96b491a1ed6
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: DropDownListHelper
+  - hash:
+      serializedVersion: 2
+      Hash: 91079e4be2b9835f45eeb69bc9925033
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: UserDefinePanel
+  - hash:
+      serializedVersion: 2
+      Hash: 596f757ea492ff6730e8624361c32c9f
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRNotificationWindow
+  - hash:
+      serializedVersion: 2
       Hash: 0a3f328f3ea906bbbcf794f4c27ee59d
     assemblyName: Unity.VisualScripting.Flow
     namespaceName: Unity.VisualScripting
     className: ScriptGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: cd681df396a3934eafc6938bda3333b9
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: MockHandJointsPoseAsset
   - hash:
       serializedVersion: 2
       Hash: fb79e95da8891fc7ac6c36ca6967af23
@@ -616,10 +977,34 @@ ScriptsOnlyBuild:
     className: UnityOnPointerExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: c25adb66934292d6a09a27c9a1a9e928
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRMultiResumeMediator
+  - hash:
+      serializedVersion: 2
+      Hash: d2e81338774894cd7d0c292c6268fdd5
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: ControllerVisualManager
+  - hash:
+      serializedVersion: 2
+      Hash: 8952945f072173ce5865c89ccc326e56
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ObjectEmitter
+  - hash:
+      serializedVersion: 2
       Hash: b747f5d40674055dd70e18552f1b0447
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 28634c06003ed4a15d3a1ded67492e90
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: Toaster
   - hash:
       serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
@@ -646,10 +1031,22 @@ ScriptsOnlyBuild:
     className: VariablesSaver
   - hash:
       serializedVersion: 2
+      Hash: d35f4deb61b6d83d5db1bab27a15e7cf
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRTrackingImageDatabase
+  - hash:
+      serializedVersion: 2
       Hash: 7053e305cdc1eb560f4c3be49d3b5136
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
     className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 31c2def8ef46d9ff32b0d8a29ae4b968
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DashARStateMachine
   - hash:
       serializedVersion: 2
       Hash: 042785b832afb73fd0585521aa7baf43
@@ -676,10 +1073,34 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreak2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 44be2b3e65ba87cc7dbc6d9efb554f26
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: ControllerAnchorsHelper
+  - hash:
+      serializedVersion: 2
+      Hash: e75c9b3d92c0d4ec459c29de49cdea3d
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HandJointColliderEntity
+  - hash:
+      serializedVersion: 2
+      Hash: 2502aaec1fdc7e66df56d26f270f7491
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRAnchor
+  - hash:
+      serializedVersion: 2
       Hash: 9ebc0a3016506a0cbb7e0306dfcb9497
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: DictionaryAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 49dbd70b1b4e528ff7fff8cc620ef4ea
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRInput
   - hash:
       serializedVersion: 2
       Hash: e7e95903ca66d58e1a7cbd71f824e16d
@@ -688,10 +1109,34 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: a2dbb0431029100ab9399e4af5b39cef
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Persistence
+    className: NRWorldAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: 913083498908e84b884e7507200991fa
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MeshObjGenerator
+  - hash:
+      serializedVersion: 2
       Hash: 9078325c2a6f6a2d9612ade897511860
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SpriteAsset
+  - hash:
+      serializedVersion: 2
+      Hash: ac6db935d1d2c2e846dd73120d9d4e3c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRVisualProfiler
+  - hash:
+      serializedVersion: 2
+      Hash: 5763406c30c070e367e27dca7b347231
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHandSimpleVisual
   - hash:
       serializedVersion: 2
       Hash: 96e7bcfd2d072992dab64ac44058b930
@@ -700,16 +1145,76 @@ ScriptsOnlyBuild:
     className: UnityOnCancelMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 08ff5e471fd66c85e49628cfeb684cd0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ExamplesHub
+  - hash:
+      serializedVersion: 2
+      Hash: 0350f3433f17b9bc5d0737af80df3f08
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NREmulatorHeadPose
+  - hash:
+      serializedVersion: 2
+      Hash: 90fcc1ea0447eae57c2ae2cd811f77d9
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: VideoPlayerDemo
+  - hash:
+      serializedVersion: 2
+      Hash: 08e27d4c6fbe2adbe41551c95bba10b9
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRGlassesInitErrorTip
+  - hash:
+      serializedVersion: 2
+      Hash: 4d66de6fd5cb8f191cce6c68756950d2
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRTrackablePlaneBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: 7e9cad7f71f9cc52f699bbd2d2a75734
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 1499349754a4f2f9ea794c2f4b05fab3
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TrackingImageExampleController
+  - hash:
+      serializedVersion: 2
+      Hash: dd61491559b04b6a404b555feb0bf65f
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRButton
+  - hash:
+      serializedVersion: 2
+      Hash: 384aca40734f5a2631467acf0d30622f
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: GazeTracker
+  - hash:
+      serializedVersion: 2
+      Hash: 07053feac5ad0c684facb209d8f06272
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: TrackingInfomationTips
+  - hash:
+      serializedVersion: 2
       Hash: 0b63f6d3335e11939ce8790b904c8691
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 8fa2740f826975a3d1119f6b172df546
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: NRHandMeshVisual
   - hash:
       serializedVersion: 2
       Hash: e402a382f213255c22bda9254dd831b3
@@ -730,10 +1235,22 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: d50d81a55475137683851356414d1320
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRDisplayOverlay
+  - hash:
+      serializedVersion: 2
       Hash: f2098fcd8ee983a05ec192f63904298f
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnEndDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: fb4e0517c811e96c09645c31a897fd2c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRVirtualDisplayer
   - hash:
       serializedVersion: 2
       Hash: db9b308769d19e1f9e161df0392c23ca
@@ -772,6 +1289,24 @@ ScriptsOnlyBuild:
     className: Toggle
   - hash:
       serializedVersion: 2
+      Hash: 28c68b5f9ea0e88add4aff28839fa13f
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CameraResetController
+  - hash:
+      serializedVersion: 2
+      Hash: 2cd4148aedac3967cf0c15a7f5c9783d
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CameraCaptureController
+  - hash:
+      serializedVersion: 2
+      Hash: e527cf0d007616c57be9bf2c23b358e6
+    assemblyName: NRSDK
+    namespaceName: 
+    className: PenCtrl
+  - hash:
+      serializedVersion: 2
       Hash: 522f6865b4ec12522e602206785309f8
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -784,10 +1319,40 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
+      Hash: 487ebf99b910ec99ee3124623233c3a1
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRMultScrPointerRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: 33f160a5c07e580c29aba2bd1e4db811
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 418ecc8522708146eb876c5e1e0f20a7
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRTrackableBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: f703a6139b26173bfdf2eca47f1ecb09
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: GetSurportedFeatures
+  - hash:
+      serializedVersion: 2
+      Hash: 9dbea51de30dd4f99ea2489605edf8b8
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: TrackableObserver
+  - hash:
+      serializedVersion: 2
+      Hash: cd1a1ecbcfc1837679dcf08eb8cf9b3c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHMDPoseTracker
   - hash:
       serializedVersion: 2
       Hash: 191cd500c627cd6682ef6f70b8e47f2c
@@ -808,6 +1373,18 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 6874ea600420a1143a29ec3fdb186364
+    assemblyName: NRSDK
+    namespaceName: 
+    className: LinePen
+  - hash:
+      serializedVersion: 2
+      Hash: b5052644c96d2c6177265744c9b705ba
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHand
+  - hash:
+      serializedVersion: 2
       Hash: d82086405f46de14829f6b4bcbdd8fc9
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -820,10 +1397,28 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 2f02ef2f7332363a44597f176afd5de4
+    assemblyName: NRSDK
+    namespaceName: 
+    className: TrackableFoundTest
+  - hash:
+      serializedVersion: 2
       Hash: 9dd54ce33440072d6692a67e0c384ad1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 98f00d18ff5bad87db18b71405c94bad
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRAppManager
+  - hash:
+      serializedVersion: 2
+      Hash: 3ce4dd22c98cad4f3cd0930e65c95516
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRMetrics
   - hash:
       serializedVersion: 2
       Hash: bf0842d88681628b29beb00b5e2ab785
@@ -832,22 +1427,16 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: b5007673bbbdb9d12597a1d8201370f5
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
+      Hash: a940744dc29f93c8bbc6a2311e3708c7
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRNotificationListener
   - hash:
       serializedVersion: 2
       Hash: 1ce63d97d1ca25cba2d91d5f32fd5f79
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
     className: StateGraphAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 540882762544409cc4530e60db00e951
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: CanvasScaler
   - hash:
       serializedVersion: 2
       Hash: ef38c1407dba8c1f5d69f5db61a694fe
@@ -862,16 +1451,64 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: b48d73fc8bfe7e3684d6447e5851bbaa
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRGrabbableObject
+  - hash:
+      serializedVersion: 2
+      Hash: 12c7da74d9c0659ffe1ffe14ae426337
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MeshSaver
+  - hash:
+      serializedVersion: 2
+      Hash: 9aaaa4b742e7253dbc954e72ec35800d
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MoveWithCamera
+  - hash:
+      serializedVersion: 2
       Hash: 9637dcdf3068a91dfe653e61bb82f13d
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 2e742c36f770cbc09069549c271c45d1
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRLaserVisual
+  - hash:
+      serializedVersion: 2
+      Hash: aaab278c9140e6141430999cc2bb990e
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: CanvasTargetCollector
+  - hash:
+      serializedVersion: 2
       Hash: da5a949a0bbd2ff91bc51c5805c2c41f
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpAsButtonMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 38f0dba0f9bb7a655f2802f2b1d0d270
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: ControllerInfoDisplayUI
+  - hash:
+      serializedVersion: 2
+      Hash: 80e8e82adc634a894ecfa002b75dfeaf
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: ControllerTracker
+  - hash:
+      serializedVersion: 2
+      Hash: 05101198f6d6b81329f89fe16946bc1e
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: NRCameraInitializer
   - hash:
       serializedVersion: 2
       Hash: 4f353524ce6564e40764f1ea080b2d85
@@ -910,10 +1547,58 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: df58ede2888480e5a4619395ee8f0759
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRRenderer
+  - hash:
+      serializedVersion: 2
+      Hash: bfc842410827b1158835b6be1f406477
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: ControllerStateParseUtility
+  - hash:
+      serializedVersion: 2
+      Hash: 38417d73fe4a9ec4ec88befac7f56f34
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRHandMeshJointConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 4f2949a99575c9386ab305ef47c3526b
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: AutoRotate
+  - hash:
+      serializedVersion: 2
+      Hash: 096d337a28677600f5e81e0ea740dd0c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRFloatingViewReplace
+  - hash:
+      serializedVersion: 2
       Hash: 8bbce9932f67ad8e7f4eefec87800f94
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 528c31d0faa7f610b30d7ca2325db2ae
+    assemblyName: NRSDK
+    namespaceName: 
+    className: DebugSaveDisplayImage
+  - hash:
+      serializedVersion: 2
+      Hash: bdc501f3eb46d0dbf6ee81bd7112ee75
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: SessionEventsListener
+  - hash:
+      serializedVersion: 2
+      Hash: 5b6fd07b966dcc5844f8a26d12bbe23c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: XrealLightControllerVisual
   - hash:
       serializedVersion: 2
       Hash: f669be52680c88846b2093fd41d1e06e
@@ -940,10 +1625,28 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
+      Hash: 3c14c7c76b81131fe3c9cfcb00f81ac6
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: NRInteractiveItem
+  - hash:
+      serializedVersion: 2
       Hash: 4878e735441f4041539853759559c86f
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 3626998461c020947681c5696ba36cda
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: GestureSimpleTip
+  - hash:
+      serializedVersion: 2
+      Hash: 231771f06318da82aebab002ac89e763
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRLibraryStripConfig
   - hash:
       serializedVersion: 2
       Hash: c4b85a67513b4f0cf7b5fb2d5ded04b0
@@ -964,6 +1667,12 @@ ScriptsOnlyBuild:
     className: BasicPlayableBehaviour
   - hash:
       serializedVersion: 2
+      Hash: 12527d77e5586c0739a7438345a184ba
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HandModelsManager
+  - hash:
+      serializedVersion: 2
       Hash: e8d390bd9ecacc453a7500b90d0c0292
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
@@ -974,6 +1683,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayModeRunnerCallback
+  - hash:
+      serializedVersion: 2
+      Hash: dc0ddcb1dbdf4966ecf3ea948cc79719
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: HandTrackingExample
   - hash:
       serializedVersion: 2
       Hash: afb7b65d28d5a7423e69a1b076be0064
@@ -992,6 +1707,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerDownMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 56b5288751b872981a12be32a5200fc0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MeshClassificationFracking
   - hash:
       serializedVersion: 2
       Hash: ee34255e3e86289bde9bad5e07b84cbc
@@ -1030,10 +1751,34 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 479d2d329be15f26c0436d09ae748929
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: LocalMapExample
+  - hash:
+      serializedVersion: 2
       Hash: 67272c9c30c50b68ef1ce72ac0191c57
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMoveMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 299e47d702aff3dcbe64132e845d72f2
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: DemoScenesMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 6a07b32bd90ca3d531fb069b960273e8
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: DetectedPlaneVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: b934e6b19e134aa90cb3b07092f90779
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: DetectedPlaneGenerator
   - hash:
       serializedVersion: 2
       Hash: d0392b7f3f52d5af537ade186b4f51f1
@@ -1042,10 +1787,46 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: 69c6f4bdb06bb8a78962737cca8684c1
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: FPSCounter
+  - hash:
+      serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 90caa9970e3ee49de900208f5f0e1195
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: MainThreadDispather
+  - hash:
+      serializedVersion: 2
+      Hash: b825c60f40b3d9c8c94f80ec430ae632
+    assemblyName: NRSDK
+    namespaceName: 
+    className: XRAPIPanel
+  - hash:
+      serializedVersion: 2
+      Hash: 4b7d41e4abe404cb71a6a7c15c2fe9fd
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: VideoRecordConfigPanel
+  - hash:
+      serializedVersion: 2
+      Hash: 242797afef593626446eab412717b86c
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Persistence
+    className: AnchorItem
+  - hash:
+      serializedVersion: 2
+      Hash: d0467cd98d07061dab84a644281e5aca
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: FocusDistPanel
   - hash:
       serializedVersion: 2
       Hash: 9a174471d4db2c0c6d3ac47d2f818db1
@@ -1060,10 +1841,22 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 5e730552f0b47846dff9c6efd9629433
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: PhotoCaptureExample
+  - hash:
+      serializedVersion: 2
       Hash: 2c583ad0ac85d03e8700dd05fdcb46cb
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: Variables
+  - hash:
+      serializedVersion: 2
+      Hash: c3a74958ca58d26ce293d50aa7f59fea
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRSessionBehaviour
   - hash:
       serializedVersion: 2
       Hash: b30c8635462e66ac20f4241106119f77
@@ -1072,10 +1865,28 @@ ScriptsOnlyBuild:
     className: StateMachine
   - hash:
       serializedVersion: 2
+      Hash: 2d816f1c51f505e197bfd177bb622825
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: MarkerDetecter
+  - hash:
+      serializedVersion: 2
+      Hash: 4a7e1f4a3b183366c7a8ebd690a9b176
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: CameraYUVCaptureController
+  - hash:
+      serializedVersion: 2
       Hash: 568292fb7ea6c4f7a667e5ff76bc7e85
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseUpMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: bbb305e79b8a865162b1dbd7c058fbac
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NREmulatorManager
   - hash:
       serializedVersion: 2
       Hash: 1553f209ae0b2d5d3a35685fca55f9c3
@@ -1084,10 +1895,64 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 48a3f1a9b90888d0bea2e93d474b18d9
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRPhoneDisplayReplayceTool
+  - hash:
+      serializedVersion: 2
+      Hash: 7d2cc303b7eaecbb826a46cad12cfe0c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: CanvasRaycastTarget
+  - hash:
+      serializedVersion: 2
+      Hash: b15b46ea5a1bb3561c554ec16f81d348
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DashARDataAggregatorServer
+  - hash:
+      serializedVersion: 2
+      Hash: 01afec932c0d9ec0224827783c1cc0a0
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Persistence
+    className: MapQualityBar
+  - hash:
+      serializedVersion: 2
+      Hash: 8dfc4e99f8801eb4001cdf866863fd9e
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: PlaneDetector
+  - hash:
+      serializedVersion: 2
+      Hash: dc8da56dd437fc064dae7595d4fb7e39
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRMeshingManager
+  - hash:
+      serializedVersion: 2
+      Hash: 60845792e16d0a781cd1e420fc5d05ec
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CapsuleTest
+  - hash:
+      serializedVersion: 2
       Hash: ff76cf6cf52b4db7b95af6ffadca9288
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: SignalEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: 97e8b85f64f6a95ef333ac2ca1959e6c
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRVirtualPhaseSync
+  - hash:
+      serializedVersion: 2
+      Hash: 6a0b1d01cf8227cc259f9a4455f75a35
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: OverlayBase
   - hash:
       serializedVersion: 2
       Hash: 02a47340661d2ea7c6d30e292cfef403
@@ -1108,508 +1973,10 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 00eef92bf387da2c9009267123d9d674
-    assemblyName: Unity.VisualScripting.Core
-    namespaceName: Unity.VisualScripting
-    className: UnityOnTriggerExit2DMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 8b15e35eb98fc258ec2e839df7c3c9b0
-    assemblyName: Unity.VisualScripting.Core
-    namespaceName: Unity.VisualScripting
-    className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: e69fe7c55ffedf373a8be770a5d48743
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: VideoCapture2LocalExample
-  - hash:
-      serializedVersion: 2
-      Hash: 9b2fa6f480cdde8f13dd2dd0c5bffc56
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: GestureRecordUI
-  - hash:
-      serializedVersion: 2
-      Hash: f006b30f160a69c3e5851175e111687c
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: CaptureBehaviourBase
-  - hash:
-      serializedVersion: 2
-      Hash: 264631a08ba55ef7752764e8da52a0b4
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRSwapChainManager
-  - hash:
-      serializedVersion: 2
-      Hash: a54abc8713c54460174ca5e31742f979
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHandPointer
-  - hash:
-      serializedVersion: 2
-      Hash: 2d816f1c51f505e197bfd177bb622825
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MarkerDetecter
-  - hash:
-      serializedVersion: 2
-      Hash: d8aa445db54cbddef05c337500e70f1f
-    assemblyName: NRSDK
-    namespaceName: 
-    className: DelayAutoDestroySelf
-  - hash:
-      serializedVersion: 2
-      Hash: 56b5288751b872981a12be32a5200fc0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MeshClassificationFracking
-  - hash:
-      serializedVersion: 2
-      Hash: 8be91dddab28e2f58487f96b491a1ed6
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: DropDownListHelper
-  - hash:
-      serializedVersion: 2
-      Hash: 3626998461c020947681c5696ba36cda
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: GestureSimpleTip
-  - hash:
-      serializedVersion: 2
-      Hash: b5052644c96d2c6177265744c9b705ba
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHand
-  - hash:
-      serializedVersion: 2
-      Hash: e527cf0d007616c57be9bf2c23b358e6
-    assemblyName: NRSDK
-    namespaceName: 
-    className: PenCtrl
-  - hash:
-      serializedVersion: 2
-      Hash: 28c68b5f9ea0e88add4aff28839fa13f
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CameraResetController
-  - hash:
-      serializedVersion: 2
-      Hash: 38417d73fe4a9ec4ec88befac7f56f34
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHandMeshJointConfig
-  - hash:
-      serializedVersion: 2
-      Hash: 77fb51992f3bb463021536829f627e44
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ItemsCollector
-  - hash:
-      serializedVersion: 2
-      Hash: 9aaaa4b742e7253dbc954e72ec35800d
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MoveWithCamera
-  - hash:
-      serializedVersion: 2
-      Hash: a07680a72f79edc3b02cc2a9a2dcd279
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HandJointFollowTarget
-  - hash:
-      serializedVersion: 2
-      Hash: b48d73fc8bfe7e3684d6447e5851bbaa
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRGrabbableObject
-  - hash:
-      serializedVersion: 2
-      Hash: a58cc6fe3d26f864a1a016bb2eb84d55
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: NRRecordBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: b825c60f40b3d9c8c94f80ec430ae632
-    assemblyName: NRSDK
-    namespaceName: 
-    className: XRAPIPanel
-  - hash:
-      serializedVersion: 2
-      Hash: 1211854b04254a84ad88de816dbf6bcb
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: NRCaptureBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 3c14c7c76b81131fe3c9cfcb00f81ac6
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: NRInteractiveItem
-  - hash:
-      serializedVersion: 2
-      Hash: 05101198f6d6b81329f89fe16946bc1e
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: NRCameraInitializer
-  - hash:
-      serializedVersion: 2
-      Hash: f9a8df1f5afffdbefdfa691f647e658b
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: UserDefineButton
-  - hash:
-      serializedVersion: 2
-      Hash: c3a74958ca58d26ce293d50aa7f59fea
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRSessionBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 2cd4148aedac3967cf0c15a7f5c9783d
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CameraCaptureController
-  - hash:
-      serializedVersion: 2
-      Hash: 49dbd70b1b4e528ff7fff8cc620ef4ea
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRInput
-  - hash:
-      serializedVersion: 2
-      Hash: d35f4deb61b6d83d5db1bab27a15e7cf
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRTrackingImageDatabase
-  - hash:
-      serializedVersion: 2
-      Hash: 0350f3433f17b9bc5d0737af80df3f08
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NREmulatorHeadPose
-  - hash:
-      serializedVersion: 2
-      Hash: d50d81a55475137683851356414d1320
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRDisplayOverlay
-  - hash:
-      serializedVersion: 2
-      Hash: 8dfc4e99f8801eb4001cdf866863fd9e
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: PlaneDetector
-  - hash:
-      serializedVersion: 2
-      Hash: 4b7d41e4abe404cb71a6a7c15c2fe9fd
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: VideoRecordConfigPanel
-  - hash:
-      serializedVersion: 2
-      Hash: 1015eeb8b0675ec9468bd8aab76a2ebf
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRBackGroundRender
-  - hash:
-      serializedVersion: 2
-      Hash: 3ce4dd22c98cad4f3cd0930e65c95516
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRMetrics
-  - hash:
-      serializedVersion: 2
-      Hash: b2eae06177aca2d35440213ecf312fd0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: PolygonPlaneVisualizer
-  - hash:
-      serializedVersion: 2
       Hash: 12afa2aab77d47801621ab8ea20de0f4
     assemblyName: NRSDK
     namespaceName: NRKernal
     className: NRPointerRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 5a635a0ccad7c6fd8f9da67157614a20
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: NRPreviewer
-  - hash:
-      serializedVersion: 2
-      Hash: c3d8fc6f773d5e9a0b03abf1b901e8e1
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: EnsureSlamTrackingMode
-  - hash:
-      serializedVersion: 2
-      Hash: 2f02ef2f7332363a44597f176afd5de4
-    assemblyName: NRSDK
-    namespaceName: 
-    className: TrackableFoundTest
-  - hash:
-      serializedVersion: 2
-      Hash: 8fa2740f826975a3d1119f6b172df546
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: NRHandMeshVisual
-  - hash:
-      serializedVersion: 2
-      Hash: 0ead29b96aa1510d891d3eb98dc6f372
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRMultiDisplayManager
-  - hash:
-      serializedVersion: 2
-      Hash: 07053feac5ad0c684facb209d8f06272
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TrackingInfomationTips
-  - hash:
-      serializedVersion: 2
-      Hash: 51ee5b8455e5993f336faa7d8c3b71b1
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CameraSmoothFollow
-  - hash:
-      serializedVersion: 2
-      Hash: 01afec932c0d9ec0224827783c1cc0a0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Persistence
-    className: MapQualityBar
-  - hash:
-      serializedVersion: 2
-      Hash: df58ede2888480e5a4619395ee8f0759
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRRenderer
-  - hash:
-      serializedVersion: 2
-      Hash: 4a7e1f4a3b183366c7a8ebd690a9b176
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CameraYUVCaptureController
-  - hash:
-      serializedVersion: 2
-      Hash: cd681df396a3934eafc6938bda3333b9
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: MockHandJointsPoseAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 19f08f4ed303ece76ba629d7acf4a7b0
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRLaserReticle
-  - hash:
-      serializedVersion: 2
-      Hash: bbb305e79b8a865162b1dbd7c058fbac
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NREmulatorManager
-  - hash:
-      serializedVersion: 2
-      Hash: 06dc335a4e74518228d839b05a0a49cf
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRTrackableImageBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 6874ea600420a1143a29ec3fdb186364
-    assemblyName: NRSDK
-    namespaceName: 
-    className: LinePen
-  - hash:
-      serializedVersion: 2
-      Hash: 596f757ea492ff6730e8624361c32c9f
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRNotificationWindow
-  - hash:
-      serializedVersion: 2
-      Hash: 4f2949a99575c9386ab305ef47c3526b
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: AutoRotate
-  - hash:
-      serializedVersion: 2
-      Hash: 8952945f072173ce5865c89ccc326e56
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ObjectEmitter
-  - hash:
-      serializedVersion: 2
-      Hash: e75c9b3d92c0d4ec459c29de49cdea3d
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HandJointColliderEntity
-  - hash:
-      serializedVersion: 2
-      Hash: 5e730552f0b47846dff9c6efd9629433
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: PhotoCaptureExample
-  - hash:
-      serializedVersion: 2
-      Hash: 5b6fd07b966dcc5844f8a26d12bbe23c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: XrealLightControllerVisual
-  - hash:
-      serializedVersion: 2
-      Hash: 913083498908e84b884e7507200991fa
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MeshObjGenerator
-  - hash:
-      serializedVersion: 2
-      Hash: da59425798c8915c252a2d99c860f3ed
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HiddenDebugPanel
-  - hash:
-      serializedVersion: 2
-      Hash: 8d82e471eb44d7a1df03ba24f828ffbb
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHandCapsuleVisual
-  - hash:
-      serializedVersion: 2
-      Hash: 2139ac34973e8fd66fcbb5d59658d2cc
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TrackingImageVisualizer
-  - hash:
-      serializedVersion: 2
-      Hash: 98f00d18ff5bad87db18b71405c94bad
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRAppManager
-  - hash:
-      serializedVersion: 2
-      Hash: 08ff5e471fd66c85e49628cfeb684cd0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ExamplesHub
-  - hash:
-      serializedVersion: 2
-      Hash: 9dbea51de30dd4f99ea2489605edf8b8
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: TrackableObserver
-  - hash:
-      serializedVersion: 2
-      Hash: 06c2d1d599eb3015ab2e2e31cf6d70e0
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRKernalUpdater
-  - hash:
-      serializedVersion: 2
-      Hash: eb2558c90c8ea6a7dc7d51121fd5c403
-    assemblyName: NRSDK
-    namespaceName: 
-    className: FocusManager
-  - hash:
-      serializedVersion: 2
-      Hash: dd61491559b04b6a404b555feb0bf65f
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRButton
-  - hash:
-      serializedVersion: 2
-      Hash: c486acf9579f874df2e5d34aca2ba5a0
-    assemblyName: NRSDK
-    namespaceName: 
-    className: ConfirmDialog
-  - hash:
-      serializedVersion: 2
-      Hash: 90caa9970e3ee49de900208f5f0e1195
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: MainThreadDispather
-  - hash:
-      serializedVersion: 2
-      Hash: dc0ddcb1dbdf4966ecf3ea948cc79719
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HandTrackingExample
-  - hash:
-      serializedVersion: 2
-      Hash: b934e6b19e134aa90cb3b07092f90779
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: DetectedPlaneGenerator
-  - hash:
-      serializedVersion: 2
-      Hash: 6a0b1d01cf8227cc259f9a4455f75a35
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: OverlayBase
-  - hash:
-      serializedVersion: 2
-      Hash: 487ebf99b910ec99ee3124623233c3a1
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRMultScrPointerRaycaster
-  - hash:
-      serializedVersion: 2
-      Hash: 7d2cc303b7eaecbb826a46cad12cfe0c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: CanvasRaycastTarget
-  - hash:
-      serializedVersion: 2
-      Hash: f703a6139b26173bfdf2eca47f1ecb09
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: GetSurportedFeatures
-  - hash:
-      serializedVersion: 2
-      Hash: 6a07b32bd90ca3d531fb069b960273e8
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: DetectedPlaneVisualizer
-  - hash:
-      serializedVersion: 2
-      Hash: 2502aaec1fdc7e66df56d26f270f7491
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRAnchor
-  - hash:
-      serializedVersion: 2
-      Hash: d83f8f0289b575556d942f1214566d08
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: RawImagePixelPicker
-  - hash:
-      serializedVersion: 2
-      Hash: 12c7da74d9c0659ffe1ffe14ae426337
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MeshSaver
-  - hash:
-      serializedVersion: 2
-      Hash: 22553068eb445943d1cf92ac38be5ec2
-    assemblyName: NRSDK
-    namespaceName: 
-    className: FocusItem
-  - hash:
-      serializedVersion: 2
-      Hash: 299e47d702aff3dcbe64132e845d72f2
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: DemoScenesMenu
-  - hash:
-      serializedVersion: 2
-      Hash: bc2d0701a4f0b4ce413387c64ea59e29
-    assemblyName: NRSDK
-    namespaceName: 
-    className: ParticlePen
   - hash:
       serializedVersion: 2
       Hash: a7c79cd90e129c6d1149accb30bfe575
@@ -1618,371 +1985,29 @@ ScriptsOnlyBuild:
     className: NRGrabber
   - hash:
       serializedVersion: 2
-      Hash: 12484591005983121487e63997692539
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TrackablePlaneBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: c25adb66934292d6a09a27c9a1a9e928
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRMultiResumeMediator
-  - hash:
-      serializedVersion: 2
-      Hash: d0467cd98d07061dab84a644281e5aca
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: FocusDistPanel
-  - hash:
-      serializedVersion: 2
-      Hash: 559e8838179300cb7f4129561502c8c8
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: SetFocusPlaneTool
-  - hash:
-      serializedVersion: 2
-      Hash: 48a3f1a9b90888d0bea2e93d474b18d9
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRPhoneDisplayReplayceTool
-  - hash:
-      serializedVersion: 2
-      Hash: 069a1a12486d1a01c1e6cc500c37724e
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRSessionConfig
-  - hash:
-      serializedVersion: 2
-      Hash: 08e27d4c6fbe2adbe41551c95bba10b9
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRGlassesInitErrorTip
-  - hash:
-      serializedVersion: 2
-      Hash: a2dbb0431029100ab9399e4af5b39cef
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Persistence
-    className: NRWorldAnchor
-  - hash:
-      serializedVersion: 2
-      Hash: 3b929c6b5ac654b06137637adb3b26ec
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHomeMenu
-  - hash:
-      serializedVersion: 2
-      Hash: 1499349754a4f2f9ea794c2f4b05fab3
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TrackingImageExampleController
-  - hash:
-      serializedVersion: 2
-      Hash: fcacf3207b9dd0c7a40c6bce74532a21
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NREmulatorController
-  - hash:
-      serializedVersion: 2
-      Hash: 6ac50b01dd8b1c532200232cb7fe3c35
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: FPSDisplay
-  - hash:
-      serializedVersion: 2
-      Hash: 28634c06003ed4a15d3a1ded67492e90
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: Toaster
-  - hash:
-      serializedVersion: 2
-      Hash: 90fcc1ea0447eae57c2ae2cd811f77d9
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: VideoPlayerDemo
-  - hash:
-      serializedVersion: 2
-      Hash: 97e8b85f64f6a95ef333ac2ca1959e6c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRVirtualPhaseSync
-  - hash:
-      serializedVersion: 2
-      Hash: 2e9e1a5c31bb3a97787aa61dc3efd92b
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TargetModelDisplayCtrl
-  - hash:
-      serializedVersion: 2
-      Hash: fb4e0517c811e96c09645c31a897fd2c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRVirtualDisplayer
-  - hash:
-      serializedVersion: 2
-      Hash: 594abe90b0de8312fbf4237bc483c09a
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRProjectConfig
-  - hash:
-      serializedVersion: 2
-      Hash: 91079e4be2b9835f45eeb69bc9925033
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: UserDefinePanel
-  - hash:
-      serializedVersion: 2
-      Hash: dc8da56dd437fc064dae7595d4fb7e39
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRMeshingManager
-  - hash:
-      serializedVersion: 2
-      Hash: a17a6c99de3767338f9924bed518d561
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HandJointPoseRecorder
-  - hash:
-      serializedVersion: 2
-      Hash: 44be2b3e65ba87cc7dbc6d9efb554f26
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: ControllerAnchorsHelper
-  - hash:
-      serializedVersion: 2
-      Hash: 38f0dba0f9bb7a655f2802f2b1d0d270
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ControllerInfoDisplayUI
-  - hash:
-      serializedVersion: 2
-      Hash: 6018a8841aca228b39d3c49975986154
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: MultiScreenController
-  - hash:
-      serializedVersion: 2
-      Hash: a940744dc29f93c8bbc6a2311e3708c7
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRNotificationListener
-  - hash:
-      serializedVersion: 2
-      Hash: 57eebabf9dc0812e161c5f7d6b094ca0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CustomVirtualControlerUI
-  - hash:
-      serializedVersion: 2
-      Hash: 4d66de6fd5cb8f191cce6c68756950d2
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRTrackablePlaneBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 418ecc8522708146eb876c5e1e0f20a7
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRTrackableBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 12527d77e5586c0739a7438345a184ba
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HandModelsManager
-  - hash:
-      serializedVersion: 2
-      Hash: 096d337a28677600f5e81e0ea740dd0c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRFloatingViewReplace
-  - hash:
-      serializedVersion: 2
-      Hash: 76b7dcd84280099d66f90b9cd1c28d72
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MeshObjGeneratorInspector
-  - hash:
-      serializedVersion: 2
-      Hash: fa900d2664431a364ac728a0676b202a
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRTrackingModeChangedTip
-  - hash:
-      serializedVersion: 2
-      Hash: 5763406c30c070e367e27dca7b347231
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHandSimpleVisual
-  - hash:
-      serializedVersion: 2
-      Hash: cd48dacc7a20d6a3a792c2bf401d16c0
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: AudioRecordTool
-  - hash:
-      serializedVersion: 2
-      Hash: 69c6f4bdb06bb8a78962737cca8684c1
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: FPSCounter
-  - hash:
-      serializedVersion: 2
-      Hash: 209158eda5e3efc779cff539ace3846f
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: FollowMouseMove
-  - hash:
-      serializedVersion: 2
-      Hash: cd1a1ecbcfc1837679dcf08eb8cf9b3c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRHMDPoseTracker
-  - hash:
-      serializedVersion: 2
-      Hash: 3941aa6ee9e34913f3f97a6cf477cbc3
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ChangeModeController
-  - hash:
-      serializedVersion: 2
-      Hash: 5f3c70a242e9abdbd5953273ef67f8bf
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: dac902f10ac6fa4b60a18c3721b61328
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MeshClassificationFrackingInspector
-  - hash:
-      serializedVersion: 2
-      Hash: bfc842410827b1158835b6be1f406477
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: ControllerStateParseUtility
-  - hash:
-      serializedVersion: 2
-      Hash: 231771f06318da82aebab002ac89e763
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRLibraryStripConfig
-  - hash:
-      serializedVersion: 2
-      Hash: 528c31d0faa7f610b30d7ca2325db2ae
-    assemblyName: NRSDK
-    namespaceName: 
-    className: DebugSaveDisplayImage
-  - hash:
-      serializedVersion: 2
-      Hash: 242797afef593626446eab412717b86c
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Persistence
-    className: AnchorItem
-  - hash:
-      serializedVersion: 2
-      Hash: d2e81338774894cd7d0c292c6268fdd5
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: ControllerVisualManager
-  - hash:
-      serializedVersion: 2
-      Hash: bdc501f3eb46d0dbf6ee81bd7112ee75
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: SessionEventsListener
-  - hash:
-      serializedVersion: 2
-      Hash: be86b2aad7a63f04b45c3e40629c5dd1
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: CubeInteractiveTest
-  - hash:
-      serializedVersion: 2
-      Hash: c73eba57c3daf6d7d4f9a2b17aa41c7e
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: SimpleControllerVibration
-  - hash:
-      serializedVersion: 2
-      Hash: aaab278c9140e6141430999cc2bb990e
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: CanvasTargetCollector
-  - hash:
-      serializedVersion: 2
-      Hash: 9f36c066dc910e754ef1ec3f4cd8efcb
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: MapQualityIndicator
-  - hash:
-      serializedVersion: 2
-      Hash: 9f8669e8a6a28a662c455773c5a3c994
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: ScreenApapter
-  - hash:
-      serializedVersion: 2
-      Hash: 479d2d329be15f26c0436d09ae748929
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: LocalMapExample
-  - hash:
-      serializedVersion: 2
       Hash: 7c8bc4469cf15d640b67e6c3349520bb
     assemblyName: NRSDK
     namespaceName: NRKernal
     className: NRPhoneControllerVisual
   - hash:
       serializedVersion: 2
-      Hash: 55c67d875eaebe4c7160db17619e602b
-    assemblyName: NRSDK
-    namespaceName: 
-    className: HandInspector
+      Hash: 00eef92bf387da2c9009267123d9d674
+    assemblyName: Unity.VisualScripting.Core
+    namespaceName: Unity.VisualScripting
+    className: UnityOnTriggerExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 384aca40734f5a2631467acf0d30622f
+      Hash: a58cc6fe3d26f864a1a016bb2eb84d55
     assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: GazeTracker
+    namespaceName: NRKernal.Record
+    className: NRRecordBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 80e8e82adc634a894ecfa002b75dfeaf
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: ControllerTracker
-  - hash:
-      serializedVersion: 2
-      Hash: 2e742c36f770cbc09069549c271c45d1
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRLaserVisual
-  - hash:
-      serializedVersion: 2
-      Hash: 4e9d2fd7889d15eed6f237b97b3d75bd
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: HelloMRController
-  - hash:
-      serializedVersion: 2
-      Hash: ad44306f291a7b7ef99682edda0c1ca5
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: TrackableImageBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: ac6db935d1d2c2e846dd73120d9d4e3c
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRVisualProfiler
-  - hash:
-      serializedVersion: 2
-      Hash: 60845792e16d0a781cd1e420fc5d05ec
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: CapsuleTest
+      Hash: 8b15e35eb98fc258ec2e839df7c3c9b0
+    assemblyName: Unity.VisualScripting.Core
+    namespaceName: Unity.VisualScripting
+    className: UnityOnSliderValueChangedMessageListener
   platform: 13
   scenePathNames:
-  - Assets/Scenes/HUD.unity
-  playerPath: C:/Users/Trevor Brown/Desktop/NRSDK Testing (New).apk
+  - Assets/Scenes/DashAR HUD.unity
+  playerPath: C:/Users/Trevor Brown/Desktop/DashAR HUD.apk

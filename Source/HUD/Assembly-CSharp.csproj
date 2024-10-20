@@ -63,6 +63,7 @@
     <Compile Include="Assets\DashAR\HUD.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARDataAggregatorServer.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARDataAggregatorServerResponse.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUDDevice.cs" />
     <Compile Include="Assets\DashAR\CodeTest.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARStateMachine.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARGauge.cs" />
