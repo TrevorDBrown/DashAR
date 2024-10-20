@@ -17,6 +17,11 @@ from das_core.obdii_interpreter import OBDIIContext
 
 class ConfigurationConstants():
     CONFIGURATION_VERSION: str
+    DASHAR_VERSION: str
+    DAS_VERSION: str
+    HUD_VERSION: str
+    COMPANION_APP_VERSION: str
+
     CONFIGURATION_PATH: Final[str] = os.path.join(os.getcwd(), "config.json")
 
     def __init__(self) -> None:
@@ -29,7 +34,6 @@ class ConfigurationVariables():
     service_mode: ServiceMode
     headless_operation: bool = False
     verbose_operation: bool = False
-    single_run_operation: bool = False
 
     obdii_elm327_device_path: str
 
@@ -47,39 +51,39 @@ class Configuration():
         self.configuration_variables = ConfigurationVariables()
         self.configuration_constants = ConfigurationConstants()
 
-        # Splash Message.
+        # # Splash Message.
         print(f"DashAR Automotive HUD System")
-        print(f"DAS version {Constants.DASHAR_VERSION}")
-        print(f"HUD version {Constants.HUD_VERSION}")
-        print(f"Companion App version {Constants.COMPANION_APP_VERSION}")
         print(f"(c)2024 Trevor D. Brown. All rights reserved.\n")
 
         # Set defaults ahead of time.
         self.set_default_configuration()
 
         # Load configuration from file.
-        # self.load_configuration(arguments)
+        self.load_configuration(arguments)
+
+        # Print remaining splash screen information.
+        print(f"DashAR System version {self.configuration_constants.DASHAR_VERSION}")
+        print(f"Configuration version {self.configuration_constants.CONFIGURATION_VERSION}")
+        print(f"Data Aggregator and Server (DAS) version {self.configuration_constants.DAS_VERSION}")
+        print(f"HUD App version {self.configuration_constants.HUD_VERSION}")
+        print(f"Companion App version {self.configuration_constants.COMPANION_APP_VERSION}")
 
         return
 
     def load_configuration(self, arguments: argparse.Namespace) -> None:
 
         # Check the arguments passed in.
-        # Headless Mode.
+        # Headless Mode - automatic polling of data on set interval.
         if (arguments.headless):
             self.configuration_variables.headless_operation = True
         else:
             self.configuration_variables.headless_operation = False
 
+        # Verbose Output - output all information.
         if (arguments.verbose):
             self.configuration_variables.verbose_operation = True
         else:
             self.configuration_variables.verbose_operation = False
-
-        if (arguments.single_run):
-            self.configuration_variables.single_run_operation = True
-        else:
-            self.configuration_variables.single_run_operation = False
 
         # Load the configuration from JSON.
         json_configuration_content: dict
@@ -94,11 +98,27 @@ class Configuration():
             if (json_configuration_content["config_version"]):
                 self.configuration_constants.CONFIGURATION_VERSION = json_configuration_content["config_version"]
 
-            if (json_configuration_content["service_mode"]):
-                config_service_mode: str = json_configuration_content["service_mode"]
+            if (json_configuration_content["versioning"]):
+                try:
+                    self.configuration_constants.DASHAR_VERSION = json_configuration_content["versioning"]["dashar"]
+                    self.configuration_constants.DAS_VERSION = json_configuration_content["versioning"]["das"]
+                    self.configuration_constants.HUD_VERSION = json_configuration_content["versioning"]["hud"]
+                    self.configuration_constants.COMPANION_APP_VERSION = json_configuration_content["versioning"]["companion"]
 
-                #TODO: verify service mode from string into Enum.
-                self.configuration_variables.service_mode = json_configuration_content["service_mode"]
+                except Exception as e:
+                    print("Error: invalid versioning provided.")
+                    self.configuration_constants.DASHAR_VERSION = "-1"
+                    self.configuration_constants.DAS_VERSION = "-1"
+                    self.configuration_constants.HUD_VERSION = "-1"
+                    self.configuration_constants.COMPANION_APP_VERSION = "-1"
+
+            if (json_configuration_content["service_mode"]):
+                try:
+                    self.configuration_variables.service_mode = ServiceMode[str(json_configuration_content["service_mode"]).upper()]
+                except Exception as e:
+                    print(f"Error: Service Mode '{json_configuration_content['service_mode']}' is not a valid service mode.")
+            else:
+                self.configuration_variables.service_mode = ServiceMode["TEST"]
 
             if (json_configuration_content["data_path"]):
                 data_path_content: str = json_configuration_content["data_path"]
@@ -137,14 +157,19 @@ class Configuration():
             print("Error: invalid configuration provided. Resetting all values to defaults.")
             self.set_default_configuration()
 
-        # Initialize the OBDII context.
-        self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
+        if (self.configuration_variables.service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
+            # Initialize the OBDII context.
+            self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
 
         return
 
     def set_default_configuration(self) -> None:
         # Set default configuration, to be overwritten by the JSON config load process.
         self.configuration_constants.CONFIGURATION_VERSION = Constants.EXPECTED_CONFIGURATION_VERSION
+        self.configuration_constants.DASHAR_VERSION = Constants.EXPECTED_DASHAR_VERSION
+        self.configuration_constants.DAS_VERSION = Constants.EXPECTED_DAS_VERSION
+        self.configuration_constants.HUD_VERSION = Constants.EXPECTED_HUD_VERSION
+        self.configuration_constants.COMPANION_APP_VERSION = Constants.EXPECTED_COMPANION_APP_VERSION
         self.configuration_variables.fuel_level_refresh_frequency_data_points = 200
         self.configuration_variables.service_mode = ServiceMode.TEST
         self.configuration_variables.obdii_elm327_device_path = "/dev/tty.usbserial-D395GRKM"
@@ -156,7 +181,7 @@ class Configuration():
         print("Testing Configuration...")
 
         # Service Mode Verification
-        print(f"Service Mode is: {self.configuration_variables.service_mode}")
+        print(f"Service Mode is {self.configuration_variables.service_mode.name}.")
 
         # Configuration Version Test
         if (self.configuration_constants.CONFIGURATION_VERSION == Constants.EXPECTED_CONFIGURATION_VERSION):
