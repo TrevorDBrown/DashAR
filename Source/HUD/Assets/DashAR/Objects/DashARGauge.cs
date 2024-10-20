@@ -15,23 +15,32 @@ public class DashARGauge
 {
     Guid _id;
     private GameObject _gameObject;
+    private GameObject _gameObjectText;
     private string _gameObjectName;
+    private string _gameObjectTextName;
     private string _name;
     private string _valueType;
-    private string _unitOfMeasure;
+    private string _unitOfMeasure = "";
     private string _valueString = "";
-    private string _dasDataMappedValue;
-    
-    public DashARGauge(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure, string dasDataMappedValue)
+    private string _dataSource = "";
+    private string _dataSourceMappedValue;
+    private bool _suppressUnitOfMeasureOnDisplay;
+
+    public DashARGauge(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false)
     {
         this._id = Guid.NewGuid();
         this._gameObjectName = "Widget_" + gaugeName;
+        this._gameObjectTextName = this._gameObjectName + "_Text";
         this._gameObject = GameObject.Find(this._gameObjectName);
+        this._gameObjectText = GameObject.Find(this._gameObjectTextName);
 
         this._name = gaugeName;
         this._valueType = gaugeValueType;
         this._unitOfMeasure = gaugeUnitOfMeasure;
-        this._dasDataMappedValue = dasDataMappedValue;
+        this._suppressUnitOfMeasureOnDisplay = suppressUnitOfMeasureOnDisplay;
+        this._dataSourceMappedValue = dataSourceMappedValue;
+        this._dataSource = dataSource;
+
         return;
     }
 
@@ -56,24 +65,47 @@ public class DashARGauge
         set { this._valueString = value; }
     }
 
+    public string DataSource
+    {
+        get { return this._dataSource; }
+    }
+
+    public string DataSourceMappedValue
+    {
+        get { return this._dataSourceMappedValue; }
+    }
+
+    public void UpdateGauge(string newValue)
+    {
+        this.Value = newValue;
+        this.SetGaugeDisplayValue();
+        return;
+    }
+
+
     public string GetGaugeDisplayValue()
     {
-        return this._valueString + "\n" + this._unitOfMeasure;
+        if (this._unitOfMeasure == "" || this._suppressUnitOfMeasureOnDisplay){
+            return this._valueString;
+        } 
+        else {
+            return this._valueString + "\n" + this._unitOfMeasure;
+        }
+
     }
 
     public void SetGaugeDisplayValue()
     {
-        string textGameObjectName = this._gameObjectName + "_Text";
-        GameObject textObject = GameObject.Find(textGameObjectName);
-
-        TextMeshPro textMeshProComponent = textObject.GetComponent<TextMeshPro>();
-
-        Debug.Log("Current Text: " + textMeshProComponent.text);
+        TextMeshPro textMeshProComponent = this._gameObjectText.GetComponent<TextMeshPro>();
 
         textMeshProComponent.text = this.GetGaugeDisplayValue();
 
-        Debug.Log("New Text: " + textMeshProComponent.text);
-        
+        GameObject textGameObject = GameObject.Find("Compass_Enabled_Text");
+
+        TextMeshPro textComponent = textGameObject.GetComponent<TextMeshPro>();
+
+        textComponent.text = Input.compass.trueHeading.ToString();
+
         return;
     }
 
