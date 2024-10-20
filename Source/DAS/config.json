@@ -1,5 +1,11 @@
 {
     "config_version": "0.1",
+    "versioning": {
+        "dashar": "0.1",
+        "das": "0.1",
+        "hud": "0.1",
+        "companion": "0"
+    },
     "service_mode": "TEST",
     "data_path": "{DAS_ROOT}/data/",
     "database_path": "{DATA_PATH}/dashar-data.sqlite3",
