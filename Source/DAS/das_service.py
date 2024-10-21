@@ -59,13 +59,49 @@ class OBDIIHandler(tornado.web.RequestHandler):
             self.write(f"{client_response_json}")
 
 class ThirdPartyAPIHandler(tornado.web.RequestHandler):
+    dashar_configuration: Configuration
+
+    def initialize(self, dashar_configuration: Configuration) -> None:
+        self.dashar_configuration = dashar_configuration
+
     def get(self) -> None:
-        self.write("This is a test!")
+        self.write("This endpoint is for third-party API calls.")
+
+class InitHandler(tornado.web.RequestHandler):
+    dashar_configuration: Configuration
+
+    def initialize(self, dashar_configuration: Configuration) -> None:
+        self.dashar_configuration = dashar_configuration
+
+    def get(self) -> None:
+        self.write("Initializing...")
+
+class TerminateHandler(tornado.web.RequestHandler):
+    dashar_configuration: Configuration
+
+    def initialize(self, dashar_configuration: Configuration) -> None:
+        self.dashar_configuration = dashar_configuration
+
+    def _terminate(self) -> None:
+        print("Termination signal received from /quit endpoint.")
+
+        # event_loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
+
+        # event_loop.stop()
+        # event_loop.close()
+
+        return
+
+    def get(self) -> None:
+        self.write("Termination signal received.")
+        self._terminate()
 
 def make_app(dashar_configuration: Configuration) -> tornado.web.Application:
     return tornado.web.Application([
+        (r"/init", InitHandler, {"dashar_configuration": dashar_configuration}),
+        (r"/quit", TerminateHandler, {"dashar_configuration": dashar_configuration}),
         (r"/data/obdii", OBDIIHandler, {"dashar_configuration": dashar_configuration}),
-        (r"/data/api/google-maps", ThirdPartyAPIHandler, {"dashar_configuration": dashar_configuration})
+        (r"/data/tpapi", ThirdPartyAPIHandler, {"dashar_configuration": dashar_configuration})
     ])
 
 def check_for_arguments():
@@ -73,7 +109,6 @@ def check_for_arguments():
     argument_parser = argparse.ArgumentParser(  prog='das_service.py',
                                                 description='The Data Aggregator and Server Component of the DashAR System.')
 
-    argument_parser.add_argument("-s", "--single-run", action="store_true", help="Flag indicating a single instance store in a SQLite Database.")
     argument_parser.add_argument("-v", "--verbose", action="store_true", help="Output additional information at runtime.")
     argument_parser.add_argument("--headless", action="store_true", help="Capture data points without external requests.")
 
@@ -90,6 +125,9 @@ async def main() -> None:
     if (not dashar_configuration.configuration_variables.headless_operation):
 
         app: tornado.web.Application = make_app(dashar_configuration)
+
+        print("\nSystem ready.\n")
+
         app.listen(3000)
         await asyncio.Event().wait()
 
@@ -109,6 +147,9 @@ async def main() -> None:
             else:
                 print("OBDII is not connected. Exiting.")
                 break
+
+    print("System has terminated.")
+
 
 if (__name__ == "__main__"):
     asyncio.run(main())
