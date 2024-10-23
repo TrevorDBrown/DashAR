@@ -132,7 +132,6 @@ async def main() -> None:
 
         app.listen(http_port)
         await asyncio.Event().wait()
-        await asyncio.Event().wait()
 
     else:
 

@@ -30,7 +30,7 @@ class OBDIIContext:
     __vehicle_fuel_level_temp_store_count: int      # __vehicle_fuel_level_temp_store_count - the number of data points collected in the fixed frequency for fuel level.
 
 
-    def __init__(self, obdii_interface_device_path: str = "", database_path: str = "", fuel_level_max_data_points: int = 100, auto_connect: bool = True, service_mode: ServiceMode = ServiceMode.DEBUG) -> None:
+    def __init__(self, service_mode: ServiceMode, obdii_interface_device_path: str = "", database_path: str = "", fuel_level_max_data_points: int = 100, auto_connect: bool = True) -> None:
 
         # Store the Service Mode (PRODUCTION or DEBUG)
         self.__service_mode = service_mode
@@ -61,7 +61,6 @@ class OBDIIContext:
             self.__vehicle_fuel_level_last_computed = 0
             self.__vehicle_fuel_level_temp_store_count = 0
             self.__vehicle_fuel_level_temp_store = []
-
 
         else:
             # TODO: formalize the exception handling here.
