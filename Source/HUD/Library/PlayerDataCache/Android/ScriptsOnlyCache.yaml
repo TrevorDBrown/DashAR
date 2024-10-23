@@ -1,7 +1,6 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - CapsuleTest
     - HUD
     NRSDK:
     - NRKernal.CanvasRaycastTarget
@@ -157,113 +156,111 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 16688}
+    - Class: 114
       Script: {instanceID: 16690}
     - Class: 114
-      Script: {instanceID: 16724}
+      Script: {instanceID: 16692}
     - Class: 114
-      Script: {instanceID: 16726}
+      Script: {instanceID: 16694}
     - Class: 114
-      Script: {instanceID: 16728}
+      Script: {instanceID: 16742}
     - Class: 114
-      Script: {instanceID: 16730}
+      Script: {instanceID: 16748}
     - Class: 114
-      Script: {instanceID: 16778}
+      Script: {instanceID: 16754}
     - Class: 114
-      Script: {instanceID: 16784}
+      Script: {instanceID: 16954}
     - Class: 114
-      Script: {instanceID: 16790}
+      Script: {instanceID: 17390}
     - Class: 114
-      Script: {instanceID: 16984}
+      Script: {instanceID: 17556}
     - Class: 114
-      Script: {instanceID: 17420}
+      Script: {instanceID: 17572}
     - Class: 114
-      Script: {instanceID: 17586}
+      Script: {instanceID: 17742}
     - Class: 114
-      Script: {instanceID: 17602}
+      Script: {instanceID: 17812}
     - Class: 114
-      Script: {instanceID: 17772}
+      Script: {instanceID: 17858}
     - Class: 114
-      Script: {instanceID: 17840}
+      Script: {instanceID: 17932}
     - Class: 114
-      Script: {instanceID: 17886}
+      Script: {instanceID: 18082}
     - Class: 114
-      Script: {instanceID: 17960}
+      Script: {instanceID: 18366}
     - Class: 114
-      Script: {instanceID: 18110}
+      Script: {instanceID: 18378}
     - Class: 114
-      Script: {instanceID: 18394}
+      Script: {instanceID: 18432}
     - Class: 114
-      Script: {instanceID: 18406}
+      Script: {instanceID: 18584}
     - Class: 114
-      Script: {instanceID: 18460}
+      Script: {instanceID: 18762}
     - Class: 114
-      Script: {instanceID: 18612}
+      Script: {instanceID: 18770}
     - Class: 114
-      Script: {instanceID: 18790}
+      Script: {instanceID: 18866}
     - Class: 114
-      Script: {instanceID: 18798}
+      Script: {instanceID: 18940}
     - Class: 114
-      Script: {instanceID: 18894}
+      Script: {instanceID: 18950}
     - Class: 114
-      Script: {instanceID: 18968}
+      Script: {instanceID: 19010}
     - Class: 114
-      Script: {instanceID: 18978}
+      Script: {instanceID: 19060}
     - Class: 114
-      Script: {instanceID: 19038}
+      Script: {instanceID: 19424}
     - Class: 114
-      Script: {instanceID: 19088}
+      Script: {instanceID: 19496}
     - Class: 114
-      Script: {instanceID: 19444}
+      Script: {instanceID: 19536}
     - Class: 114
-      Script: {instanceID: 19514}
+      Script: {instanceID: 19604}
     - Class: 114
-      Script: {instanceID: 19554}
+      Script: {instanceID: 19784}
     - Class: 114
-      Script: {instanceID: 19622}
+      Script: {instanceID: 19788}
     - Class: 114
-      Script: {instanceID: 19800}
+      Script: {instanceID: 19844}
     - Class: 114
-      Script: {instanceID: 19804}
+      Script: {instanceID: 19942}
     - Class: 114
-      Script: {instanceID: 19860}
+      Script: {instanceID: 20022}
     - Class: 114
-      Script: {instanceID: 19958}
+      Script: {instanceID: 20042}
     - Class: 114
-      Script: {instanceID: 20038}
+      Script: {instanceID: 20302}
     - Class: 114
-      Script: {instanceID: 20058}
+      Script: {instanceID: 20504}
     - Class: 114
-      Script: {instanceID: 20316}
+      Script: {instanceID: 20526}
     - Class: 114
-      Script: {instanceID: 20518}
+      Script: {instanceID: 20580}
     - Class: 114
-      Script: {instanceID: 20538}
+      Script: {instanceID: 20830}
     - Class: 114
-      Script: {instanceID: 20592}
+      Script: {instanceID: 20912}
     - Class: 114
-      Script: {instanceID: 20842}
+      Script: {instanceID: 21348}
     - Class: 114
-      Script: {instanceID: 20924}
+      Script: {instanceID: 21568}
     - Class: 114
-      Script: {instanceID: 21358}
+      Script: {instanceID: 21646}
     - Class: 114
-      Script: {instanceID: 21578}
+      Script: {instanceID: 21696}
     - Class: 114
-      Script: {instanceID: 21656}
+      Script: {instanceID: 21980}
     - Class: 114
-      Script: {instanceID: 21706}
+      Script: {instanceID: 22554}
     - Class: 114
-      Script: {instanceID: 21988}
+      Script: {instanceID: 23138}
     - Class: 114
-      Script: {instanceID: 23140}
+      Script: {instanceID: 23240}
     - Class: 114
-      Script: {instanceID: 23242}
+      Script: {instanceID: 23372}
     - Class: 114
-      Script: {instanceID: 23374}
-    - Class: 114
-      Script: {instanceID: 23466}
-    - Class: 114
-      Script: {instanceID: 23480}
+      Script: {instanceID: 23464}
     - Class: 114
       Script: {instanceID: 23580}
     - Class: 114
@@ -297,30 +294,6 @@ ScriptsOnlyBuild:
     - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
-  - hash:
-      serializedVersion: 2
-      Hash: e69fe7c55ffedf373a8be770a5d48743
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: VideoCapture2LocalExample
-  - hash:
-      serializedVersion: 2
-      Hash: 9b2fa6f480cdde8f13dd2dd0c5bffc56
-    assemblyName: NRSDK
-    namespaceName: NRKernal.NRExamples
-    className: GestureRecordUI
-  - hash:
-      serializedVersion: 2
-      Hash: f006b30f160a69c3e5851175e111687c
-    assemblyName: NRSDK
-    namespaceName: NRKernal.Record
-    className: CaptureBehaviourBase
-  - hash:
-      serializedVersion: 2
-      Hash: 264631a08ba55ef7752764e8da52a0b4
-    assemblyName: NRSDK
-    namespaceName: NRKernal
-    className: NRSwapChainManager
   - hash:
       serializedVersion: 2
       Hash: 5428e469d43f6ac2327928039eef38f2
@@ -561,6 +534,12 @@ ScriptsOnlyBuild:
     assemblyName: NRSDK
     namespaceName: NRKernal
     className: NRLaserReticle
+  - hash:
+      serializedVersion: 2
+      Hash: f006b30f160a69c3e5851175e111687c
+    assemblyName: NRSDK
+    namespaceName: NRKernal.Record
+    className: CaptureBehaviourBase
   - hash:
       serializedVersion: 2
       Hash: d83f8f0289b575556d942f1214566d08
@@ -1055,6 +1034,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: e69fe7c55ffedf373a8be770a5d48743
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: VideoCapture2LocalExample
+  - hash:
+      serializedVersion: 2
       Hash: 1a680d9a08de79b0d2c779e78c9843b4
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -1107,6 +1092,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 9b2fa6f480cdde8f13dd2dd0c5bffc56
+    assemblyName: NRSDK
+    namespaceName: NRKernal.NRExamples
+    className: GestureRecordUI
   - hash:
       serializedVersion: 2
       Hash: a2dbb0431029100ab9399e4af5b39cef
@@ -1745,6 +1736,12 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 264631a08ba55ef7752764e8da52a0b4
+    assemblyName: NRSDK
+    namespaceName: NRKernal
+    className: NRSwapChainManager
+  - hash:
+      serializedVersion: 2
       Hash: 4728e3d21cc2a12e391e71ec9b7eed0b
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -1905,12 +1902,6 @@ ScriptsOnlyBuild:
     assemblyName: NRSDK
     namespaceName: NRKernal
     className: CanvasRaycastTarget
-  - hash:
-      serializedVersion: 2
-      Hash: b15b46ea5a1bb3561c554ec16f81d348
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: DashARDataAggregatorServer
   - hash:
       serializedVersion: 2
       Hash: 01afec932c0d9ec0224827783c1cc0a0
