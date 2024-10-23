@@ -1,15 +1,25 @@
 using NRKernal;
+using System;
+using System.Globalization;
 using UnityEngine;
 
 public class DashARHUDDevice : MonoBehaviour
 {
     private string _name;
     private NRDeviceType _deviceType;
+    private CultureInfo _deviceCulture;
 
     public DashARHUDDevice()
     {
         this._name = "My HUD Device";
         this._deviceType = NRDeviceType.XrealAIR2_PRO;
+
+        // Enable the device's compass.
+        Input.compass.enabled = true;
+        Input.location.Start();
+
+        // Determine the locale of the device.
+        this._deviceCulture = CultureInfo.CurrentCulture;
     }
 
     public string GetCompassHeading()
@@ -48,5 +58,10 @@ public class DashARHUDDevice : MonoBehaviour
             return "N";
         }
 
+    }
+
+    public string GetCurrentTime()
+    {
+        return DateTime.Now.ToLocalTime().ToString("h:mm tt");
     }
 }
