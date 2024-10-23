@@ -17,20 +17,13 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Enable compass.
-        // TODO: figure out how to get the compass to work...
-        Input.compass.enabled = true;
-        Input.location.Start();
-
+        // Initialize the DashAR State Machine.
         this._dsm = new DashARStateMachine();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount % 60 == 0)
-        {
-            this._dsm.PollForUpdate();
-        }
+        this._dsm.PollForUpdate();
     }
 }
