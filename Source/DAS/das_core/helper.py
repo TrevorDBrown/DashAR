@@ -13,10 +13,11 @@ import datetime
 import json
 
 class Constants():
-    DASHAR_VERSION: str = "0.1"
-    HUD_VERSION: str = "0.1"
-    COMPANION_APP_VERSION: str = "0.1"
     EXPECTED_CONFIGURATION_VERSION: str = "0.1"
+    EXPECTED_DASHAR_VERSION: str = "0.1"
+    EXPECTED_DAS_VERSION: str = "0.1"
+    EXPECTED_HUD_VERSION: str = "0.1"
+    EXPECTED_COMPANION_APP_VERSION: str = "0"
 
 class Variables():
     None
