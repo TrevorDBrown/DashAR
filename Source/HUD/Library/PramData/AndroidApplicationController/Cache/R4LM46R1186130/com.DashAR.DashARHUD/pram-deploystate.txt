@@ -1,0 +1,13 @@
+assets/bin/Data/boot.config:599-638652526060121067
+assets/bin/Data/data.unity3d:11466955-638652526058343666
+assets/bin/Data/Managed/Metadata/global-metadata.dat:6856584-638652526264095519
+assets/bin/Data/Managed/Resources/mscorlib.dll-resources.dat:337563-638652526264040280
+assets/bin/Data/Managed/Resources/Newtonsoft.Json.dll-resources.dat:900-638652526264165788
+assets/bin/Data/Managed/Resources/System.Data.dll-resources.dat:93718-638652526264185876
+assets/bin/Data/Managed/Resources/System.Drawing.dll-resources.dat:25453-638652526265564538
+assets/bin/Data/RuntimeInitializeOnLoads.json:513-638628261878857267
+assets/bin/Data/ScriptingAssemblies.json:2738-638652526058293107
+assets/bin/Data/unity default resources:1110848-638628261877513922
+assets/bin/Data/unity_app_guid:36-638652526267433796
+jniLibs/arm64-v8a/libil2cpp.so:41093824-638652526308029041
+jniLibs/arm64-v8a/libmain.so:8720-638649766793641958

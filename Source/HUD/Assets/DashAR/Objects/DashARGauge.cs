@@ -26,7 +26,7 @@ public class DashARGauge
     private string _dataSourceMappedValue;
     private bool _suppressUnitOfMeasureOnDisplay;
 
-    public DashARGauge(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false)
+    public DashARGauge(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
     {
         this._id = Guid.NewGuid();
         this._gameObjectName = "Widget_" + gaugeName;
@@ -40,6 +40,8 @@ public class DashARGauge
         this._suppressUnitOfMeasureOnDisplay = suppressUnitOfMeasureOnDisplay;
         this._dataSourceMappedValue = dataSourceMappedValue;
         this._dataSource = dataSource;
+
+        this.UpdateGauge(initializedValue);
 
         return;
     }
@@ -86,10 +88,10 @@ public class DashARGauge
     public string GetGaugeDisplayValue()
     {
         if (this._unitOfMeasure == "" || this._suppressUnitOfMeasureOnDisplay){
-            return this._valueString;
+            return this.Value;
         } 
         else {
-            return this._valueString + "\n" + this._unitOfMeasure;
+            return this.Value + "\n" + this._unitOfMeasure;
         }
 
     }
@@ -99,12 +101,6 @@ public class DashARGauge
         TextMeshPro textMeshProComponent = this._gameObjectText.GetComponent<TextMeshPro>();
 
         textMeshProComponent.text = this.GetGaugeDisplayValue();
-
-        GameObject textGameObject = GameObject.Find("Compass_Enabled_Text");
-
-        TextMeshPro textComponent = textGameObject.GetComponent<TextMeshPro>();
-
-        textComponent.text = Input.compass.trueHeading.ToString();
 
         return;
     }

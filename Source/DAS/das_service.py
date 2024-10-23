@@ -122,17 +122,23 @@ async def main() -> None:
     # Initialization
     dashar_configuration: Configuration = Configuration(arguments)
 
+    http_port: int = 3832
+
     if (not dashar_configuration.configuration_variables.headless_operation):
 
         app: tornado.web.Application = make_app(dashar_configuration)
 
-        print("\nSystem ready.\n")
+        print(f"\nSystem ready on port {http_port}.\n")
 
-        app.listen(3000)
+        app.listen(http_port)
         await asyncio.Event().wait()
 
     else:
-        print("DAS is running headless mode. Data will be captured over set time frequency.")
+
+        sleep_time: float = 0.5
+
+        print(f"DAS is running headless mode. Data will be captured over set time frequency (currently {sleep_time} seconds between calls).")
+
 
         while True:
             if (dashar_configuration.obdii_context.is_connected()):
@@ -141,8 +147,8 @@ async def main() -> None:
 
                 print(obdii_response)
 
-                # Wait half a second before trying again.
-                time.sleep(0.5)
+                # Wait specified time before trying again.
+                time.sleep(sleep_time)
 
             else:
                 print("OBDII is not connected. Exiting.")
