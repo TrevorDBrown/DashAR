@@ -7,8 +7,6 @@
  *  Purpose:    This script contains the response of a request by the DashAR HUD interface into the DAS API.
  */
 
-using System;
-
 public class OBDIIData
 {
     public string speed { get; set; }
@@ -19,6 +17,6 @@ public class OBDIIData
 public class DashARDataAggregatorServerResponse
 {
     public string current_timestamp { get; set; }
+    public string message { get; set; }
     public OBDIIData obdii_data { get; set; }
-
 }
