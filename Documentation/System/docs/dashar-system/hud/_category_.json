@@ -1,0 +1,8 @@
+{
+    "label": "HUD",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "/reference/hud"
+    }
+  }
