@@ -1,0 +1,10 @@
+{
+    "label": "DashAR System Reference",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "title": "DashAR System Reference",
+      "description": "A Reference Guide to the DashAR System.",
+      "slug": "/reference"
+    }
+  }
