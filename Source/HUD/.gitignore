@@ -472,3 +472,4 @@ FodyWeavers.xsd
 *NRSDK/
 NRSDK.csproj
 NRSDKEditor.csproj
+NRLibraryStripConfig*
