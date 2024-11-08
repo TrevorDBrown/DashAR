@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638652502984595527
-    m_Hash: 2444599805
+      ticks: 638664618289381039
+    m_Hash: 1565143299
   m_LockFileStatus:
     m_FilePath: C:/Git/DashAR/Source/HUD/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638652502984650715
-    m_Hash: 1203676263
+      ticks: 638664618289391057
+    m_Hash: 2804945667
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

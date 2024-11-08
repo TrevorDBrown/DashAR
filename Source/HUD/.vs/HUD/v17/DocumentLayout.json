@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Git\\DashAR\\Source\\HUD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dasharstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dasharstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|c:\\git\\dashar\\source\\hud\\assets\\dashar\\hud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\hud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dashardataaggregatorserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dashardataaggregatorserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|c:\\git\\dashar\\source\\hud\\assets\\dashar\\hud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\hud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dasharstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dasharstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dashargauge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dashargauge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dashardataaggregatorserverresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dashardataaggregatorserverresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dasharconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dasharconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dasharhuddevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dasharhuddevice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|C:\\Git\\DashAR\\Source\\HUD\\assets\\dashar\\objects\\dashardataaggregatorserverresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE1937DC-D05C-F555-7402-A6E18746B856}|Assembly-CSharp.csproj|solutionrelative:assets\\dashar\\objects\\dashardataaggregatorserverresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,8 +38,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DashARConfiguration.cs",
+              "DocumentMoniker": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARConfiguration.cs",
+              "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARConfiguration.cs",
+              "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARConfiguration.cs",
+              "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T04:06:11.657Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
@@ -44,14 +60,13 @@
               "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARHUDDevice.cs",
               "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARHUDDevice.cs",
               "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARHUDDevice.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAAACQAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T03:25:25.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T03:25:25.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "DashARDataAggregatorServerResponse.cs",
               "DocumentMoniker": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARDataAggregatorServerResponse.cs",
               "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARDataAggregatorServerResponse.cs",
@@ -59,8 +74,7 @@
               "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARDataAggregatorServerResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T02:00:59.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-17T02:00:59.215Z"
             },
             {
               "$type": "Document",
@@ -70,10 +84,9 @@
               "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARDataAggregatorServer.cs",
               "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARDataAggregatorServer.cs",
               "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARDataAggregatorServer.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAADgvy4AAAAAAAAA",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAIwHEAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T04:14:24.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T04:14:24.096Z"
             },
             {
               "$type": "Document",
@@ -83,33 +96,31 @@
               "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARGauge.cs",
               "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARGauge.cs",
               "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARGauge.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFQAAAAFAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAACQAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T03:04:07.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T03:04:07.48Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DashARStateMachine.cs",
               "DocumentMoniker": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARStateMachine.cs",
               "RelativeDocumentMoniker": "Assets\\DashAR\\Objects\\DashARStateMachine.cs",
               "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\Objects\\DashARStateMachine.cs",
               "RelativeToolTip": "Assets\\DashAR\\Objects\\DashARStateMachine.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAApAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADIAAABrAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T03:53:03.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T03:53:03.549Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HUD.cs",
               "DocumentMoniker": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\HUD.cs",
               "RelativeDocumentMoniker": "Assets\\DashAR\\HUD.cs",
               "ToolTip": "C:\\Git\\DashAR\\Source\\HUD\\Assets\\DashAR\\HUD.cs",
               "RelativeToolTip": "Assets\\DashAR\\HUD.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T04:50:33.359Z",
               "EditorCaption": ""
