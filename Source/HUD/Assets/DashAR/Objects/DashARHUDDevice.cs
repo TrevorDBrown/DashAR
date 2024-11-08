@@ -1,3 +1,12 @@
+/*
+ * DashAR - An AR-based HUD for Automobiles.
+ * (c)2024 Trevor D. Brown. All rights reserved.
+ * This project is distributed under the MIT license.
+ *
+ *  File:       DashARHUDDevice.cs
+ *  Purpose:    This script contains data and functions related to the HUD device.
+ */
+
 using NRKernal;
 using System;
 using System.Globalization;
@@ -5,13 +14,14 @@ using UnityEngine;
 
 public class DashARHUDDevice : MonoBehaviour
 {
-    private string _name;
+    private Guid _id;
     private NRDeviceType _deviceType;
     private CultureInfo _deviceCulture;
 
     public DashARHUDDevice()
     {
-        this._name = "My HUD Device";
+        // Define the device parameters.
+        this._id = Guid.NewGuid();
         this._deviceType = NRDeviceType.XrealAIR2_PRO;
 
         // Enable the device's compass.
@@ -22,40 +32,47 @@ public class DashARHUDDevice : MonoBehaviour
         this._deviceCulture = CultureInfo.CurrentCulture;
     }
 
-    public string GetCompassHeading()
+    public string GetCompassHeading(bool showDegrees = false)
     {
         float compassResult = Input.compass.trueHeading;
+        string compassString = "";
 
+        if (showDegrees)
+        {
+            compassString = "\n" + compassResult.ToString("0") + "°";
+        }
+
+        // Translate compass degree ranges into headings.
         if (compassResult >= 22 && compassResult < 67)
         {
-            return "NE";
+            return "NE" + compassString;
         }
         else if (compassResult >= 67 && compassResult < 112){
-            return "E";
+            return "E" + compassString;
         }
         else if (compassResult >= 112 && compassResult < 157)
         {
-            return "SE";
+            return "SE" + compassString;
         }
         else if (compassResult >= 157 && compassResult < 202)
         {
-            return "S";
+            return "S" + compassString;
         }
         else if (compassResult >= 202 && compassResult < 247)
         {
-            return "SW";
+            return "SW" + compassString;
         }
         else if (compassResult >= 247 && compassResult < 292)
         {
-            return "W";
+            return "W" + compassString;
         }
         else if (compassResult >= 292 && compassResult < 315)
         {
-            return "NW";
+            return "NW" + compassString;
         }
         else
         {
-            return "N";
+            return "N" + compassString;
         }
 
     }
