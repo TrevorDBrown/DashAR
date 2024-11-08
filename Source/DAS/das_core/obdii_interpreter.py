@@ -30,7 +30,7 @@ class OBDIIContext:
     __vehicle_fuel_level_temp_store_count: int      # __vehicle_fuel_level_temp_store_count - the number of data points collected in the fixed frequency for fuel level.
 
 
-    def __init__(self, service_mode: ServiceMode, obdii_interface_device_path: str = "", database_path: str = "", fuel_level_max_data_points: int = 100, auto_connect: bool = True) -> None:
+    def __init__(self, service_mode: ServiceMode, obdii_interface_device_path: str = "", database_path: str = "", fuel_level_max_data_points: int = 1000, auto_connect: bool = True) -> None:
 
         # Store the Service Mode (PRODUCTION or DEBUG)
         self.__service_mode = service_mode
@@ -144,13 +144,13 @@ class OBDIIContext:
         try:
             # Ensure the connection is established before proceeding.
             if (self.__obdii_context.is_connected()):
-                if (self.__vehicle_fuel_level_temp_store_count < self.__vehicle_fuel_level_data_point_max):
+                if (self.__vehicle_fuel_level_temp_store_count <= self.__vehicle_fuel_level_data_point_max):
                     self.__vehicle_fuel_level_temp_store.append(int(self.__obdii_context.query(obd.commands.FUEL_LEVEL).value.magnitude))
                     self.__vehicle_fuel_level_temp_store_count += 1
                 else:
                     self.__vehicle_fuel_level_last_computed = int(sum(self.__vehicle_fuel_level_temp_store)/self.__vehicle_fuel_level_temp_store_count)
-                    self.__vehicle_fuel_level_temp_store = []
-                    self.__vehicle_fuel_level_temp_store_count = 0
+                    self.__vehicle_fuel_level_temp_store = [self.__vehicle_fuel_level_last_computed]
+                    self.__vehicle_fuel_level_temp_store_count = 1
             else:
                 # The OBDII device is not active.
                 return -1
@@ -170,7 +170,7 @@ class OBDIIContext:
         client_response_data_points: dict = {
             "speed": current_speed,
             "rpms": current_rpms,
-            "fuel_level": current_fuel_level
+            "fuel_level": f"{current_fuel_level}%"
         }
 
         return client_response_data_points

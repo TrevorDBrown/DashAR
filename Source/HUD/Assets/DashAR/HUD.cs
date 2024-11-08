@@ -24,6 +24,9 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this._dsm.PollForUpdate();
+        if (Time.frameCount % 5 == 0)
+        {
+            this._dsm.PollForUpdate();
+        }
     }
 }

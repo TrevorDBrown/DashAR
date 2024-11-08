@@ -362,6 +362,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.24f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/DashAR/CodeTest.cs"
 "Assets/DashAR/HUD.cs"
+"Assets/DashAR/Objects/DashARConfiguration.cs"
 "Assets/DashAR/Objects/DashARDataAggregatorServer.cs"
 "Assets/DashAR/Objects/DashARDataAggregatorServerResponse.cs"
 "Assets/DashAR/Objects/DashARGauge.cs"
