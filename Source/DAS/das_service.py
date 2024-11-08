@@ -28,7 +28,7 @@ class OBDIIHandler(tornado.web.RequestHandler):
         if (self.dashar_configuration.configuration_variables.service_mode == ServiceMode.TEST):
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": {"speed": random.randint(0, 100), "rpm": random.randint(500, 5000), "fuel_level": random.randint(0,100)}
+                "obdii_data": {"speed": random.randint(0, 100), "rpms": random.randint(500, 5000), "fuel_level": f"-1%"}      # {random.randint(0,100)}
             })
 
             self.set_header("Content-Type", "application/json")
