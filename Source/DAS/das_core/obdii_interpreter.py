@@ -9,8 +9,10 @@
 
 from das_core.helper import Constants, SharedFunctions, ServiceMode, DefaultDataFormat, DatabaseStatements
 from das_core.data_connector import DataConnection
+
 import obd
 import textwrap
+import random
 
 class OBDIIContext:
 
@@ -37,7 +39,7 @@ class OBDIIContext:
 
         if (service_mode == ServiceMode.DEBUG):
             # Enable logging.
-            obd.logger.setLevel(obd.logging.DEBUG) # enables all debug information
+            obd.logger.setLevel(obd.logging.DEBUG)
         else:
             # Disable logging.
             obd.logger.removeHandler(obd.console_handler)
@@ -46,25 +48,30 @@ class OBDIIContext:
         self.__created_timestamp = SharedFunctions.get_current_timestamp()  # Store the current date/time (UTC) as a UNIX timestamp.
         self.__obdii_interface_device_path = obdii_interface_device_path
 
-        if (auto_connect):
-            successful_obdii_connection = self.establish_connection()
+        if (not self.__service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
+            # PRODUCTION or DEBUG Mode, attempt connection to ELM327 device.
+            if (auto_connect):
+                successful_obdii_connection = self.establish_connection()
+            else:
+                # TODO: handle manual connect condition.
+                None
+
+            if (successful_obdii_connection):
+                self.__vehicle_vin = self.__obdii_context.query(obd.commands.VIN).value.decode()
+                self.__database_context = DataConnection(data_filename=database_path, service_mode=self.__service_mode)
+                self.__database_context.insert_into_database(DatabaseStatements.dashar_session_start(self.__id, self.__vehicle_vin, self.__created_timestamp))
+
+                self.__vehicle_fuel_level_data_point_max = fuel_level_max_data_points
+                self.__vehicle_fuel_level_last_computed = 0
+                self.__vehicle_fuel_level_temp_store_count = 0
+                self.__vehicle_fuel_level_temp_store = []
+
+            else:
+                # TODO: formalize the exception handling here.
+                print("Error: the connection over OBDII failed.")
         else:
-            # TODO: handle manual connect condition.
-            None
-
-        if (successful_obdii_connection):
-            self.__vehicle_vin = self.__obdii_context.query(obd.commands.VIN).value.decode()
-            self.__database_context = DataConnection(data_filename=database_path, service_mode=self.__service_mode)
-            self.__database_context.insert_into_database(DatabaseStatements.dashar_session_start(self.__id, self.__vehicle_vin, self.__created_timestamp))
-
-            self.__vehicle_fuel_level_data_point_max = fuel_level_max_data_points
-            self.__vehicle_fuel_level_last_computed = 0
-            self.__vehicle_fuel_level_temp_store_count = 0
-            self.__vehicle_fuel_level_temp_store = []
-
-        else:
-            # TODO: formalize the exception handling here.
-            print("Error: the connection over OBDII failed.")
+            # Test Mode. Randomized values will be generated per API call.
+            print("No OBDII connection was established, as the system is in Test Mode.")
 
         return
 
@@ -109,63 +116,80 @@ class OBDIIContext:
     def __get_speed(self, data_format = DefaultDataFormat.AMERICA) -> int:
         current_speed: int
 
-        try:
-            # Ensure the connection is established before proceeding.
-            if (self.__obdii_context.is_connected()):
-                # Assume MPH, UNODIR.
-                if (data_format == DefaultDataFormat.AMERICA):
-                    current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
+        if (self.__service_mode == ServiceMode.TEST):
+            # Test Mode, randomize the value.
+            current_speed = random.randint(0, 120)
+
+        else:
+            try:
+                # Ensure the connection is established before proceeding.
+                if (self.__obdii_context.is_connected()):
+                    # Assume MPH, UNODIR.
+                    if (data_format == DefaultDataFormat.AMERICA):
+                        current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
+                    else:
+                        current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
                 else:
-                    current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
-            else:
-                # The OBDII device is not active.
+                    # The OBDII device is not active.
+                    current_speed = -1
+            except:
                 current_speed = -1
-        except:
-            current_speed = -1
 
         return current_speed
 
     def __get_rpms(self) -> int:
         current_rpm: int
 
-        try:
-            # Ensure the connection is established before proceeding.
-            if (self.__obdii_context.is_connected()):
-                current_rpm = int(self.__obdii_context.query(obd.commands.RPM).value.magnitude)
-            else:
-                # The OBDII device is not active.
+        if (self.__service_mode == ServiceMode.TEST):
+            # Test Mode, randomize the value.
+            current_rpm = random.randint(500, 5000)
+
+        else:
+            try:
+                # Ensure the connection is established before proceeding.
+                if (self.__obdii_context.is_connected()):
+                    current_rpm = int(self.__obdii_context.query(obd.commands.RPM).value.magnitude)
+                else:
+                    # The OBDII device is not active.
+                    current_rpm = -1
+            except:
                 current_rpm = -1
-        except:
-            current_rpm = -1
 
         return current_rpm
 
     def __get_fuel_level(self) -> int:
-        try:
-            # Ensure the connection is established before proceeding.
-            if (self.__obdii_context.is_connected()):
-                if (self.__vehicle_fuel_level_temp_store_count <= self.__vehicle_fuel_level_data_point_max):
-                    self.__vehicle_fuel_level_temp_store.append(int(self.__obdii_context.query(obd.commands.FUEL_LEVEL).value.magnitude))
-                    self.__vehicle_fuel_level_temp_store_count += 1
-                else:
-                    self.__vehicle_fuel_level_last_computed = int(sum(self.__vehicle_fuel_level_temp_store)/self.__vehicle_fuel_level_temp_store_count)
-                    self.__vehicle_fuel_level_temp_store = [self.__vehicle_fuel_level_last_computed]
-                    self.__vehicle_fuel_level_temp_store_count = 1
-            else:
-                # The OBDII device is not active.
-                return -1
-        except:
-            return -1
 
-        return self.__vehicle_fuel_level_last_computed
+        if (self.__service_mode == ServiceMode.TEST):
+            # Test Mode, randomize the value.
+            return random.randint(0, 100)
+
+        else:
+            try:
+                # Ensure the connection is established before proceeding.
+                if (self.__obdii_context.is_connected()):
+                    if (self.__vehicle_fuel_level_temp_store_count <= self.__vehicle_fuel_level_data_point_max):
+                        self.__vehicle_fuel_level_temp_store.append(int(self.__obdii_context.query(obd.commands.FUEL_LEVEL).value.magnitude))
+                        self.__vehicle_fuel_level_temp_store_count += 1
+                    else:
+                        self.__vehicle_fuel_level_last_computed = int(sum(self.__vehicle_fuel_level_temp_store)/self.__vehicle_fuel_level_temp_store_count)
+                        self.__vehicle_fuel_level_temp_store = [self.__vehicle_fuel_level_last_computed]
+                        self.__vehicle_fuel_level_temp_store_count = 1
+                else:
+                    # The OBDII device is not active.
+                    return -1
+            except:
+                return -1
+
+            return self.__vehicle_fuel_level_last_computed
 
     def capture_data_points(self) -> dict:
         current_speed: float = self.__get_speed()
         current_rpms: float = self.__get_rpms()
         current_fuel_level: float = self.__get_fuel_level()
 
-        # Insert the data point into the SQLite3 database.
-        self.__database_context.insert_into_database(DatabaseStatements.dashar_session_insert_data_point(SharedFunctions.generate_object_id(), self.__id, SharedFunctions.get_current_timestamp(), current_speed, current_rpms, current_fuel_level))
+        # Insert the data point into the SQLite3 database (if not in test)
+        if (not self.__service_mode == ServiceMode.TEST):
+            self.__database_context.insert_into_database(DatabaseStatements.dashar_session_insert_data_point(SharedFunctions.generate_object_id(), self.__id, SharedFunctions.get_current_timestamp(), current_speed, current_rpms, current_fuel_level))
 
         client_response_data_points: dict = {
             "speed": current_speed,
