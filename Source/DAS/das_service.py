@@ -6,10 +6,12 @@
 #   File:       das_service.py
 #   Purpose:    This script is the backend/middleware service (Data Aggregator and Server) for the DashAR system.
 #
+
 from das_core.configuration import Configuration
 from das_core.helper import Constants, SharedFunctions, ServiceMode
-from das_core.obdii_interpreter import OBDIIContext
 
+import sys
+import subprocess
 import argparse
 import asyncio
 import tornado
@@ -26,9 +28,12 @@ class OBDIIHandler(tornado.web.RequestHandler):
         client_response_json: str
 
         if (self.dashar_configuration.configuration_variables.service_mode == ServiceMode.TEST):
+            current_obdii_data_snapshot: dict = self.dashar_configuration.obdii_context.capture_data_points()
+
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": {"speed": random.randint(0, 100), "rpms": random.randint(500, 5000), "fuel_level": f"-1%"}      # {random.randint(0,100)}
+                "obdii_data": current_obdii_data_snapshot,
+                "message": "Test Mode. Value are randomized."
             })
 
             self.set_header("Content-Type", "application/json")
@@ -41,7 +46,8 @@ class OBDIIHandler(tornado.web.RequestHandler):
 
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": current_obdii_data_snapshot
+                "obdii_data": current_obdii_data_snapshot,
+                "message": ""
             })
 
             self.set_header("Content-Type", "application/json")
@@ -51,7 +57,8 @@ class OBDIIHandler(tornado.web.RequestHandler):
         else:
             client_response_json = SharedFunctions.convert_dict_to_json({
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": {"Message": "Not Available."}
+                "obdii_data": {},
+                "message": "Not Available."
             })
 
             self.set_header("Content-Type", "application/json")
@@ -71,35 +78,68 @@ class InitHandler(tornado.web.RequestHandler):
     dashar_configuration: Configuration
 
     def initialize(self, dashar_configuration: Configuration) -> None:
-        self.dashar_configuration = dashar_configuration
+        pass
+        # self.dashar_configuration = dashar_configuration
 
     def get(self) -> None:
         self.write("Initializing...")
 
 class TerminateHandler(tornado.web.RequestHandler):
     dashar_configuration: Configuration
+    event_loop: tornado.locks.Event
 
-    def initialize(self, dashar_configuration: Configuration) -> None:
+    def initialize(self, event_loop: tornado.locks.Event, dashar_configuration: Configuration) -> None:
+        self.event_loop = event_loop
         self.dashar_configuration = dashar_configuration
 
     def _terminate(self) -> None:
         print("Termination signal received from /quit endpoint.")
 
-        # event_loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
+        # Release the event loop.
+        self.event_loop.set()
 
-        # event_loop.stop()
-        # event_loop.close()
+        # Shutdown the system (depending on system type.)
+        if (sys.platform == "linux"):
+            # Linux host
+            subprocess.run(["systemctl", "poweroff"])
 
+        elif (sys.platform == "darwin"):
+            # macOS host
+            print("Host shutdown is currently not supported on this platform. Terminating script.")
+
+        elif (sys.platform == "win32"):
+            # Windows host
+            # import ctypes
+            # user32: ctypes.WinDLL = ctypes.WinDLL('user32')
+            # user32.ExitWindowsEx(0x00000008, 0x00000000)
+
+            subprocess.run(["shutdown", "/s /p /c \"DashAR System-triggered shutdown.\""])
+
+        else:
+            # Unknown host
+            print("Host shutdown is currently not supported on this platform. Terminating script.")
+
+        # This will only be called if the shutdown request fails.
         return
 
     def get(self) -> None:
-        self.write("Termination signal received.")
+
+        client_response_json = SharedFunctions.convert_dict_to_json({
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": {},
+                "message": "Termination signal received."
+            })
+
+        self.set_header("Content-Type", "application/json")
+        self.set_status(202, "Termination signal received.")
+        self.write(f"{client_response_json}")
+
         self._terminate()
 
-def make_app(dashar_configuration: Configuration) -> tornado.web.Application:
+def make_app(event_loop: tornado.locks.Event, dashar_configuration: Configuration) -> tornado.web.Application:
     return tornado.web.Application([
         (r"/init", InitHandler, {"dashar_configuration": dashar_configuration}),
-        (r"/quit", TerminateHandler, {"dashar_configuration": dashar_configuration}),
+        (r"/quit", TerminateHandler, {"event_loop": event_loop, "dashar_configuration": dashar_configuration}),
         (r"/data/obdii", OBDIIHandler, {"dashar_configuration": dashar_configuration}),
         (r"/data/tpapi", ThirdPartyAPIHandler, {"dashar_configuration": dashar_configuration})
     ])
@@ -122,23 +162,23 @@ async def main() -> None:
     # Initialization
     dashar_configuration: Configuration = Configuration(arguments)
 
-    http_port: int = 3832
-
     if (not dashar_configuration.configuration_variables.headless_operation):
 
-        app: tornado.web.Application = make_app(dashar_configuration)
+        event_loop: tornado.locks.Event = tornado.locks.Event()
 
-        print(f"\nSystem ready on port {http_port}.\n")
+        app: tornado.web.Application = make_app(event_loop, dashar_configuration)
 
-        app.listen(http_port)
-        await asyncio.Event().wait()
+        print(f"\nSystem ready on port {dashar_configuration.configuration_variables.das_server_port}.\n")
+
+        app.listen(dashar_configuration.configuration_variables.das_server_port)
+
+        await event_loop.wait()
 
     else:
 
         sleep_time: float = 0.5
 
         print(f"DAS is running headless mode. Data will be captured over set time frequency (currently {sleep_time} seconds between calls).")
-
 
         while True:
             if (dashar_configuration.obdii_context.is_connected()):
@@ -155,7 +195,6 @@ async def main() -> None:
                 break
 
     print("System has terminated.")
-
 
 if (__name__ == "__main__"):
     asyncio.run(main())
