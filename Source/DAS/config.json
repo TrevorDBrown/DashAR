@@ -9,10 +9,26 @@
     "service_mode": "TEST",
     "data_path": "{DAS_ROOT}/data/",
     "database_path": "{DATA_PATH}/dashar-data.sqlite3",
+    "extensions": [
+        {
+            "name": "TestExtension",
+            "description": "A test extension, used in the DashAR HUD System.",
+            "entry": "TestExtension",
+            "path": "{ExtensionsRoot}/TestExtension/"
+        }
+    ],
     "variables": [
+        {
+            "name": "DAS_SERVER_PORT",
+            "value": 3238
+        },
         {
             "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
             "value": 300
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_AUTODISCOVERY",
+            "value": false
         },
         {
             "name": "OBDII_ELM327_DEVICE_PATH",
