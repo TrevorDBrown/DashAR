@@ -28,6 +28,7 @@ class ConfigurationConstants():
         return
 
 class ConfigurationVariables():
+    das_server_port: int = 8000
     fuel_level_refresh_frequency_data_points: int = 200
     data_path: str = os.path.join(os.getcwd(), "data")
     database_path: str = os.path.join(data_path, "dashar-data.sqlite3")
@@ -146,6 +147,10 @@ class Configuration():
                         self.configuration_variables.obdii_elm327_device_path = configuration_variable["value"]
                         continue
 
+                    elif (configuration_variable["name"] == "DAS_SERVER_PORT"):
+                        self.configuration_variables.das_server_port = configuration_variable["value"]
+                        continue
+
                     else:
                         print(f"Unknown variable: {configuration_variable['name']}. Skipping.")
                         continue
@@ -157,9 +162,8 @@ class Configuration():
             print("Error: invalid configuration provided. Resetting all values to defaults.")
             self.set_default_configuration()
 
-        if (self.configuration_variables.service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
-            # Initialize the OBDII context.
-            self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
+        # Initialize the OBDII context.
+        self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
 
         return
 
