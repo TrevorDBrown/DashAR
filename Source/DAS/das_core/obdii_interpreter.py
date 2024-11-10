@@ -48,7 +48,7 @@ class OBDIIContext:
         self.__created_timestamp = SharedFunctions.get_current_timestamp()  # Store the current date/time (UTC) as a UNIX timestamp.
         self.__obdii_interface_device_path = obdii_interface_device_path
 
-        if (not self.__service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
+        if (self.__service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
             # PRODUCTION or DEBUG Mode, attempt connection to ELM327 device.
             if (auto_connect):
                 successful_obdii_connection = self.establish_connection()
@@ -84,12 +84,12 @@ class OBDIIContext:
             if (self.__obdii_interface_device_path == ""):
                 # TODO: determine best method for figuring out which device is the OBDII device automatically.
                 # ports = obd.scan_serial()      # return list of valid USB or RF ports
-                # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1']
+                # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1'] (Linux) or ['COM3', 'COM4'] (Windows)
                 # connection = obd.OBD(ports[0]) # connect to the first port in the list
 
                 self.__obdii_context = obd.OBD()
             else:
-                self.__obdii_context = obd.OBD(self.__obdii_interface_device_path, start_low_power=True, check_voltage=True, fast=False)
+                self.__obdii_context = obd.OBD(self.__obdii_interface_device_path, start_low_power=True, check_voltage=True, fast=False, baudrate=230400)
 
             return bool(self.__obdii_context.is_connected())
 
