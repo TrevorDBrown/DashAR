@@ -6,7 +6,7 @@
         "hud": "0.1",
         "companion": "0"
     },
-    "service_mode": "TEST",
+    "service_mode": "PRODUCTION",
     "data_path": "{DAS_ROOT}/data/",
     "database_path": "{DATA_PATH}/dashar-data.sqlite3",
     "extensions": [
@@ -20,7 +20,7 @@
     "variables": [
         {
             "name": "DAS_SERVER_PORT",
-            "value": 3238
+            "value": 3832
         },
         {
             "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
@@ -32,7 +32,7 @@
         },
         {
             "name": "OBDII_ELM327_DEVICE_PATH",
-            "value": "/dev/tty.usbserial-D395GRKM"
+            "value": "COM4"
         }
     ]
 }
