@@ -1,0 +1,10 @@
+{
+    "label": "Installation",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "title": "Installation",
+      "description": "An Install Guide for the DashAR System.",
+      "slug": "/install"
+    }
+  }
