@@ -1,0 +1,38 @@
+{
+    "config_version": 0.1,
+    "versioning": {
+        "dashar": 0.1,
+        "das": 0.1,
+        "hud": 0.1,
+        "companion": 0
+    },
+    "service_mode": "PRODUCTION",
+    "data_path": "{DAS_ROOT}/data/",
+    "database_path": "{DATA_PATH}/dashar-data.sqlite3",
+    "variables": [
+        {
+            "name": "DAS_SERVER_PORT",
+            "value": 0
+        },
+        {
+            "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
+            "value": 0
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_AUTODISCOVERY",
+            "value": false
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_PATH",
+            "value": ""
+        }
+    ],
+    "extensions": [
+        {
+            "name": "",
+            "description": "",
+            "entry": "",
+            "path": ""
+        }
+    ]
+}
