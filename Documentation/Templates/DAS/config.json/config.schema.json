@@ -1,0 +1,86 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://dashar.brownsoftworks.com/config/0.1/config.schema.json",
+    "title": "DashAR Configuration",
+    "description": "A configuration for the DashAR System.",
+    "type": "object",
+    "properties": {
+        "config_version": {
+            "description": "The current version of the DashAR configuration file. Used to validate fields.",
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 0.1
+        },
+        "versioning": {
+            "description": "The specific versions of each subsystem. Used to validate compatibility of subsystems against other subsystems.",
+            "type": "object",
+            "properties": {
+                "dashar": {
+                    "description": "The DashAR System Version.",
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 0.1
+                },
+                "das": {
+                    "description": "The Data Aggregator and Server (DAS) Subsystem Version.",
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 0.1
+                },
+                "hud": {
+                    "description": "The HUD Subsystem Version.",
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 0.1
+                },
+                "companion": {
+                    "description": "The HUD Companion Subsystem Version.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 0
+                }
+            },
+            "required": [
+                "dashar",
+                "das",
+                "hud",
+                "companion"
+            ]
+        },
+        "service_mode": {
+            "description": "The Service Mode of the System.",
+            "type": "string",
+            "enum": ["PRODUCTION", "DEBUG", "TEST"]
+        },
+        "data_path": {
+            "description": "The path to data files for the Data Aggregator and Service (DAS) Subsystem.",
+            "type": "string"
+        },
+        "database_path": {
+            "description": "The path to the SQLite3 database used by the Data Aggregator and Server (DAS) Subsystem.",
+            "type": "string"
+        },
+        "variables": {
+            "description": "A list of variables used by the DashAR System.",
+            "type": "array",
+            "items": {
+                "name": {
+                    "description": "The variable name to be referenced by the DashAR System.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the variable.",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "config_version",
+        "versioning",
+        "service_mode",
+        "data_path",
+        "database_path",
+        "variables"
+    ]
+}

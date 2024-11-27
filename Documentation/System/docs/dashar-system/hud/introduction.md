@@ -5,6 +5,4 @@ sidebar_position: 1
 slug: '/reference/hud/intro'
 ---
 
-# Introduction to HUD
-
 This section is about the Heads Up Display (HUD) subsystem of the DashAR system.

@@ -5,6 +5,4 @@ sidebar_position: 1
 slug: '/reference/das/intro'
 ---
 
-# Introduction to DAS
-
 This section is about the Data Aggregator and Server (DAS) subsystem of the DashAR system.
