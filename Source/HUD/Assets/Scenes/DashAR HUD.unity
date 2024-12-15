@@ -1201,12 +1201,12 @@ GameObject:
   - component: {fileID: 863037697}
   - component: {fileID: 863037696}
   m_Layer: 0
-  m_Name: MagentaFilter
+  m_Name: MagentaFilter_ForVideoRecordingOnly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &863037696
 MeshCollider:
   m_ObjectHideFlags: 0
