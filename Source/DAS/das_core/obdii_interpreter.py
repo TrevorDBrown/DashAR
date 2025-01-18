@@ -126,9 +126,9 @@ class OBDIIContext:
                 if (self.__obdii_context.is_connected()):
                     # Assume MPH, UNODIR.
                     if (data_format == DefaultDataFormat.AMERICA):
-                        current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.to("mph").magnitude)
+                        current_speed = int(self.__obdii_context.query(obd.commands["SPEED"]).value.to("mph").magnitude)
                     else:
-                        current_speed = int(self.__obdii_context.query(obd.commands.SPEED).value.magnitude)
+                        current_speed = int(self.__obdii_context.query(obd.commands["SPEED"]).value.magnitude)
                 else:
                     # The OBDII device is not active.
                     current_speed = -1
@@ -148,7 +148,7 @@ class OBDIIContext:
             try:
                 # Ensure the connection is established before proceeding.
                 if (self.__obdii_context.is_connected()):
-                    current_rpm = int(self.__obdii_context.query(obd.commands.RPM).value.magnitude)
+                    current_rpm = int(self.__obdii_context.query(obd.commands["RPM"]).value.magnitude)
                 else:
                     # The OBDII device is not active.
                     current_rpm = -1
@@ -168,7 +168,7 @@ class OBDIIContext:
                 # Ensure the connection is established before proceeding.
                 if (self.__obdii_context.is_connected()):
                     if (self.__vehicle_fuel_level_temp_store_count <= self.__vehicle_fuel_level_data_point_max):
-                        self.__vehicle_fuel_level_temp_store.append(int(self.__obdii_context.query(obd.commands.FUEL_LEVEL).value.magnitude))
+                        self.__vehicle_fuel_level_temp_store.append(int(self.__obdii_context.query(obd.commands["FUEL_LEVEL"]).value.magnitude))
                         self.__vehicle_fuel_level_temp_store_count += 1
                     else:
                         self.__vehicle_fuel_level_last_computed = int(sum(self.__vehicle_fuel_level_temp_store)/self.__vehicle_fuel_level_temp_store_count)

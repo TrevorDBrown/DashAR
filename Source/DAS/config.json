@@ -9,12 +9,13 @@
     "service_mode": "PRODUCTION",
     "data_path": "{DAS_ROOT}/data/",
     "database_path": "{DATA_PATH}/dashar-data.sqlite3",
+    "gauges_path": "{DATA_PATH}/gauges.json",
     "extensions": [
         {
             "name": "TestExtension",
             "description": "A test extension, used in the DashAR HUD System.",
             "entry": "TestExtension",
-            "path": "{ExtensionsRoot}/TestExtension/"
+            "path": "{EXTENSIONS_ROOT}/TestExtension/"
         }
     ],
     "variables": [
