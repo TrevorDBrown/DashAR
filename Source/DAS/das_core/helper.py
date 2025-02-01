@@ -1,7 +1,6 @@
 #
 #   DashAR - An AR-based HUD for Automobiles.
-#   (c)2024 Trevor D. Brown. All rights reserved.
-#   This project is distributed under the MIT license.
+#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       helper.py
 #   Purpose:    This script contains helpers (constants, enums, functions, etc.) shared amongst multiple modules.
@@ -13,11 +12,8 @@ import datetime
 import json
 
 class Constants():
-    EXPECTED_CONFIGURATION_VERSION: str = "0.1"
-    EXPECTED_DASHAR_VERSION: str = "0.1"
-    EXPECTED_DAS_VERSION: str = "0.1"
-    EXPECTED_HUD_VERSION: str = "0.1"
-    EXPECTED_COMPANION_APP_VERSION: str = "0"
+    EXPECTED_CONFIGURATION_VERSION: str = "0.2"
+    EXPECTED_DASHAR_VERSION: str = "0.2"
 
 class Variables():
     None
@@ -37,9 +33,16 @@ class SharedFunctions():
         return json.dumps(dict_to_convert)
 
 class ServiceMode(IntEnum):
-    PRODUCTION: int = 1
-    DEBUG: int = 2
-    TEST: int = 3
+    PRODUCTION: int = 1     # PRODUCTION - the live system environment.
+    DEBUG: int = 2          # DEBUG - like PRODUCTION, except an ELM327 emulator is attached.
+    TEST: int = 3           # TEST - not a live system environment, values are generated using RNG.
+    INVALID: int = 4        # INVALID - an error state where the system cannot be used.
+
+class SystemStatus(IntEnum):
+    NOT_STARTED: int = 0    # NOT_STARTED - the system has yet to initialize.
+    STARTING: int = 1       # STARTING - the system is initializing.
+    FAILED: int = 2         # FAILED - the system failed to initialize.
+    READY: int = 3          # READY - the system is ready to run.
 
 class DefaultDataFormat(Enum):
     AMERICA: int = 1
@@ -56,3 +59,11 @@ class DatabaseStatements():
     @staticmethod
     def dashar_session_insert_data_point(session_data_point_uuid: str, session_uuid: str, session_data_point_timestamp: float, mph: float, rpm: float, fuel_level: float) -> str:
         return f"INSERT INTO DASHAR_SESSION_DATA VALUES ('{session_data_point_uuid}', '{session_uuid}', {session_data_point_timestamp}, {mph}, {rpm}, {fuel_level})"
+
+    @staticmethod
+    def dashar_is_automobile_registered(vin: str) -> str:
+        return f"SELECT AUTOMOBILE_ID, AUTOMOBILE_YEAR, AUTOMOBILE_NAME, AUTOMOBILE_MILEAGE, INITIAL_CAPTURE_TIMESTAMP FROM DASHAR_AUTOMOBILE WHERE AUTOMOBILE_VIN = '{vin}'"
+
+    @staticmethod
+    def dashar_register_automobile(vin: str, name: str, year: int, mileage: float, initial_capture_timestamp: float, last_modified_timestamp: float) -> str:
+        return f"INSERT INTO DASHAR_AUTOMOBILE VALUES ('{vin}', '{name}', '{year}', '{mileage}', '{initial_capture_timestamp}', '{last_modified_timestamp}')"
