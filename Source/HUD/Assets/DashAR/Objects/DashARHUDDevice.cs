@@ -1,7 +1,6 @@
 /*
  * DashAR - An AR-based HUD for Automobiles.
- * (c)2024 Trevor D. Brown. All rights reserved.
- * This project is distributed under the MIT license.
+ * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
  *  File:       DashARHUDDevice.cs
  *  Purpose:    This script contains data and functions related to the HUD device.
@@ -39,7 +38,7 @@ public class DashARHUDDevice : MonoBehaviour
 
         if (showDegrees)
         {
-            compassString = "\n" + compassResult.ToString("0") + "°";
+            compassString = "\n" + compassResult.ToString("0") + "ï¿½";
         }
 
         // Translate compass degree ranges into headings.
