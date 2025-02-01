@@ -1,7 +1,6 @@
 #
 #   DashAR - An AR-based HUD for Automobiles.
-#   (c)2024 Trevor D. Brown. All rights reserved.
-#   This project is distributed under the MIT license.
+#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       obdii_interpreter.py
 #   Purpose:    This script manages the OBDII connection and context while the service is running.
@@ -19,7 +18,7 @@ class OBDIIContext:
     # Object Variables
     __id: str                                       # __id - a UUIDv4 value, used to uniquely identify the context.
     __created_timestamp: float                      # __created_timestamp - the Unix timestamp of when the object was created.
-    __service_mode: ServiceMode                     # __service_mode - the current service mode of the system (PRODUCTION or DEBUG).
+    __service_mode: ServiceMode                     # __service_mode - the current service mode of the system (PRODUCTION, DEBUG, or TEST (valid), or INVALID).
     __vehicle_vin: str                              # __vehicle_vin - the VIN of the current vehicle.
     __obdii_interface_device_path: str              # __obdii_interface_device_path - the manually defined file path (Unix-esque) or COM port (Windows) of the OBDII device.
     __obdii_context: obd.OBD                        # __obdii_context - the connection context for the current session.
@@ -34,8 +33,9 @@ class OBDIIContext:
 
     def __init__(self, service_mode: ServiceMode, obdii_interface_device_path: str = "", database_path: str = "", fuel_level_max_data_points: int = 1000, auto_connect: bool = True) -> None:
 
-        # Store the Service Mode (PRODUCTION or DEBUG)
+        # Store the Service Mode (PRODUCTION, DEBUG, or TEST)
         self.__service_mode = service_mode
+        successful_obdii_connection: bool = False
 
         if (service_mode == ServiceMode.DEBUG):
             # Enable logging.
@@ -69,9 +69,10 @@ class OBDIIContext:
             else:
                 # TODO: formalize the exception handling here.
                 print("Error: the connection over OBDII failed.")
+
         else:
             # Test Mode. Randomized values will be generated per API call.
-            print("No OBDII connection was established, as the system is in Test Mode.")
+            print(f"No OBDII connection was established, as the system is in {service_mode}.")
 
         return
 
@@ -80,22 +81,37 @@ class OBDIIContext:
         None
 
     def establish_connection(self) -> bool:
+        obdii_device_port: str = self.__obdii_interface_device_path
+
         try:
             if (self.__obdii_interface_device_path == ""):
+                # Determine the OBDII device automatically.
                 # TODO: determine best method for figuring out which device is the OBDII device automatically.
-                # ports = obd.scan_serial()      # return list of valid USB or RF ports
-                # print(ports)                    # ['/dev/ttyUSB0', '/dev/ttyUSB1'] (Linux) or ['COM3', 'COM4'] (Windows)
-                # connection = obd.OBD(ports[0]) # connect to the first port in the list
+                ports: list = obd.scan_serial()
+                print(ports)                   # ['/dev/ttyUSB0', '/dev/ttyUSB1'] (Linux) or ['COM3', 'COM4'] (Windows)
 
-                self.__obdii_context = obd.OBD()
-            else:
-                self.__obdii_context = obd.OBD(self.__obdii_interface_device_path, start_low_power=True, check_voltage=True, fast=False, baudrate=230400)
+                # Connect to the first port in the list, if the list exists.
+                if (ports):
+                    obdii_device_port = ports[0]
+                else:
+                    # TODO: define custom exception here.
+                    raise Exception
 
-            return bool(self.__obdii_context.is_connected())
+            # Attempt to establish the connection.
+            self.__obdii_context = obd.OBD(portstr=obdii_device_port, start_low_power=True, check_voltage=True, fast=False, baudrate=230400, timeout=1)
 
-        except:
-            # Error - connection failed to be established.
+        except Exception as e:
+            # OBDII connection failed to be established.
+            # TODO: be more specific with the exception here...
+            print("Unable to establish OBDII connection.")
+            print(e)
+
+            # Set the service mode to INVALID.
+            self.__service_mode = ServiceMode.INVALID
+
             return False
+
+        return bool(self.__obdii_context.is_connected())
 
     def connection_status(self) -> str:
         # str-based status: Connected, Disconnected, etc.
@@ -105,10 +121,13 @@ class OBDIIContext:
             return 'Unknown'
 
     def is_connected(self) -> bool:
-        return bool(self.__obdii_context.is_connected())
+        # boolean-based status
+        try:
+            return bool(self.__obdii_context.is_connected())
+        except:
+            return False
 
     def available_commands(self) -> set:
-
         self.__obdii_context.print_commands()
 
         return set(self.__obdii_context.supported_commands)
@@ -124,7 +143,7 @@ class OBDIIContext:
             try:
                 # Ensure the connection is established before proceeding.
                 if (self.__obdii_context.is_connected()):
-                    # Assume MPH, UNODIR.
+                    # Assume MPH.
                     if (data_format == DefaultDataFormat.AMERICA):
                         current_speed = int(self.__obdii_context.query(obd.commands["SPEED"]).value.to("mph").magnitude)
                     else:
@@ -159,7 +178,7 @@ class OBDIIContext:
 
     def __get_fuel_level(self) -> int:
 
-        if (self.__service_mode == ServiceMode.TEST):
+        if (self.__service_mode in (ServiceMode.TEST, ServiceMode.DEBUG)):  # NOTE: as of this writing (01/31/2025), the ELM327 emulator cannot emulate fuel level.
             # Test Mode, randomize the value.
             return random.randint(0, 100)
 
@@ -188,7 +207,7 @@ class OBDIIContext:
         current_fuel_level: float = self.__get_fuel_level()
 
         # Insert the data point into the SQLite3 database (if not in test)
-        if (not self.__service_mode == ServiceMode.TEST):
+        if (self.__service_mode in (ServiceMode.PRODUCTION, ServiceMode.DEBUG)):
             self.__database_context.insert_into_database(DatabaseStatements.dashar_session_insert_data_point(SharedFunctions.generate_object_id(), self.__id, SharedFunctions.get_current_timestamp(), current_speed, current_rpms, current_fuel_level))
 
         client_response_data_points: dict = {
