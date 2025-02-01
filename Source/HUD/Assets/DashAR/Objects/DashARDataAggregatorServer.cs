@@ -1,7 +1,6 @@
 /*
  * DashAR - An AR-based HUD for Automobiles.
- * (c)2024 Trevor D. Brown. All rights reserved.
- * This project is distributed under the MIT license.
+ * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
  *  File:       DashARDataAggregatorServer.cs
  *  Purpose:    This script contains the DashAR HUD interface into the DAS API.
@@ -55,7 +54,7 @@ public class DashARDataAggregatorServer
 
         if (providedHttpHostIpAddress == "" || providedHttpHostIpAddress == null)
         {
-            // TODO: the following method does not work on XREAL. Find a different way! 
+            // TODO: the following method does not work on XREAL. Find a different way!
             // Infer the IP address of the server, using the IP address of the device.
             // (e.g. same subnet, host 1 - 192.168.3.128 -> 192.168.3.1)
             foreach (NetworkInterface netInterface in NetworkInterface.GetAllNetworkInterfaces())
@@ -134,7 +133,7 @@ public class DashARDataAggregatorServer
     public async Task<string> GetAsync(string uri)
     {
         HttpResponseMessage response = await this._httpClient.GetAsync(uri);
-        
+
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadAsStringAsync();

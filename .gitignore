@@ -220,4 +220,5 @@ cython_debug/
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvv Project vvvvvvvvvvvvvvvvvvvvvvvvvvvv
 data
 !Testing/
+.vscode/
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Project ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

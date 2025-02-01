@@ -1,7 +1,6 @@
 /*
  * DashAR - An AR-based HUD for Automobiles.
- * (c)2024 Trevor D. Brown. All rights reserved.
- * This project is distributed under the MIT license.
+ * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
  *  File:       DashARStateMachine.cs
  *  Purpose:    This script contains the DashAR HUD State Machine class.
@@ -38,7 +37,7 @@ public class DashARStateMachine : MonoBehaviour
 
         // Initialize the gauges.
         this._gauges = this._configuration.Gauges;
-        
+
         // Establish the server connection.
         this._dasAPI = new DashARDataAggregatorServer(this._configuration.DasIp);
 

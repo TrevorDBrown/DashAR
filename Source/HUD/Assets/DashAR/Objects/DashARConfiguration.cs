@@ -1,7 +1,6 @@
 /*
  * DashAR - An AR-based HUD for Automobiles.
- * (c)2024 Trevor D. Brown. All rights reserved.
- * This project is distributed under the MIT license.
+ * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
  *  File:       DashARConfiguration.cs
  *  Purpose:    This script contains configuration information for the DashAR HUD at runtime.

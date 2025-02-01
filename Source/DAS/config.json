@@ -1,10 +1,7 @@
 {
-    "config_version": "0.1",
     "versioning": {
-        "dashar": "0.1",
-        "das": "0.1",
-        "hud": "0.1",
-        "companion": "0"
+        "dashar": "0.2",
+        "configuration": "0.2"
     },
     "service_mode": "PRODUCTION",
     "data_path": "{DAS_ROOT}/data/",
@@ -12,10 +9,27 @@
     "gauges_path": "{DATA_PATH}/gauges.json",
     "extensions": [
         {
-            "name": "TestExtension",
-            "description": "A test extension, used in the DashAR HUD System.",
-            "entry": "TestExtension",
-            "path": "{EXTENSIONS_ROOT}/TestExtension/"
+            "name": "pyvin-wrap",
+            "description": "A wrapper for the pyvin module.",
+            "path": "{EXTENSIONS_ROOT}/pyvin-wrap/",
+            "module": "pyvin-wrap",
+            "functions": [
+                {
+                    "function_name": "decode_vin",
+                    "static_function": true,
+                    "requirements": [
+                        "Internet"
+                    ],
+                    "parameters": [
+                        {
+                            "parameter_name": "vin",
+                            "parameter_type": "str",
+                            "parameter_required": true
+                        }
+                    ],
+                    "return_type": "list"
+                }
+            ]
         }
     ],
     "variables": [

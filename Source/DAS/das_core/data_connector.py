@@ -1,7 +1,6 @@
 #
 #   DashAR - An AR-based HUD for Automobiles.
-#   (c)2024 Trevor D. Brown. All rights reserved.
-#   This project is distributed under the MIT license.
+#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       data_connector.py
 #   Purpose:    This script manages the data connections, such as the database and to any files.
@@ -63,6 +62,20 @@ class DataConnection:
             return False
 
         return True
+
+    def select_from_database(self, select_statement: str) -> str:
+        successful_connection: bool = self.__connect_to_database()
+
+        if (successful_connection):
+            database_cursor: sqlite3.Cursor = self.__database_connection.cursor()
+            results: str = database_cursor.execute(select_statement)
+            self.__disconnect_from_database()
+
+            return results
+
+        else:
+            # No connection to database.
+            return ""
 
 
 def main() -> None:
