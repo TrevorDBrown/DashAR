@@ -19,7 +19,9 @@ class ConfigurationConstants():
     CONFIGURATION_VERSION: str
     DASHAR_VERSION: str
 
-    CONFIGURATION_PATH: Final[str] = os.path.join(os.getcwd(), "config.json")
+    DATA_PATH: Final[str] = os.path.join(os.getcwd(), "data")
+    CONFIGURATION_PATH: Final[str] = os.path.join(DATA_PATH, "config.json")
+    HUD_CONFIGURATION_PATH: Final[str] = os.path.join(DATA_PATH, "hud")
 
     def __init__(self) -> None:
         return
@@ -28,18 +30,28 @@ class ConfigurationVariables():
     system_status: SystemStatus = SystemStatus.NOT_STARTED
     das_server_port: int = 8000
     fuel_level_refresh_frequency_data_points: int = 200
-    service_mode: ServiceMode
+    service_mode: ServiceMode = ServiceMode.TEST
     verbose_operation: bool = False
 
-    obdii_elm327_device_path: str
+    obdii_elm327_device_path: str = ""
 
-    data_path: str = os.path.join(os.getcwd(), "data")
-    database_path: str = os.path.join(data_path, "dashar-data.sqlite3")
+    private_data_path: str = os.path.join(os.getcwd(), "private")
+    database_path: str = os.path.join(private_data_path, "dashar-data.sqlite3")
+
+    hud_configuration_base_path: str = os.path.join(ConfigurationConstants.HUD_CONFIGURATION_PATH, "base.json")
+    hud_configuration_default_path: str = os.path.join(ConfigurationConstants.HUD_CONFIGURATION_PATH, "default.json")
+    hud_configuration_custom_path: str = os.path.join(ConfigurationConstants.HUD_CONFIGURATION_PATH, "custom")
+
+    hud_configuration_target: str = hud_configuration_default_path
+
+    # hud_configuration_base_json_content: str = ""
+    # hud_configuration_widgets_json_content: str = ""
+
+    hud_configuration_base_json_content: dict = {}
+    hud_configuration_widgets_json_content: dict = {}
 
     das_extensions_path: str = os.path.join(os.getcwd(), "extensions")
     das_extensions: DASExtensions = DASExtensions()
-
-    hud_configuration: dict = {}
 
     def __init__(self) -> None:
         return
@@ -79,6 +91,8 @@ class Configuration():
 
     def load_configuration(self, arguments: argparse.Namespace) -> None:
 
+        print("Loading DAS configuration...")
+
         # Check the arguments passed in.
         # Verbose Output - output all information.
         if (arguments.verbose):
@@ -86,7 +100,7 @@ class Configuration():
         else:
             self.configuration_variables.verbose_operation = False
 
-        # Load the configuration from JSON.
+        # Load the DashAR DAS configuration from JSON.
         json_configuration_content: dict
 
         with open(self.configuration_constants.CONFIGURATION_PATH, "r") as json_configuration:
@@ -115,28 +129,25 @@ class Configuration():
             else:
                 self.configuration_variables.service_mode = ServiceMode["TEST"]
 
-            if (json_configuration_content["data_path"]):
-                data_path_content: str = json_configuration_content["data_path"]
+            if (json_configuration_content["private_data_path"]):
+                private_data_path_content: str = json_configuration_content["private_data_path"]
 
-                if (data_path_content.find("{DAS_ROOT}") != -1):
-                    data_path_content = data_path_content.replace("{DAS_ROOT}", os.getcwd())
+                if (private_data_path_content.find("{DAS_ROOT}") != -1):
+                    private_data_path_content = private_data_path_content.replace("{DAS_ROOT}", os.getcwd())
 
-                self.configuration_variables.data_path = os.path.abspath(data_path_content)
+                self.configuration_variables.private_data_path_content = os.path.abspath(private_data_path_content)
 
             if (json_configuration_content["database_path"]):
                 database_path_content: str = json_configuration_content["database_path"]
 
-                if (database_path_content.find("{DATA_PATH}") != -1):
-                    database_path_content = database_path_content.replace("{DATA_PATH}", self.configuration_variables.data_path)
+                if (database_path_content.find("{PRIVATE_DATA_PATH}") != -1):
+                    database_path_content = database_path_content.replace("{PRIVATE_DATA_PATH}", self.configuration_variables.private_data_path)
 
                 self.configuration_variables.database_path = os.path.abspath(database_path_content)
 
             if (json_configuration_content["extensions"]):
                 for extension in json_configuration_content["extensions"]:
                     self.configuration_variables.das_extensions.register_extension(name=extension["name"], description=extension["description"], path=extension["path"], module=extension["module"], functions=extension["functions"])
-
-                # TODO: remove me when done!!!
-                print(self.configuration_variables.das_extensions)
 
             if (json_configuration_content["variables"]):
                 for configuration_variable in json_configuration_content["variables"]:
@@ -163,6 +174,9 @@ class Configuration():
             print("\nError: invalid configuration provided. Resetting all values to defaults.")
             self.set_default_configuration()
 
+        # Read in the HUD Configuration files.
+        self.load_hud_configuration()
+
         # Initialize the OBDII context.
         self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
 
@@ -173,6 +187,30 @@ class Configuration():
 
         # Configuration is good, and the OBDII connection is established.
         self.configuration_variables.system_status = SystemStatus.READY
+
+        return
+
+    def load_hud_configuration(self) -> None:
+
+        # HUD Configuration (Base)
+        # Load the content of the HUD Configuration Base file.
+        with open(self.configuration_variables.hud_configuration_base_path, "r") as f:
+            self.configuration_variables.hud_configuration_base_json_content = json.load(f)
+
+        # Verify if the "default.json" widgets configuration should be used, or a custom configuration.
+        if (not self.configuration_variables.hud_configuration_base_json_content["targetConfiguration"]):
+            print('Error: missing "targetConfiguration" in base.json. Using "default.json"')
+            self.configuration_variables.hud_configuration_target = self.configuration_variables.hud_configuration_default_path
+
+        if (self.configuration_variables.hud_configuration_base_json_content["targetConfiguration"] == "default.json"):
+            # TODO: use a better method for making this determination.
+            self.configuration_variables.hud_configuration_target = self.configuration_variables.hud_configuration_default_path
+        else:
+            self.configuration_variables.hud_configuration_target = os.path.join(self.configuration_variables.hud_configuration_custom_path, self.configuration_variables.hud_configuration_base_json_content["targetConfiguration"])
+
+        # HUD Configuration (Widgets)
+        with open(self.configuration_variables.hud_configuration_target, "r") as f:
+            self.configuration_variables.hud_configuration_widgets_json_content = json.load(f)
 
         return
 
@@ -189,7 +227,7 @@ class Configuration():
         error_count: int = 0
         warning_count: int = 0
 
-        print("Testing Configuration...")
+        print("\nTesting DAS Configuration...")
 
         # Service Mode Verification
         print(f"Service Mode is {self.configuration_variables.service_mode.name}.")
@@ -202,10 +240,17 @@ class Configuration():
             warning_count += 1
 
         # Data Path Test
-        if (os.path.isdir(self.configuration_variables.data_path)):
-            print(f"Data Path ({self.configuration_variables.data_path}) exists.")
+        if (os.path.isdir(self.configuration_constants.DATA_PATH)):
+            print(f"Data Path ({self.configuration_constants.DATA_PATH}) exists.")
         else:
-            print(f"Error: Data Path ({self.configuration_variables.data_path}) does not exist.")
+            print(f"Error: Data Path ({self.configuration_constants.DATA_PATH}) does not exist.")
+            error_count += 1
+
+        # Private Data Path Test
+        if (os.path.isdir(self.configuration_variables.private_data_path)):
+            print(f"Private Data Path ({self.configuration_variables.private_data_path}) exists.")
+        else:
+            print(f"Error: Private Data Path ({self.configuration_variables.private_data_path}) does not exist.")
             error_count += 1
 
         # Database Path Test
@@ -215,8 +260,37 @@ class Configuration():
             print(f"Error: SQLite Database ({self.configuration_variables.database_path}) does not exist.")
             error_count += 1
 
+        # HUD Configuration Path Test
+        if (os.path.isdir(self.configuration_constants.HUD_CONFIGURATION_PATH)):
+            print(f"HUD Configuration Path ({self.configuration_constants.HUD_CONFIGURATION_PATH}) exists.")
+        else:
+            print(f"Error: HUD Configuration Path ({self.configuration_constants.HUD_CONFIGURATION_PATH}) does not exist.")
+            error_count += 1
+
+        # HUD Base Configuration Test
+        if (os.path.isfile(self.configuration_variables.hud_configuration_base_path)):
+            print(f"HUD Base Configuration ({self.configuration_variables.hud_configuration_base_path}) exists.")
+        else:
+            print(f"Error: HUD Base Configuration ({self.configuration_variables.hud_configuration_base_path}) does not exist.")
+            error_count += 1
+
+        # HUD Default Configuration Test
+        if (os.path.isfile(self.configuration_variables.hud_configuration_default_path)):
+            print(f"HUD Default Configuration ({self.configuration_variables.hud_configuration_default_path}) exists.")
+        else:
+            print(f"Error: HUD Default Configuration ({self.configuration_variables.hud_configuration_default_path}) does not exist.")
+            error_count += 1
+
+        # HUD Custom Configuration Path Test
+        if (os.path.isdir(self.configuration_variables.hud_configuration_custom_path)):
+            print(f"HUD Custom Configuration Path ({self.configuration_variables.hud_configuration_custom_path}) exists.")
+        else:
+            print(f"Error: HUD Custom Configuration Path ({self.configuration_variables.hud_configuration_custom_path}) does not exist.")
+            error_count += 1
+
+        # If any errors were found, report them.
         if (error_count > 0):
-            # TODO: return value added values.
+            # TODO: return value-added error values.
             print("Some tests failed.\n")
             return False
 

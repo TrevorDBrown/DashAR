@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class DashARStateMachine : MonoBehaviour
@@ -47,7 +46,7 @@ public class DashARStateMachine : MonoBehaviour
     public async void PollForUpdate()
     {
         // TODO: find way to dynamically handle data retrieval and processing.
-        DashARDataAggregatorServerResponse responseFromServer = await this._dasAPI.GetUpdateFromServerAsync();
+        DashARDataAggregatorServerOBDIIResponse responseFromServer = await this._dasAPI.GetUpdateFromServerAsync();
 
         foreach (DashARGauge currentGauge in this._gauges)
         {

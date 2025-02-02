@@ -3,7 +3,7 @@
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
  *  File:       DashARDataAggregatorServerResponse.cs
- *  Purpose:    This script contains the response of a request by the DashAR HUD interface into the DAS API.
+ *  Purpose:    This script contains the response of an OBDII data request by the DashAR HUD to the DAS.
  */
 
 public class OBDIIData
@@ -13,7 +13,7 @@ public class OBDIIData
     public string fuel_level { get; set; }
 }
 
-public class DashARDataAggregatorServerResponse
+public class DashARDataAggregatorServerOBDIIResponse
 {
     public string current_timestamp { get; set; }
     public string message { get; set; }

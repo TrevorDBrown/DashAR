@@ -117,7 +117,7 @@ public class DashARDataAggregatorServer
 
     }
 
-    public async Task<DashARDataAggregatorServerResponse> GetUpdateFromServerAsync()
+    public async Task<DashARDataAggregatorServerOBDIIResponse> GetUpdateFromServerAsync()
     {
         this._httpClient.DefaultRequestHeaders.Accept.Clear();
         this._httpClient.DefaultRequestHeaders.Accept.Add(
@@ -125,9 +125,9 @@ public class DashARDataAggregatorServer
         );
         this._httpClient.DefaultRequestHeaders.Add("User-Agent", "DashAR HUD");
 
-        string responseInJson = await this.GetAsync("/data/obdii");
+        string responseInJson = await this.GetAsync("/dashar/data/obdii");
 
-        return JsonConvert.DeserializeObject<DashARDataAggregatorServerResponse>(responseInJson);
+        return JsonConvert.DeserializeObject<DashARDataAggregatorServerOBDIIResponse>(responseInJson);
     }
 
     public async Task<string> GetAsync(string uri)

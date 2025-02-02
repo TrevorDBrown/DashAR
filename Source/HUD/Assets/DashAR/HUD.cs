@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour
     {
         if (Time.frameCount % 5 == 0)
         {
+            // Every five frames, poll the system for updates.
             this._dsm.PollForUpdate();
         }
     }

@@ -3,10 +3,9 @@
         "dashar": "0.2",
         "configuration": "0.2"
     },
-    "service_mode": "PRODUCTION",
-    "data_path": "{DAS_ROOT}/data/",
-    "database_path": "{DATA_PATH}/dashar-data.sqlite3",
-    "gauges_path": "{DATA_PATH}/gauges.json",
+    "service_mode": "DEBUG",
+    "private_data_path": "{DAS_ROOT}/private/",
+    "database_path": "{PRIVATE_DATA_PATH}/dashar-data.sqlite3",
     "extensions": [
         {
             "name": "pyvin-wrap",

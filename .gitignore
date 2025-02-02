@@ -218,7 +218,7 @@ cython_debug/
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Python ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvv Project vvvvvvvvvvvvvvvvvvvvvvvvvvvv
-data
 !Testing/
 .vscode/
+private
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Project ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
