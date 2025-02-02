@@ -48,21 +48,15 @@ class DashARStatusHandler(tornado.web.RequestHandler):
 class DashARHUDHandler(tornado.web.RequestHandler):
     dashar_configuration: Configuration
 
-    def initialize(self, dashar_configuraton: Configuration) -> None:
-        self.dashar_configuration = dashar_configuraton
+    def initialize(self, dashar_configuration: Configuration) -> None:
+        self.dashar_configuration = dashar_configuration
 
     def get(self) -> None:
-        '''
-
-        TODO: implement server-side provisioning of HUD configurations.
-
-        A default HUD is selected before driving via a PC connection (web interface)
-
-        '''
 
         client_response_json = SharedFunctions.convert_dict_to_json({
             "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "hud_configuration": "",
+            "hud_configuration_base": self.dashar_configuration.configuration_variables.hud_configuration_base_json_content,
+            "hud_configuration_widgets": self.dashar_configuration.configuration_variables.hud_configuration_widgets_json_content
         })
 
         self.set_header("Content-Type", "application/json")
@@ -115,16 +109,6 @@ class OBDIIHandler(tornado.web.RequestHandler):
             self.set_header("Content-Type", "application/json")
             self.set_status(503, "OBDII is not available.")
             self.write(f"{client_response_json}")
-
-class ThirdPartyAPIHandler(tornado.web.RequestHandler):
-    # This is currently not implemented.
-    dashar_configuration: Configuration
-
-    def initialize(self, dashar_configuration: Configuration) -> None:
-        self.dashar_configuration = dashar_configuration
-
-    def get(self) -> None:
-        self.write("This endpoint is for third-party API calls.")
 
 class TerminateHandler(tornado.web.RequestHandler):
     # This is currently not implemented.
