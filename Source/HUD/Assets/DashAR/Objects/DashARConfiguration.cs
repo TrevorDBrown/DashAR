@@ -8,6 +8,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 class DashARConfiguration
 {
@@ -22,10 +24,10 @@ class DashARConfiguration
     {
         this._id = Guid.NewGuid();
 
-        // NOTE: use these to override the host IP inference process.
+        // TODO: replace this with a dynamic host.
+        this._dasIP = "localhost:3832";         // The local machine (testing on development machine only...)
         //this._dasIP = "192.168.2.1:3832";     // The IP address assigned by my MacBook Pro when sharing my loopback address.
         //this._dasIP = "192.168.3.1:3832";     // The IP address of the network self-hosted by the Raspberry Pi 5.
-        this._dasIP = "localhost:3832";         // The local machine (testing on development machine only...)
 
         // TODO: swap out for parsing of config files with gauge data.
         this._gauges = new List<DashARGauge>();
