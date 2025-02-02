@@ -1,0 +1,113 @@
+{
+    "origin": "HUD",
+    "targetConfiguration": "default.json",
+    "trays": [
+        {
+            "name": "Tray_Top",
+            "shape": "Rectangle",
+            "scale": [0.25, 0.002, 0.025],
+            "position": [0, 0.082, 0.01],
+            "rotation": [90, 0, 0],
+            "anchors": [
+                {
+                    "name": "T1",
+                    "scale": [1, 1, 1],
+                    "position": [-0.45, -5, 0.08],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "T2",
+                    "scale": [1, 1, 1],
+                    "position": [-0.24, -5, 0.08],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "T3",
+                    "scale": [1, 1, 1],
+                    "position": [0, -5, 0.08],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "T4",
+                    "scale": [1, 1, 1],
+                    "position": [0.24, -5, 0.08],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "T5",
+                    "scale": [1, 1, 1],
+                    "position": [0.45, -5, 0.08],
+                    "rotation": [0, 0, 270]
+                }
+            ]
+        },
+        {
+            "name": "Tray_Bottom",
+            "shape": "Rectangle",
+            "scale": [0.25, 0.002, 0.025],
+            "position": [0, -0.06, 0.01],
+            "rotation": [90, 0, 0],
+            "anchors": [
+                {
+                    "name": "B1",
+                    "scale": [1, 1, 1],
+                    "position": [-0.45, -5, -0.04],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "B2",
+                    "scale": [1, 1, 1],
+                    "position": [-0.24, -5, -0.04],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "B3",
+                    "scale": [1, 1, 1],
+                    "position": [0, -5, -0.04],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "B4",
+                    "scale": [1, 1, 1],
+                    "position": [0.24, -5, -0.04],
+                    "rotation": [0, 0, 270]
+                },
+                {
+                    "name": "B5",
+                    "scale": [1, 1, 1],
+                    "position": [0.45, -5, -0.04],
+                    "rotation": [0, 0, 270]
+                }
+            ]
+        }
+    ],
+    "widgetConfigurations": [
+        {
+            "name": "Circle - Small",
+            "primitiveType": "Circle",
+            "relativeTransform": {
+                "scale": [0.1, 1, 0.05],
+                "position": [0, 0, 0],
+                "rotation": [0, 270, 90]
+            }
+        },
+        {
+            "name": "Circle - Large",
+            "primitiveType": "Circle",
+            "relativeTransform": {
+                "scale": [0.2, 2, 0.05],
+                "position": [0, 0, 0],
+                "rotation": [0, 270, 90]
+            }
+        },
+        {
+            "name": "Rectangle - Large",
+            "primitiveType": "Rectangle",
+            "relativeTransform": {
+                "scale": [0.25, 1, 1],
+                "position": [0, -0.1, 0],
+                "rotation": [0, 270, 90]
+            }
+        }
+    ]
+}
