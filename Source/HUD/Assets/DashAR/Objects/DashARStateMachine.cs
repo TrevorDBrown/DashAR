@@ -8,47 +8,55 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class DashARStateMachine : MonoBehaviour
+public class DashARStateMachine
 {
+    // General
     private Guid _id;
-    private GameObject _origin;
+
+    // System Configuration
     private DashARConfiguration _configuration;
 
-    private DashARHUDDevice _hudDevice;
-    private DashARDataAggregatorServer _dasAPI;
+    // System Devices
+    private DashARDevice _hudDevice;
+    private DashARDataAggregatorServer _dasDevice;
 
-    private List<DashARGauge> _gauges;      // Built-in gauges include: Speedometer, Tachometer, Fuel Level, and Compass.
+    // HUD
+    private DashARDataAggregatorServerHUDConfigurationResponse _hudConfiguration;
+    private DashARHUD _hud;
 
     public DashARStateMachine ()
     {
         this._id = Guid.NewGuid();
 
-        // Load the configuration.
+        // Load the system configuration.
         this._configuration = new DashARConfiguration();
 
+        // Set up the DAS connection.
+        this._dasDevice = new DashARDataAggregatorServer(this._configuration.DASDeviceIP);
+
         // Contextualize the HUD Device.
-        this._hudDevice = new DashARHUDDevice();
-
-        // Establish the entry point for the HUD gauge objects,
-        this._origin = GameObject.Find("HUD");
-
-        // Initialize the gauges.
-        this._gauges = this._configuration.Gauges;
-
-        // Establish the server connection.
-        this._dasAPI = new DashARDataAggregatorServer(this._configuration.DasIp);
+        this._hudDevice = new DashARDevice();
 
         return;
     }
 
-    public async void PollForUpdate()
+    public async void GetHUDConfigurationFromServer()
+    {
+        DashARDataAggregatorServerHUDConfigurationResponse hudConfigurationResponse = await this._dasDevice.GetHUDConfigurationFromServerAsync();
+        this._hudConfiguration = hudConfigurationResponse;
+        this._hud = new DashARHUD(this._hudConfiguration);
+        return;
+    }
+
+    public async void PollForDataUpdates()
     {
         // TODO: find way to dynamically handle data retrieval and processing.
-        DashARDataAggregatorServerOBDIIResponse responseFromServer = await this._dasAPI.GetUpdateFromServerAsync();
+        DashARDataAggregatorServerOBDIIResponse responseFromServer = await this._dasDevice.GetOBDIIDataFromServerAsync();
 
-        foreach (DashARGauge currentGauge in this._gauges)
+        foreach (DashARHUDWidget currentGauge in this._hud.Widgets)
         {
             if (currentGauge.DataSource == "DAS")
             {
@@ -70,7 +78,9 @@ public class DashARStateMachine : MonoBehaviour
                     }
                 }
 
-            } else if (currentGauge.DataSource == "HUD Device") {
+            }
+            else if (currentGauge.DataSource == "HUD Device")
+            {
                 if (currentGauge.Name == "Compass")
                 {
                     currentGauge.UpdateGauge(this._hudDevice.GetCompassHeading(showDegrees: true));
