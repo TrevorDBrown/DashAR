@@ -8,9 +8,8 @@
 
 using UnityEngine;
 
-public class HUD : MonoBehaviour
+public class Origin : MonoBehaviour
 {
-
     private DashARStateMachine _dsm;
 
     // Start is called before the first frame update
@@ -18,15 +17,18 @@ public class HUD : MonoBehaviour
     {
         // Initialize the DashAR State Machine.
         this._dsm = new DashARStateMachine();
+
+        // Set up the HUD.
+        this._dsm.GetHUDConfigurationFromServer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount % 5 == 0)
-        {
-            // Every five frames, poll the system for updates.
-            this._dsm.PollForUpdate();
-        }
+        //if (Time.frameCount % 5 == 0)
+        //{
+        //    // Every five frames, poll the system for updates.
+        //    this._dsm.PollForDataUpdates();
+        //}
     }
 }

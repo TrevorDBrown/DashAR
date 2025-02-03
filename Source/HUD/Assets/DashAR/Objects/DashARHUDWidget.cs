@@ -2,15 +2,15 @@
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
- *  File:       DashARHUDObject.cs
- *  Purpose:    This script contains the DashAR HUD Gauge class.
+ *  File:       DashARHUDWidget.cs
+ *  Purpose:    This script contains the DashAR HUD Widget class.
  */
 
 using System;
 using TMPro;
 using UnityEngine;
 
-public class DashARHUDObject
+public class DashARHUDWidget
 {
     Guid _id;
     private GameObject _gameObject;
@@ -25,7 +25,7 @@ public class DashARHUDObject
     private string _dataSourceMappedValue;
     private bool _suppressUnitOfMeasureOnDisplay;
 
-    public DashARHUDObject(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
+    public DashARHUDWidget(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
     {
         this._id = Guid.NewGuid();
         this._gameObjectName = "Widget_" + gaugeName;
@@ -79,12 +79,12 @@ public class DashARHUDObject
     public void UpdateGauge(string newValue)
     {
         this.Value = newValue;
-        this.SetGaugeDisplayValue();
+        this.SetWidgetDisplayValue();
         return;
     }
 
 
-    public string GetGaugeDisplayValue()
+    public string GetWidgetDisplayValue()
     {
         if (this._unitOfMeasure == "" || this._suppressUnitOfMeasureOnDisplay){
             return this.Value;
@@ -95,11 +95,11 @@ public class DashARHUDObject
 
     }
 
-    public void SetGaugeDisplayValue()
+    public void SetWidgetDisplayValue()
     {
         TextMeshPro textMeshProComponent = this._gameObjectText.GetComponent<TextMeshPro>();
 
-        textMeshProComponent.text = this.GetGaugeDisplayValue();
+        textMeshProComponent.text = this.GetWidgetDisplayValue();
 
         return;
     }

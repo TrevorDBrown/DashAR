@@ -14,8 +14,9 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using UnityEngine;
 using System.Linq;
+
+using UnityEngine;
 using TMPro;
 
 public class DashARDataAggregatorServer
@@ -117,7 +118,7 @@ public class DashARDataAggregatorServer
 
     }
 
-    public async Task<DashARDataAggregatorServerOBDIIResponse> GetUpdateFromServerAsync()
+    public async Task<DashARDataAggregatorServerOBDIIResponse> GetOBDIIDataFromServerAsync()
     {
         this._httpClient.DefaultRequestHeaders.Accept.Clear();
         this._httpClient.DefaultRequestHeaders.Accept.Add(
@@ -130,19 +131,24 @@ public class DashARDataAggregatorServer
         return JsonConvert.DeserializeObject<DashARDataAggregatorServerOBDIIResponse>(responseInJson);
     }
 
+    public async Task<DashARDataAggregatorServerHUDConfigurationResponse> GetHUDConfigurationFromServerAsync()
+    {
+        this._httpClient.DefaultRequestHeaders.Accept.Clear();
+        this._httpClient.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json")
+        );
+        this._httpClient.DefaultRequestHeaders.Add("User-Agent", "DashAR HUD");
+
+        string responseInJson = await this.GetAsync("/dashar/hud/config");
+
+        return JsonConvert.DeserializeObject<DashARDataAggregatorServerHUDConfigurationResponse>(responseInJson);
+    }
+
     public async Task<string> GetAsync(string uri)
     {
         HttpResponseMessage response = await this._httpClient.GetAsync(uri);
-
-        if (response.IsSuccessStatusCode)
-        {
-            return await response.Content.ReadAsStringAsync();
-        }
-        else
-        {
-            // TODO: implement error handling.
-            return "";
-        }
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadAsStringAsync();
     }
 
 }

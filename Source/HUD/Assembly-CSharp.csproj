@@ -60,15 +60,18 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DashAR\HUD.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUDTrayAnchor.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARConfiguration.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARDataAggregatorServer.cs" />
     <Compile Include="Assets\DashAR\Objects\HTTPResponse\DashARDataAggregatorServerHUDConfigurationResponse.cs" />
-    <Compile Include="Assets\DashAR\Objects\DashARHUDDevice.cs" />
-    <Compile Include="Assets\DashAR\Objects\DashARHUDObject.cs" />
+    <Compile Include="Assets\DashAR\Origin.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARDevice.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUDWidget.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUD.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUDTray.cs" />
+    <Compile Include="Assets\DashAR\Objects\DashARHUDBaseWidget.cs" />
     <Compile Include="Assets\DashAR\Objects\HTTPResponse\DashARDataAggregatorServerOBDIIResponse.cs" />
     <Compile Include="Assets\DashAR\Objects\DashARStateMachine.cs" />
-    <Compile Include="Assets\DashAR\Objects\DashARGauge.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

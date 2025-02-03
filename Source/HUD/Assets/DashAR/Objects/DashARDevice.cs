@@ -2,8 +2,8 @@
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
- *  File:       DashARHUDDevice.cs
- *  Purpose:    This script contains data and functions related to the HUD device.
+ *  File:       DashARDevice.cs
+ *  Purpose:    This script contains data and functions related to the DashAR AR/HUD device.
  */
 
 using NRKernal;
@@ -11,13 +11,13 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-public class DashARHUDDevice : MonoBehaviour
+public class DashARDevice : MonoBehaviour
 {
     private Guid _id;
     private NRDeviceType _deviceType;
     private CultureInfo _deviceCulture;
 
-    public DashARHUDDevice()
+    public DashARDevice()
     {
         // Define the device parameters.
         this._id = Guid.NewGuid();

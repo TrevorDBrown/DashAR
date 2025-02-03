@@ -7,41 +7,27 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json.Linq;
 
-class DashARConfiguration
+public class DashARConfiguration
 {
     private Guid _id;
 
-    // Configuration Settings
+    // General Configuration Settings
     private string _systemMode;
-    private string _dasIP;
-    private List<DashARGauge> _gauges;
-
+    private string _dasDeviceIP;
+    
     public DashARConfiguration()
     {
         this._id = Guid.NewGuid();
 
         // TODO: replace this with a dynamic host.
-        this._dasIP = "localhost:3832";         // The local machine (testing on development machine only...)
-        //this._dasIP = "192.168.2.1:3832";     // The IP address assigned by my MacBook Pro when sharing my loopback address.
-        //this._dasIP = "192.168.3.1:3832";     // The IP address of the network self-hosted by the Raspberry Pi 5.
-
-        // TODO: swap out for parsing of config files with gauge data.
-        this._gauges = new List<DashARGauge>();
-        this._gauges.Add(new DashARGauge(gaugeName: "Speedometer", gaugeValueType: "string", gaugeUnitOfMeasure: "mph", dataSource: "DAS", dataSourceMappedValue: "current_speed"));
-        this._gauges.Add(new DashARGauge(gaugeName: "Tachometer", gaugeValueType: "string", gaugeUnitOfMeasure: "rpms", dataSource: "DAS", dataSourceMappedValue: "current_rpms"));
-        this._gauges.Add(new DashARGauge(gaugeName: "Fuel_Level", gaugeValueType: "string", gaugeUnitOfMeasure: "fuel", dataSource: "DAS", dataSourceMappedValue: "current_fuel_level"));
-        this._gauges.Add(new DashARGauge(gaugeName: "Compass", gaugeValueType: "string", gaugeUnitOfMeasure: "cardinal", dataSource: "HUD Device", suppressUnitOfMeasureOnDisplay: true));
-        this._gauges.Add(new DashARGauge(gaugeName: "Clock", gaugeValueType: "string", gaugeUnitOfMeasure: "time", dataSource: "HUD Device", suppressUnitOfMeasureOnDisplay: true));
+        this._dasDeviceIP = "localhost:3832";         // The local machine (testing on development machine only...)
+        //this._dasDeviceIP = "192.168.2.1:3832";     // The IP address assigned by my MacBook Pro when sharing my loopback address.
+        //this._dasDeviceIP = "192.168.3.1:3832";     // The IP address of the network self-hosted by the Raspberry Pi 5.
 
         return;
     }
 
-    // Getters
-    public List<DashARGauge> Gauges { get { return this._gauges; } }
-    public string DasIp { get { return this._dasIP;  } }
+    public string DASDeviceIP { get { return this._dasDeviceIP;  } }
 
 }

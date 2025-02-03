@@ -1,49 +1,47 @@
-{
-    "widgets": [
-        {
-            "name": "Speedometer",
-            "description": "The vehicle's magnitude in space.",
-            "dataSource": "OBDII",
-            "unitOfMeasure": "mph",
-            "textAlignment": "Stacked",
-            "type": "Circle - Large",
-            "anchorPosition": "B3"
-        },
-        {
-            "name": "Tachometer",
-            "description": "The Engine's Rotational Speed.",
-            "dataSource": "OBDII",
-            "unitOfMeasure": "rpms",
-            "textAlignment": "Stacked",
-            "type": "Circle - Small",
-            "anchorPosition": "B2"
-        },
-        {
-            "name": "Fuel Level",
-            "description": "The percentage of fuel remaining in the vehicle.",
-            "dataSource": "OBDII",
-            "unitOfMeasure": "%",
-            "textAlignment": "Inline",
-            "type": "Circle - Small",
-            "anchorPosition": "B4"
-        },
-        {
-            "name": "Compass",
-            "description": "The direction of the vehicle, relative to Earth's magnetic north.",
-            "dataSource": "XREAL",
-            "unitOfMeasure": "°",
-            "textAlignment": "Inline",
-            "type": "Circle - Small",
-            "anchorPosition": "T3"
-        },
-        {
-            "name": "Clock",
-            "description": "The current time.",
-            "dataSource": "XREAL",
-            "unitOfMeasure": null,
-            "textAlignment": "Inline",
-            "type": "Rectangle - Large",
-            "anchorPosition": "T5"
-        }
-    ]
-}
+[
+    {
+        "name": "Speedometer",
+        "description": "The vehicle's magnitude in space.",
+        "dataSource": "OBDII",
+        "unitOfMeasure": "mph",
+        "textAlignment": "Stacked",
+        "type": "Circle - Large",
+        "anchorPosition": "B3"
+    },
+    {
+        "name": "Tachometer",
+        "description": "The Engine's Rotational Speed.",
+        "dataSource": "OBDII",
+        "unitOfMeasure": "rpms",
+        "textAlignment": "Stacked",
+        "type": "Circle - Small",
+        "anchorPosition": "B2"
+    },
+    {
+        "name": "Fuel Level",
+        "description": "The percentage of fuel remaining in the vehicle.",
+        "dataSource": "OBDII",
+        "unitOfMeasure": "%",
+        "textAlignment": "Inline",
+        "type": "Circle - Small",
+        "anchorPosition": "B4"
+    },
+    {
+        "name": "Compass",
+        "description": "The direction of the vehicle, relative to Earth's magnetic north.",
+        "dataSource": "XREAL",
+        "unitOfMeasure": "°",
+        "textAlignment": "Inline",
+        "type": "Circle - Small",
+        "anchorPosition": "T3"
+    },
+    {
+        "name": "Clock",
+        "description": "The current time.",
+        "dataSource": "XREAL",
+        "unitOfMeasure": null,
+        "textAlignment": "Inline",
+        "type": "Rectangle - Large",
+        "anchorPosition": "T5"
+    }
+]

@@ -3,80 +3,80 @@
     "targetConfiguration": "default.json",
     "trays": [
         {
-            "name": "Tray_Top",
-            "shape": "Rectangle",
-            "scale": [0.25, 0.002, 0.025],
-            "position": [0, 0.082, 0.01],
+            "name": "Top",
+            "shape": "Cube",
+            "position": [0, 0.082, 0.51],
             "rotation": [90, 0, 0],
+            "scale": [0.25, 0.002, 0.025],
             "anchors": [
                 {
                     "name": "T1",
-                    "scale": [1, 1, 1],
                     "position": [-0.45, -5, 0.08],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90],
+                    "scale": [1, 1, 1]
                 },
                 {
                     "name": "T2",
-                    "scale": [1, 1, 1],
                     "position": [-0.24, -5, 0.08],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90],
+                    "scale": [1, 1, 1]
                 },
                 {
                     "name": "T3",
-                    "scale": [1, 1, 1],
                     "position": [0, -5, 0.08],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90],
+                    "scale": [1, 1, 1]
                 },
                 {
                     "name": "T4",
-                    "scale": [1, 1, 1],
                     "position": [0.24, -5, 0.08],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90],
+                    "scale": [1, 1, 1]
                 },
                 {
                     "name": "T5",
-                    "scale": [1, 1, 1],
                     "position": [0.45, -5, 0.08],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90],
+                    "scale": [1, 1, 1]
                 }
             ]
         },
         {
-            "name": "Tray_Bottom",
-            "shape": "Rectangle",
-            "scale": [0.25, 0.002, 0.025],
-            "position": [0, -0.06, 0.01],
+            "name": "Bottom",
+            "shape": "Cube",
+            "position": [0, -0.06, 0.51],
             "rotation": [90, 0, 0],
+            "scale": [0.25, 0.002, 0.025],
             "anchors": [
                 {
                     "name": "B1",
                     "scale": [1, 1, 1],
                     "position": [-0.45, -5, -0.04],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90]
                 },
                 {
                     "name": "B2",
                     "scale": [1, 1, 1],
                     "position": [-0.24, -5, -0.04],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90]
                 },
                 {
                     "name": "B3",
                     "scale": [1, 1, 1],
                     "position": [0, -5, -0.04],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90]
                 },
                 {
                     "name": "B4",
                     "scale": [1, 1, 1],
                     "position": [0.24, -5, -0.04],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90]
                 },
                 {
                     "name": "B5",
                     "scale": [1, 1, 1],
                     "position": [0.45, -5, -0.04],
-                    "rotation": [0, 0, 270]
+                    "rotation": [90, 0, -90]
                 }
             ]
         }
@@ -84,7 +84,7 @@
     "widgetConfigurations": [
         {
             "name": "Circle - Small",
-            "primitiveType": "Circle",
+            "primitiveType": "Sphere",
             "relativeTransform": {
                 "scale": [0.1, 1, 0.05],
                 "position": [0, 0, 0],
@@ -93,7 +93,7 @@
         },
         {
             "name": "Circle - Large",
-            "primitiveType": "Circle",
+            "primitiveType": "Sphere",
             "relativeTransform": {
                 "scale": [0.2, 2, 0.05],
                 "position": [0, 0, 0],
@@ -102,7 +102,7 @@
         },
         {
             "name": "Rectangle - Large",
-            "primitiveType": "Rectangle",
+            "primitiveType": "Cube",
             "relativeTransform": {
                 "scale": [0.25, 1, 1],
                 "position": [0, -0.1, 0],
