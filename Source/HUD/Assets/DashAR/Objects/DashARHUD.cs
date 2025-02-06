@@ -56,9 +56,73 @@ public class DashARHUD
         // Set up the Widgets.
         foreach (HUDConfigurationWidget widgetConfiguration in hudConfiguration.hud_configuration_widgets)
         {
+            // Check the Anchor Position's availability.
+            foreach (DashARHUDTray currentTray in this._trays)
+            {
+                foreach (DashARHUDTrayAnchor currentAnchor in currentTray.TrayAnchors)
+                {
+                    if (currentAnchor.Name != widgetConfiguration.anchorPosition)
+                    {
+                        continue;
+                    }
+
+                    if (currentAnchor.AnchoredWidgetGameObject != null)
+                    {
+                        // The anchor is occupied.
+                        // TODO: determine error handling strategy.
+                        continue;
+                    }
+
+                    // The Tray Anchor is free. Widget is safe to make.
+                    // Verify the Base Widget exists.
+                    string newWidgetBaseWidgetType = widgetConfiguration.type;
+                    // TODO: make object nullable.
+                    string newWidgetBaseWidgetTemporaryName = Guid.NewGuid().ToString();
+
+                    DashARHUDBaseWidget newWidgetBaseWidget = new DashARHUDBaseWidget(widgetName: newWidgetBaseWidgetType);
+
+                    foreach (DashARHUDBaseWidget currentBaseWidget in this._baseWidgets)
+                    {
+                        if (currentBaseWidget.Name != newWidgetBaseWidgetType)
+                        {
+                            continue;
+                        }
+
+                        // Base Widget Found.
+                        newWidgetBaseWidget = currentBaseWidget;
+
+                        // Construct the Widget.
+                        string newWidgetName = widgetConfiguration.name;
+                        string newWidgetDescription = widgetConfiguration.description;
+                        string newWidgetDataSource = widgetConfiguration.dataSource;
+                        string newWidgetUnitOfMeasure = widgetConfiguration.unitOfMeasure;
+                        string newWidgetTextAlignment = widgetConfiguration.textAlignment;
+
+                        DashARHUDWidget newWidget = new DashARHUDWidget(
+                            baseWidget: newWidgetBaseWidget,
+                            widgetName: newWidgetName,
+                            widgetDescription: newWidgetDescription,
+                            widgetDataSource: newWidgetDataSource,
+                            widgetUnitOfMeasure: newWidgetUnitOfMeasure,
+                            widgetTextAlignment: newWidgetTextAlignment
+                        );
+
+                        this._widgets.Add(newWidget);
+
+                        // TODO: implement searching methods within the respective lists without having to loop.
+                        break;
+
+                    }
+
+                    if (newWidgetBaseWidget.Name == newWidgetBaseWidgetTemporaryName)
+                    {
+                        // TODO: Base Widget Not Found.
+                        // Implement error handling.
+                    }
+                }
+            }
+
             // TODO: implement the following:
-            // - Check the widget's tray anchor position. If empty, use it. Otherwise, throw an error.
-            // - Find the Base Widget type. If found, use its transform properties. Otherwise, throw an error.
             // - Create the widget instance, using the transform properties of the base widget.
         }
 
