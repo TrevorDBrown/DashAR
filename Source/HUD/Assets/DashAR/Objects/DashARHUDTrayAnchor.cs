@@ -41,6 +41,7 @@ public class DashARHUDTrayAnchor
         return;
     }
 
+    public string Name {  get { return this._name; } }
     public GameObject TrayAnchorGameObject { get { return this._gameObject; } }
     public DashARHUDWidget AnchoredWidgetGameObject { get { return this._anchoredWidget; } }
 }
