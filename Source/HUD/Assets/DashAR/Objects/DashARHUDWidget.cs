@@ -13,34 +13,46 @@ using UnityEngine;
 public class DashARHUDWidget
 {
     Guid _id;
-    private GameObject _gameObject;
-    private GameObject _gameObjectText;
-    private string _gameObjectName;
-    private string _gameObjectTextName;
     private string _name;
+    private string _description;
     private string _valueType;
-    private string _unitOfMeasure = "";
-    private string _valueString = "";
-    private string _dataSource = "";
+    private string _unitOfMeasure;
+    private string _valueString;
+    private string _textAlignment;
+    private string _dataSource;
     private string _dataSourceMappedValue;
     private bool _suppressUnitOfMeasureOnDisplay;
 
-    public DashARHUDWidget(string gaugeName, string gaugeValueType, string gaugeUnitOfMeasure = "", string dataSource = "", string dataSourceMappedValue = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
+    private GameObject _gameObject;
+    private string _gameObjectName;
+    private Vector3 _gameObjectTransform;
+    private Vector3 _gameObjectPosition;
+    private Vector3 _gameObjectRotation;
+
+
+    private GameObject _gameObjectText;
+    private string _gameObjectTextName;
+
+
+    // TODO: make extend DashARHUDBaseWidget.
+    public DashARHUDWidget(DashARHUDBaseWidget baseWidget, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
     {
         this._id = Guid.NewGuid();
-        this._gameObjectName = "Widget_" + gaugeName;
+        this._gameObjectName = "Widget_" + widgetName;
         this._gameObjectTextName = this._gameObjectName + "_Text";
-        this._gameObject = GameObject.Find(this._gameObjectName);
-        this._gameObjectText = GameObject.Find(this._gameObjectTextName);
 
-        this._name = gaugeName;
-        this._valueType = gaugeValueType;
-        this._unitOfMeasure = gaugeUnitOfMeasure;
+        this._name = widgetName;
+        this._description = widgetDescription;
+        this._unitOfMeasure = widgetUnitOfMeasure;
         this._suppressUnitOfMeasureOnDisplay = suppressUnitOfMeasureOnDisplay;
-        this._dataSourceMappedValue = dataSourceMappedValue;
-        this._dataSource = dataSource;
+        this._dataSourceMappedValue = widgetDataSourceMappedValue;
+        this._dataSource = widgetDataSource;
+        this._textAlignment = widgetTextAlignment;
 
-        this.UpdateGauge(initializedValue);
+        // TODO: implement widget construction.
+        //this._gameObject = GameObject.Find(this._gameObjectName);
+        //this._gameObjectText = GameObject.Find(this._gameObjectTextName);
+        //this.UpdateGauge(initializedValue);
 
         return;
     }
@@ -89,9 +101,20 @@ public class DashARHUDWidget
         if (this._unitOfMeasure == "" || this._suppressUnitOfMeasureOnDisplay){
             return this.Value;
         }
-        else {
+
+        if (this._textAlignment == "Stacked")
+        {
             return this.Value + "\n" + this._unitOfMeasure;
         }
+
+        if (this._textAlignment == "Inline")
+        {
+            return this.Value + " " + this._unitOfMeasure;
+        }
+
+        // Unknown Text Alignment Mode, just return an empty string.
+        // TODO: implement error handling, default text alignment mode.
+        return "";
 
     }
 
