@@ -30,6 +30,11 @@ public class DashARHUDBaseWidget
         this._rotation = new Vector3((float) baseWidgetConfiguration.relativeTransform.rotation[0], (float) baseWidgetConfiguration.relativeTransform.rotation[1], (float) baseWidgetConfiguration.relativeTransform.rotation[2]);
     }
 
+    public DashARHUDBaseWidget(string widgetName)
+    {
+        this._name = widgetName;
+    }
+
     public string Name { get { return _name; } }
     public PrimitiveType Shape { get { return _shape; } }
     public Vector3 Scale { get { return _scale; } }
