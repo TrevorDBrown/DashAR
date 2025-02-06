@@ -53,5 +53,6 @@ public class DashARHUDTray
     }
 
     public GameObject TrayGameObject {  get { return this._gameObject; } }
+    public List<DashARHUDTrayAnchor> TrayAnchors { get { return this._anchors; } }
 
 }
