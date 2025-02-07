@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DashARHUDTray
@@ -19,12 +20,17 @@ public class DashARHUDTray
     private Vector3 _scale;
     private Vector3 _position;
     private Vector3 _rotation;
+    private string _anchorPrefix;
     private List<DashARHUDTrayAnchor> _anchors;
 
     public DashARHUDTray(HUDConfigurationBaseTray trayConfiguration, GameObject parent)
     {
         this._id = Guid.NewGuid();
         this._name = "Tray_" + trayConfiguration.name;
+        
+        // Use the first letter in the tray name as the anchor prefix.
+        this._anchorPrefix = trayConfiguration.name.Substring(0, 1);
+
         this._shape = Enum.Parse<PrimitiveType>(trayConfiguration.shape);
 
         this._gameObject = GameObject.CreatePrimitive(this._shape);
@@ -52,6 +58,19 @@ public class DashARHUDTray
         return;
     }
 
+    public DashARHUDTrayAnchor getTrayAnchor(string trayAnchorName)
+    {
+        DashARHUDTrayAnchor targetTrayAnchor = this._anchors.FirstOrDefault(ta => ta.Name == trayAnchorName);
+
+        if (targetTrayAnchor == null)
+        {
+            return null;
+        }
+
+        return targetTrayAnchor;
+    }
+
+    public string AnchorPrefix { get { return this._anchorPrefix; } }
     public GameObject TrayGameObject {  get { return this._gameObject; } }
     public List<DashARHUDTrayAnchor> TrayAnchors { get { return this._anchors; } }
 
