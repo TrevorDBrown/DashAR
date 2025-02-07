@@ -10,7 +10,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class DashARHUDWidget
+public class DashARHUDWidget : DashARHUDBaseWidget
 {
     Guid _id;
     private string _name;
@@ -24,23 +24,13 @@ public class DashARHUDWidget
     private bool _suppressUnitOfMeasureOnDisplay;
 
     private GameObject _gameObject;
-    private string _gameObjectName;
-    private Vector3 _gameObjectTransform;
-    private Vector3 _gameObjectPosition;
-    private Vector3 _gameObjectRotation;
-
-
     private GameObject _gameObjectText;
-    private string _gameObjectTextName;
 
 
-    // TODO: make extend DashARHUDBaseWidget.
-    public DashARHUDWidget(DashARHUDBaseWidget baseWidget, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-")
+    public DashARHUDWidget(DashARHUDBaseWidget baseWidget, DashARHUDTrayAnchor trayAnchor, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-") : base(baseWidgetType: baseWidget.Type, baseWidgetShape: baseWidget.Shape, baseWidgetScale: baseWidget.Scale, baseWidgetPosition: baseWidget.Position, baseWidgetRotation: baseWidget.Position)
     {
         this._id = Guid.NewGuid();
-        this._gameObjectName = "Widget_" + widgetName;
-        this._gameObjectTextName = this._gameObjectName + "_Text";
-
+        
         this._name = widgetName;
         this._description = widgetDescription;
         this._unitOfMeasure = widgetUnitOfMeasure;
@@ -49,48 +39,55 @@ public class DashARHUDWidget
         this._dataSource = widgetDataSource;
         this._textAlignment = widgetTextAlignment;
 
-        // TODO: implement widget construction.
-        //this._gameObject = GameObject.Find(this._gameObjectName);
-        //this._gameObjectText = GameObject.Find(this._gameObjectTextName);
-        //this.UpdateGauge(initializedValue);
+        CreateGameObject(this._name, base.Shape, base.Scale, base.Position, base.Rotation, trayAnchor);
+
+        // Initialize the gauge value.        
+        this.UpdateGauge(initializedValue);
 
         return;
     }
 
-    public string Name
+    private void CreateGameObject(string gameObjectName, PrimitiveType gameObjectPrimitiveType, Vector3 gameObjectScale, Vector3 gameObjectPosition, Vector3 gameObjectRotation, DashARHUDTrayAnchor trayAnchor)
     {
-        get { return this._name; }
-    }
+        string gameObjectWidgetName = "Widget_" + gameObjectName;
+        string gameObjectWidgetTextName = gameObjectWidgetName + "_Text";
 
-    public string ValueType
-    {
-        get { return this._valueType; }
-    }
+        // Create the Widget GameObject.
+        GameObject newGameObject = GameObject.CreatePrimitive(gameObjectPrimitiveType);
 
-    public string UnitOfMeasure
-    {
-        get { return this._unitOfMeasure; }
-    }
+        // Set the Tray the Tray Anchor is in as the parent.
+        // (NOTE: there were some issues with transforms when the anchor was set as the parent.)
+        newGameObject.transform.parent = trayAnchor.TrayAnchorGameObject.transform.parent;
 
-    public string Value
-    {
-        get { return this._valueString; }
-        set { this._valueString = value; }
-    }
+        // Set Widget GameObject properties.
+        newGameObject.name = gameObjectWidgetName;
+        newGameObject.transform.localScale = base.Scale;
+        newGameObject.transform.position = trayAnchor.TrayAnchorGameObject.transform.position;
+        newGameObject.transform.rotation = Quaternion.Euler(new Vector3(trayAnchor.TrayAnchorGameObject.transform.rotation.x, trayAnchor.TrayAnchorGameObject.transform.rotation.y, trayAnchor.TrayAnchorGameObject.transform.rotation.z));
 
-    public string DataSource
-    {
-        get { return this._dataSource; }
-    }
+        // Create the Textbox GameObject.
+        GameObject newGameObjectText = new GameObject(gameObjectWidgetTextName);
+        TextMeshPro tmpComponent = newGameObjectText.AddComponent<TextMeshPro>();
 
-    public string DataSourceMappedValue
-    {
-        get { return this._dataSourceMappedValue; }
+        // Textbox GameObject formatting
+        tmpComponent.transform.localPosition = new Vector3(0f, 0f, -1f);
+        tmpComponent.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        tmpComponent.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+
+        tmpComponent.autoSizeTextContainer = true; 
+
+
+        newGameObjectText.transform.parent = newGameObject.transform;
+
+        this._gameObject = newGameObject;
+        this._gameObjectText = newGameObjectText;
+
+        return;
     }
 
     public void UpdateGauge(string newValue)
     {
-        this.Value = newValue;
+        this._valueString = newValue;
         this.SetWidgetDisplayValue();
         return;
     }
@@ -104,16 +101,16 @@ public class DashARHUDWidget
 
         if (this._textAlignment == "Stacked")
         {
-            return this.Value + "\n" + this._unitOfMeasure;
+            return "<align=\"center\"><color=\"black\"><b>" + this.Value + "\n" + this._unitOfMeasure + "</b></color></align>";
         }
 
         if (this._textAlignment == "Inline")
         {
-            return this.Value + " " + this._unitOfMeasure;
+            return "<align=\"center\"><color=\"black\"><b>" + this.Value + " " + this._unitOfMeasure + "</b></color></align>";
         }
 
-        // Unknown Text Alignment Mode, just return an empty string.
-        // TODO: implement error handling, default text alignment mode.
+        // Unknown Text Alignment Mode.
+        // TODO: implement error handling.
         return "";
 
     }
@@ -126,5 +123,12 @@ public class DashARHUDWidget
 
         return;
     }
+
+    public string Name { get {  return this._name; } }
+    public string ValueType { get { return this._valueType; } }
+    public string UnitOfMeasure { get { return this._unitOfMeasure; } }
+    public string Value { get { return this._valueString; } }
+    public string DataSource { get {  return this._dataSource; } }
+    public string DataSourceMappedValue { get {  return this._dataSourceMappedValue; } }
 
 }
