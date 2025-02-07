@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DashARHUD
@@ -56,83 +57,61 @@ public class DashARHUD
         // Set up the Widgets.
         foreach (HUDConfigurationWidget widgetConfiguration in hudConfiguration.hud_configuration_widgets)
         {
-            // Check the Anchor Position's availability.
-            foreach (DashARHUDTray currentTray in this._trays)
-            {
-                foreach (DashARHUDTrayAnchor currentAnchor in currentTray.TrayAnchors)
-                {
-                    if (currentAnchor.Name != widgetConfiguration.anchorPosition)
-                    {
-                        continue;
-                    }
+            string anchorPrefix = widgetConfiguration.anchorPosition.Substring(0, 1);
 
-                    if (currentAnchor.AnchoredWidgetGameObject != null)
-                    {
-                        // The anchor is occupied.
-                        // TODO: determine error handling strategy.
-                        continue;
-                    }
+            DashARHUDTray targetTray = this._trays.FirstOrDefault(t => t.AnchorPrefix == anchorPrefix);
 
-                    // The Tray Anchor is free. Widget is safe to make.
-                    // Verify the Base Widget exists.
-                    string newWidgetBaseWidgetType = widgetConfiguration.type;
-                    // TODO: make object nullable.
-                    string newWidgetBaseWidgetTemporaryName = Guid.NewGuid().ToString();
-
-                    DashARHUDBaseWidget newWidgetBaseWidget = new DashARHUDBaseWidget(widgetName: newWidgetBaseWidgetType);
-
-                    foreach (DashARHUDBaseWidget currentBaseWidget in this._baseWidgets)
-                    {
-                        if (currentBaseWidget.Name != newWidgetBaseWidgetType)
-                        {
-                            continue;
-                        }
-
-                        // Base Widget Found.
-                        newWidgetBaseWidget = currentBaseWidget;
-
-                        // Construct the Widget.
-                        string newWidgetName = widgetConfiguration.name;
-                        string newWidgetDescription = widgetConfiguration.description;
-                        string newWidgetDataSource = widgetConfiguration.dataSource;
-                        string newWidgetUnitOfMeasure = widgetConfiguration.unitOfMeasure;
-                        string newWidgetTextAlignment = widgetConfiguration.textAlignment;
-
-                        DashARHUDWidget newWidget = new DashARHUDWidget(
-                            baseWidget: newWidgetBaseWidget,
-                            widgetName: newWidgetName,
-                            widgetDescription: newWidgetDescription,
-                            widgetDataSource: newWidgetDataSource,
-                            widgetUnitOfMeasure: newWidgetUnitOfMeasure,
-                            widgetTextAlignment: newWidgetTextAlignment
-                        );
-
-                        this._widgets.Add(newWidget);
-
-                        // TODO: implement searching methods within the respective lists without having to loop.
-                        break;
-
-                    }
-
-                    if (newWidgetBaseWidget.Name == newWidgetBaseWidgetTemporaryName)
-                    {
-                        // TODO: Base Widget Not Found.
-                        // Implement error handling.
-                    }
-                }
+            if (targetTray == null) {
+                // Tray does not exist.
+                // TODO: implement error handling.
             }
 
-            // TODO: implement the following:
-            // - Create the widget instance, using the transform properties of the base widget.
-        }
+            DashARHUDTrayAnchor targetTrayAnchor = targetTray.TrayAnchors.FirstOrDefault(ta => ta.Name == widgetConfiguration.anchorPosition);
 
-        // TODO: swap out for parsing of config files with gauge data.
-        //this._widgets = new List<DashARHUDWidget>();
-        //this._widgets.Add(new DashARHUDWidget(gaugeName: "Speedometer", gaugeValueType: "string", gaugeUnitOfMeasure: "mph", dataSource: "DAS", dataSourceMappedValue: "current_speed"));
-        //this._widgets.Add(new DashARHUDWidget(gaugeName: "Tachometer", gaugeValueType: "string", gaugeUnitOfMeasure: "rpms", dataSource: "DAS", dataSourceMappedValue: "current_rpms"));
-        //this._widgets.Add(new DashARHUDWidget(gaugeName: "Fuel_Level", gaugeValueType: "string", gaugeUnitOfMeasure: "fuel", dataSource: "DAS", dataSourceMappedValue: "current_fuel_level"));
-        //this._widgets.Add(new DashARHUDWidget(gaugeName: "Compass", gaugeValueType: "string", gaugeUnitOfMeasure: "cardinal", dataSource: "HUD Device", suppressUnitOfMeasureOnDisplay: true));
-        //this._widgets.Add(new DashARHUDWidget(gaugeName: "Clock", gaugeValueType: "string", gaugeUnitOfMeasure: "time", dataSource: "HUD Device", suppressUnitOfMeasureOnDisplay: true));
+            if (targetTrayAnchor == null)
+            {
+                // Tray Anchor does not exist.
+                // TODO: implement error handling.
+            }
+
+            if (targetTrayAnchor.AnchoredWidgetGameObject != null)
+            {
+                // Tray Anchor is occupied.
+                // TODO: implement error handling.
+            }
+
+            DashARHUDBaseWidget baseWidget = this._baseWidgets.FirstOrDefault(bw => bw.Type == widgetConfiguration.type);
+
+            if (baseWidget == null)
+            {
+                // Base Widget Not Found. 
+                // TODO: implement error handling.
+            }
+
+            // Construct the Widget.
+            string newWidgetName = widgetConfiguration.name;
+            string newWidgetDescription = widgetConfiguration.description;
+            string newWidgetDataSource = widgetConfiguration.dataSource;
+            string newWidgetUnitOfMeasure = widgetConfiguration.unitOfMeasure;
+            string newWidgetTextAlignment = widgetConfiguration.textAlignment;
+
+            DashARHUDWidget newWidget = new DashARHUDWidget(
+                baseWidget: baseWidget,
+                trayAnchor: targetTrayAnchor,
+                widgetName: newWidgetName,
+                widgetDescription: newWidgetDescription,
+                widgetDataSource: newWidgetDataSource,
+                widgetUnitOfMeasure: newWidgetUnitOfMeasure,
+                widgetTextAlignment: newWidgetTextAlignment
+            );
+
+            // Associate the Widget with the Tray Anchor.
+            targetTrayAnchor.AnchoredWidgetGameObject = newWidget;
+
+            // Add widget to list.
+            this._widgets.Add(newWidget);
+
+        }
 
         return;
     }
