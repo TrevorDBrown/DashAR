@@ -34,11 +34,19 @@ public class HUDConfigurationBaseWidgetConfigurationRelativeTransform
     public float[] rotation { get; set; }
 }
 
+public class HUDConfigurationBaseWidgetConfigurationTextRelativeTransform
+{
+    public float fontSize { get; set; }
+    public float[] box { get; set; }
+    public float[] scale { get; set; }
+}
+
 public class HUDConfigurationBaseWidgetConfiguration
 {
     public string name { get; set; }
     public string primitiveType { get; set; }
     public HUDConfigurationBaseWidgetConfigurationRelativeTransform relativeTransform { get; set; }
+    public HUDConfigurationBaseWidgetConfigurationTextRelativeTransform textRelativeTransform { get; set; }
 }
 
 public class HUDConfigurationBase

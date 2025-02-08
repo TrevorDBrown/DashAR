@@ -1,4 +1,4 @@
-/*
+﻿/*
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
@@ -27,21 +27,32 @@ public class DashARHUDWidget : DashARHUDBaseWidget
     private GameObject _gameObjectText;
 
 
-    public DashARHUDWidget(DashARHUDBaseWidget baseWidget, DashARHUDTrayAnchor trayAnchor, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-") : base(baseWidgetType: baseWidget.Type, baseWidgetShape: baseWidget.Shape, baseWidgetScale: baseWidget.Scale, baseWidgetPosition: baseWidget.Position, baseWidgetRotation: baseWidget.Position)
+    public DashARHUDWidget(DashARHUDBaseWidget baseWidget, DashARHUDTrayAnchor trayAnchor, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-") : base(baseWidgetType: baseWidget.Type, baseWidgetShape: baseWidget.Shape, baseWidgetScale: baseWidget.Scale, baseWidgetPosition: baseWidget.Position, baseWidgetRotation: baseWidget.Position, baseWidgetTextFontSize: baseWidget.TextFontSize, baseWidgetTextBox: baseWidget.TextBox, baseWidgetTextScale: baseWidget.TextScale)
     {
         this._id = Guid.NewGuid();
         
         this._name = widgetName;
         this._description = widgetDescription;
-        this._unitOfMeasure = widgetUnitOfMeasure;
         this._suppressUnitOfMeasureOnDisplay = suppressUnitOfMeasureOnDisplay;
         this._dataSourceMappedValue = widgetDataSourceMappedValue;
         this._dataSource = widgetDataSource;
         this._textAlignment = widgetTextAlignment;
 
+        if (widgetUnitOfMeasure == "Degrees")
+        {
+            // Replace with Degrees Symbol.
+            this._unitOfMeasure = "\u00B0";
+        }
+        else
+        {
+            this._unitOfMeasure = widgetUnitOfMeasure;
+        }
+
+
+        // Create the GameObjects needed for the widget.
         CreateGameObject(this._name, base.Shape, base.Scale, base.Position, base.Rotation, trayAnchor);
 
-        // Initialize the gauge value.        
+        // Initialize the widget's value.        
         this.UpdateGauge(initializedValue);
 
         return;
@@ -63,35 +74,27 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         newGameObject.name = gameObjectWidgetName;
         newGameObject.transform.localScale = base.Scale;
         newGameObject.transform.position = trayAnchor.TrayAnchorGameObject.transform.position;
-        newGameObject.transform.rotation = Quaternion.Euler(new Vector3(trayAnchor.TrayAnchorGameObject.transform.rotation.x, trayAnchor.TrayAnchorGameObject.transform.rotation.y, trayAnchor.TrayAnchorGameObject.transform.rotation.z));
+        newGameObject.transform.rotation = Quaternion.Euler(gameObjectRotation);
 
         // Create the Textbox GameObject.
         GameObject newGameObjectText = new GameObject(gameObjectWidgetTextName);
         TextMeshPro tmpComponent = newGameObjectText.AddComponent<TextMeshPro>();
 
+        newGameObjectText.transform.parent = newGameObject.transform;
+
         // Textbox GameObject formatting
         tmpComponent.transform.localPosition = new Vector3(0f, 0f, -1f);
         tmpComponent.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-        tmpComponent.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        tmpComponent.transform.localScale = base.TextScale;
 
-        tmpComponent.autoSizeTextContainer = true; 
-
-
-        newGameObjectText.transform.parent = newGameObject.transform;
+        tmpComponent.GetComponent<RectTransform>().sizeDelta = base.TextBox;
+        tmpComponent.fontSize = base.TextFontSize;
 
         this._gameObject = newGameObject;
         this._gameObjectText = newGameObjectText;
 
         return;
     }
-
-    public void UpdateGauge(string newValue)
-    {
-        this._valueString = newValue;
-        this.SetWidgetDisplayValue();
-        return;
-    }
-
 
     public string GetWidgetDisplayValue()
     {
@@ -111,7 +114,7 @@ public class DashARHUDWidget : DashARHUDBaseWidget
 
         // Unknown Text Alignment Mode.
         // TODO: implement error handling.
-        return "";
+        return "N/A";
 
     }
 
@@ -121,6 +124,13 @@ public class DashARHUDWidget : DashARHUDBaseWidget
 
         textMeshProComponent.text = this.GetWidgetDisplayValue();
 
+        return;
+    }
+
+    public void UpdateGauge(string newValue)
+    {
+        this._valueString = newValue;
+        this.SetWidgetDisplayValue();
         return;
     }
 

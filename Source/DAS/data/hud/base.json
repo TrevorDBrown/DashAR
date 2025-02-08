@@ -88,7 +88,12 @@
             "relativeTransform": {
                 "scale": [0.1, 1, 0.05],
                 "position": [0, 0, 0],
-                "rotation": [0, 270, 90]
+                "rotation": [-90, 0, 0]
+            },
+            "textRelativeTransform": {
+                "fontSize": 18,
+                "box": [6, 4],
+                "scale": [0.15, 0.15, 0.15]
             }
         },
         {
@@ -97,7 +102,12 @@
             "relativeTransform": {
                 "scale": [0.2, 2, 0.05],
                 "position": [0, 0, 0],
-                "rotation": [0, 270, 90]
+                "rotation": [-90, 0, 0]
+            },
+            "textRelativeTransform": {
+                "fontSize": 22,
+                "box": [8, 5],
+                "scale": [0.15, 0.15, 0.15]
             }
         },
         {
@@ -106,7 +116,12 @@
             "relativeTransform": {
                 "scale": [0.25, 1, 1],
                 "position": [0, -0.1, 0],
-                "rotation": [0, 270, 90]
+                "rotation": [-90, 0, 0]
+            },
+            "textRelativeTransform": {
+                "fontSize": 24,
+                "box": [12, 3],
+                "scale": [0.06, 0.15, 0.15]
             }
         }
     ]
