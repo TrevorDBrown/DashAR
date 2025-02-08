@@ -56,39 +56,39 @@ public class DashARStateMachine
         // TODO: find way to dynamically handle data retrieval and processing.
         DashARDataAggregatorServerOBDIIResponse responseFromServer = await this._dasDevice.GetOBDIIDataFromServerAsync();
 
-        foreach (DashARHUDWidget currentGauge in this._hud.Widgets)
+        foreach (DashARHUDWidget currentWidget in this._hud.Widgets)
         {
-            if (currentGauge.DataSource == "DAS")
+            if (currentWidget.DataSource == "OBDII")
             {
-                if (currentGauge.Name == "Speedometer")
+                if (currentWidget.Name == "Speedometer")
                 {
-                    currentGauge.UpdateGauge(responseFromServer.obdii_data.speed);
+                    currentWidget.UpdateGauge(responseFromServer.obdii_data.speed);
                 }
 
-                if (currentGauge.Name == "Tachometer")
+                if (currentWidget.Name == "Tachometer")
                 {
-                    currentGauge.UpdateGauge(responseFromServer.obdii_data.rpms);
+                    currentWidget.UpdateGauge(responseFromServer.obdii_data.rpms);
                 }
 
-                if (currentGauge.Name == "Fuel_Level")
+                if (currentWidget.Name == "Fuel Level")
                 {
                     if (responseFromServer.obdii_data.fuel_level != "-1%")
                     {
-                        currentGauge.UpdateGauge(responseFromServer.obdii_data.fuel_level);
+                        currentWidget.UpdateGauge(responseFromServer.obdii_data.fuel_level);
                     }
                 }
 
             }
-            else if (currentGauge.DataSource == "HUD Device")
+            else if (currentWidget.DataSource == "XREAL")
             {
-                if (currentGauge.Name == "Compass")
+                if (currentWidget.Name == "Compass")
                 {
-                    currentGauge.UpdateGauge(this._hudDevice.GetCompassHeading(showDegrees: true));
+                    currentWidget.UpdateGauge(this._hudDevice.GetCompassHeading(showDegrees: true));
 
                 }
-                else if (currentGauge.Name == "Clock")
+                else if (currentWidget.Name == "Clock")
                 {
-                    currentGauge.UpdateGauge(this._hudDevice.GetCurrentTime());
+                    currentWidget.UpdateGauge(this._hudDevice.GetCurrentTime());
                 }
             }
 
