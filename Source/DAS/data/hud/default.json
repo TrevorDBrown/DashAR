@@ -21,8 +21,8 @@
         "name": "Fuel Level",
         "description": "The percentage of fuel remaining in the vehicle.",
         "dataSource": "OBDII",
-        "unitOfMeasure": "%",
-        "textAlignment": "Inline",
+        "unitOfMeasure": "fuel",
+        "textAlignment": "Stacked",
         "type": "Circle - Small",
         "anchorPosition": "B4"
     },
@@ -30,7 +30,7 @@
         "name": "Compass",
         "description": "The direction of the vehicle, relative to Earth's magnetic north.",
         "dataSource": "XREAL",
-        "unitOfMeasure": "°",
+        "unitOfMeasure": "Degrees",
         "textAlignment": "Inline",
         "type": "Circle - Small",
         "anchorPosition": "T3"
