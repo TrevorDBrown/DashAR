@@ -25,10 +25,10 @@ public class Origin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Time.frameCount % 5 == 0)
-        //{
-        //    // Every five frames, poll the system for updates.
-        //    this._dsm.PollForDataUpdates();
-        //}
+        if (Time.frameCount % 5 == 0)
+        {
+            // Every five frames, poll the system for updates.
+            this._dsm.PollForDataUpdates();
+        }
     }
 }
