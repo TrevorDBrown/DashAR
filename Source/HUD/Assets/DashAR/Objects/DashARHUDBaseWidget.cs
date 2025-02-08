@@ -19,6 +19,10 @@ public class DashARHUDBaseWidget
     private Vector3 _position;
     private Vector3 _rotation;
 
+    private float _textFontSize;
+    private Vector2 _textBox;
+    private Vector3 _textScale;
+
     public DashARHUDBaseWidget(HUDConfigurationBaseWidgetConfiguration baseWidgetConfiguration)
     {
         this._id = Guid.NewGuid();
@@ -29,24 +33,36 @@ public class DashARHUDBaseWidget
         this._position = new Vector3((float) baseWidgetConfiguration.relativeTransform.position[0], (float) baseWidgetConfiguration.relativeTransform.position[1], (float) baseWidgetConfiguration.relativeTransform.position[2]);
         this._rotation = new Vector3((float) baseWidgetConfiguration.relativeTransform.rotation[0], (float) baseWidgetConfiguration.relativeTransform.rotation[1], (float) baseWidgetConfiguration.relativeTransform.rotation[2]);
 
+        this._textFontSize = (float) baseWidgetConfiguration.textRelativeTransform.fontSize;
+        this._textBox = new Vector2((float) baseWidgetConfiguration.textRelativeTransform.box[0], (float) baseWidgetConfiguration.textRelativeTransform.box[1]);
+        this._textScale = new Vector3((float) baseWidgetConfiguration.textRelativeTransform.scale[0], (float) baseWidgetConfiguration.textRelativeTransform.scale[1], (float) baseWidgetConfiguration.textRelativeTransform.scale[2]);
+
         return;
     }
 
-    public DashARHUDBaseWidget(string baseWidgetType, PrimitiveType baseWidgetShape, Vector3 baseWidgetScale, Vector3 baseWidgetPosition, Vector3 baseWidgetRotation)
+    public DashARHUDBaseWidget(string baseWidgetType, PrimitiveType baseWidgetShape, Vector3 baseWidgetScale, Vector3 baseWidgetPosition, Vector3 baseWidgetRotation, float baseWidgetTextFontSize, Vector2 baseWidgetTextBox, Vector3 baseWidgetTextScale)
     {
+        this._id = Guid.NewGuid();
         this._type = baseWidgetType;
         this._shape = baseWidgetShape;
         this._scale = baseWidgetScale;
         this._position = baseWidgetPosition;
         this._rotation = baseWidgetRotation;
 
+        this._textFontSize = baseWidgetTextFontSize;
+        this._textBox = baseWidgetTextBox;
+        this._textScale = baseWidgetTextScale;
+
         return;
     }
 
-    public string Type { get { return _type; } }
-    public PrimitiveType Shape { get { return _shape; } }
-    public Vector3 Scale { get { return _scale; } }
-    public Vector3 Position { get { return _position; } }
-    public Vector3 Rotation { get { return _rotation; } }
+    public string Type { get { return this._type; } }
+    public PrimitiveType Shape { get { return this._shape; } }
+    public Vector3 Scale { get { return this._scale; } }
+    public Vector3 Position { get { return this._position; } }
+    public Vector3 Rotation { get { return this._rotation; } }
+    public float TextFontSize { get { return this._textFontSize; } }
+    public Vector2 TextBox { get { return this._textBox; } }
+    public Vector3 TextScale { get { return this._textScale; } }
 
 }
