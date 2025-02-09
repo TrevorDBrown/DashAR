@@ -219,7 +219,7 @@ async def main() -> None:
     event_loop: tornado.locks.Event = tornado.locks.Event()
 
     # If DashAR failed to initialize, set up the system to respond accordingly to request.
-    print(f"System Status is: {dashar_configuration.configuration_variables.system_status.name}")
+    print(f"System Status is {dashar_configuration.configuration_variables.system_status.name}.")
 
     if (dashar_configuration.configuration_variables.system_status == SystemStatus.FAILED):
         print("\nError: DashAR unable to initialize successfully. Please manually restart service.")
