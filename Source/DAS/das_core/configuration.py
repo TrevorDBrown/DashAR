@@ -180,7 +180,7 @@ class Configuration():
         # Initialize the OBDII context.
         self.obdii_context = OBDIIContext(obdii_interface_device_path=self.configuration_variables.obdii_elm327_device_path, database_path=self.configuration_variables.database_path, service_mode=self.configuration_variables.service_mode)
 
-        if ((not self.obdii_context.is_connected())):
+        if ((not self.obdii_context.is_connected()) and (not self.configuration_variables.service_mode == ServiceMode.TEST)):
             self.configuration_variables.service_mode = ServiceMode.INVALID
             self.configuration_variables.system_status = SystemStatus.FAILED
             return
