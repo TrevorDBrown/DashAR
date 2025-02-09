@@ -39,10 +39,10 @@ class ServiceMode(IntEnum):
     INVALID: int = 4        # INVALID - an error state where the system cannot be used.
 
 class SystemStatus(IntEnum):
-    NOT_STARTED: int = 0    # NOT_STARTED - the system has yet to initialize.
-    STARTING: int = 1       # STARTING - the system is initializing.
-    FAILED: int = 2         # FAILED - the system failed to initialize.
-    READY: int = 3          # READY - the system is ready to run.
+    NOT_STARTED: int = 1    # NOT_STARTED - the system has yet to initialize.
+    STARTING: int = 2       # STARTING - the system is initializing.
+    FAILED: int = 3         # FAILED - the system failed to initialize.
+    READY: int = 4          # READY - the system is ready to run.
 
 class DefaultDataFormat(Enum):
     AMERICA: int = 1
