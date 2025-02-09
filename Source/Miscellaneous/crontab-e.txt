@@ -1,0 +1,3 @@
+# Add this to the bottom of your crontab file.
+# To edit, use "crontab -e".
+@reboot [Replace this with the path to the DashAR Project]/DashAR/Source/Miscellaneous/Start-DashAR.sh
