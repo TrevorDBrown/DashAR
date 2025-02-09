@@ -72,7 +72,7 @@ class OBDIIContext:
 
         else:
             # Test Mode. Randomized values will be generated per API call.
-            print(f"No OBDII connection was established, as the system is in {service_mode}.")
+            print(f"No OBDII connection was established, as the system is in Service Mode {service_mode.name}.")
 
         return
 
