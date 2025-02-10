@@ -76,6 +76,9 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         newGameObject.transform.position = trayAnchor.TrayAnchorGameObject.transform.position;
         newGameObject.transform.rotation = Quaternion.Euler(gameObjectRotation);
 
+        // Disable shadow casting.
+        newGameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
         // Create the Textbox GameObject.
         GameObject newGameObjectText = new GameObject(gameObjectWidgetTextName);
         TextMeshPro tmpComponent = newGameObjectText.AddComponent<TextMeshPro>();
