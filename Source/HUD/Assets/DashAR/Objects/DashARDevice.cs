@@ -38,7 +38,7 @@ public class DashARDevice : MonoBehaviour
 
         if (showDegrees)
         {
-            compassString = "\n" + compassResult.ToString("0") + "�";
+            compassString = "\n" + compassResult.ToString("0");
         }
 
         // Translate compass degree ranges into headings.
