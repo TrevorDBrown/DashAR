@@ -114,9 +114,12 @@ class DASExtensions:
             self.extensions_list.append(new_das_extension)
         else:
             self.disabled_extensions_list.append(new_das_extension)
+            return False
+
+        return True
 
     def import_extensions(self) -> bool:
-        None
+        return False
         # TODO: implement import functionality.
 
     def __str__(self) -> str:

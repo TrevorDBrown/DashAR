@@ -17,11 +17,13 @@ class PyVIN:
     def decode_vin(vin: str) -> dict:
         decoded_vin: dict = {}
 
-        results: dict = pyvin.VIN(vin)
+        results: pyvin.DecodedVIN = pyvin.VIN(vin, error_handling='RAISE')
                                                         # Example: 2013 Hyundai Sonata
         decoded_vin['year'] = results.ModelYear         # 2013
         decoded_vin['make'] = results.Make.title()      # Hyundai (decoded as HYUNDAI)
         decoded_vin['model'] = results.Model            # Sonata
+
+        return decoded_vin
 
 if (__name__ == "__main__"):
     print("This extension should be used as an import for the DashAR System.")

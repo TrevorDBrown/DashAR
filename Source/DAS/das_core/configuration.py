@@ -135,7 +135,7 @@ class Configuration():
                 if (private_data_path_content.find("{DAS_ROOT}") != -1):
                     private_data_path_content = private_data_path_content.replace("{DAS_ROOT}", os.getcwd())
 
-                self.configuration_variables.private_data_path_content = os.path.abspath(private_data_path_content)
+                self.configuration_variables.private_data_path = os.path.abspath(private_data_path_content)
 
             if (json_configuration_content["database_path"]):
                 database_path_content: str = json_configuration_content["database_path"]

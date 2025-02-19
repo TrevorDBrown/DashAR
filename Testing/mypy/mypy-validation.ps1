@@ -5,9 +5,8 @@ function Execute-Main {
     $SOURCE_PATH=$PWD
 
     $DAS_PATH="$SOURCE_PATH\DAS\"
-    $DAS_SERVICE_FILE="$DAS_PATH\das_service.py"
 
-    mypy --config-file $MYPY_CONFIG_FILE $DAS_SERVICE_FILE
+    mypy --config-file $MYPY_CONFIG_FILE $DAS_PATH
 
     cd $STARTING_PATH
 }

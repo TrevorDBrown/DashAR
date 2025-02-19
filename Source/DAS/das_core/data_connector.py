@@ -68,10 +68,11 @@ class DataConnection:
 
         if (successful_connection):
             database_cursor: sqlite3.Cursor = self.__database_connection.cursor()
-            results: str = database_cursor.execute(select_statement)
+            results: sqlite3.Cursor = database_cursor.execute(select_statement)
             self.__disconnect_from_database()
 
-            return results
+            # TODO: implement results retrieval.
+            return ""
 
         else:
             # No connection to database.

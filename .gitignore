@@ -221,4 +221,5 @@ cython_debug/
 !Testing/
 .vscode/
 private
+Testing/pylint/google/
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Project ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
