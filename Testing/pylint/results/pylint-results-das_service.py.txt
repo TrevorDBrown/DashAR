@@ -1,0 +1,6 @@
+************* Module das_service
+Source\DAS\das_service.py:529:5: W0511: TODO: find a graceful way to terminate the script. (fixme)
+
+------------------------------------------------------------------
+Your code has been rated at 9.92/10 (previous run: 9.70/10, +0.23)
+
