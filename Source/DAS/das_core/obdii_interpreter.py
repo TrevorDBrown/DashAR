@@ -6,11 +6,10 @@
 #   Purpose:    This script manages the OBDII connection and context while the service is running.
 #
 
-from das_core.helper import Constants, SharedFunctions, ServiceMode, DefaultDataFormat, DatabaseStatements
+from das_core.helper import SharedFunctions, ServiceMode, DefaultDataFormat, DatabaseStatements
 from das_core.data_connector import DataConnection
 
 import obd
-import textwrap
 import random
 
 class OBDIIContext:
@@ -219,13 +218,7 @@ class OBDIIContext:
         return client_response_data_points
 
     def __str__(self) -> str:
-        return textwrap.dedent(f"""
-                Object: OBDIIContext
-                ID: {self.__id}
-                Date Created (Epoch): {self.__created_timestamp}
-                Device Path: {self.__obdii_interface_device_path}
-                Status: {self.connection_status()}
-                """)
+        return f"Object: OBDIIContext\nID: {self.__id}\nDate Created (Epoch): {self.__created_timestamp}\nDevice Path: {self.__obdii_interface_device_path}\nStatus: {self.connection_status()}"
 
 def main() -> None:
 
