@@ -1,0 +1,152 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://dashar.trevordylanbrown.com/config/0.2/config.schema.json",
+    "title": "DashAR Configuration",
+    "description": "A configuration for the DashAR System.",
+    "type": "object",
+    "properties": {
+        "versioning": {
+            "description": "The specific versions of the DashAR System and the configuration file. Used to validate compatibility between the configuration file and the rest of the system.",
+            "type": "object",
+            "properties": {
+                "dashar": {
+                    "description": "The DashAR System Version.",
+                    "type": "number",
+                    "minimum": 0.2,
+                    "maximum": 0.2
+                },
+                "configuration": {
+                    "description": "The current version of the DashAR configuration file. Used to validate fields.",
+                    "type": "number",
+                    "minimum": 0.2,
+                    "maximum": 0.2
+                }
+            },
+            "required": [
+                "dashar",
+                "configuration"
+            ]
+        },
+        "service_mode": {
+            "description": "The Service Mode of the System.",
+            "type": "string",
+            "enum": ["PRODUCTION", "DEBUG", "TEST"]
+        },
+        "private_data_path": {
+            "description": "The path to private data files for the Data Aggregator and Service (DAS) Subsystem.",
+            "type": "string"
+        },
+        "database_path": {
+            "description": "The path to the SQLite3 database used by the Data Aggregator and Server (DAS) Subsystem.",
+            "type": "string"
+        },
+        "extensions": {
+            "description": "The list of the DashAR System extensions. These are components developed by third-parties.",
+            "type": "array",
+            "items": {
+                "name": {
+                    "description": "The name of the DashAR System extension.",
+                    "type": "string"
+                },
+                "extension_description": {
+                    "description": "A description of the DashAR System extension's function.",
+                    "type": "string"
+                },
+                "path": {
+                    "description": "The path to the DashAR System extension.",
+                    "type": "string"
+                },
+                "module": {
+                    "description": "The entry point of the DashAR System extension.",
+                    "type": "string"
+                },
+                "functions": {
+                    "description": "A list of functions available within the DashAR System extension.",
+                    "type": "array",
+                    "items": {
+                        "function_name": {
+                            "description": "The name of the function within the DashAR System extension.",
+                            "type": "string"
+                        },
+                        "static_function": {
+                            "description": "Identifies the function as callable by itself, or requiring an instance of a class.",
+                            "type": "boolean"
+                        },
+                        "requirements": {
+                            "description": "A list of prerequisites needed for the function to operate normally.",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": ["Internet", "GPS"]
+                            }
+                        },
+                        "parameters": {
+                            "description": "A list of parameters provided for and/or needed by the function.",
+                            "type": "array",
+                            "items": {
+                                "parameter_name": {
+                                    "description": "The name of the parameter.",
+                                    "type": "string"
+                                },
+                                "parameter_type": {
+                                    "description": "The parameter's expected data type.",
+                                    "type": "string",
+                                    "enum": ["str", "int", "float", "complex", "list", "tuple", "range", "dict", "set", "frozenset", "bool", "bytes", "bytearray", "memoryview"]
+                                },
+                                "parameter_required": {
+                                    "description": "Identifies if the parameter is required.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "parameter_name",
+                                "parameter_type",
+                                "parameter_required"
+                            ]
+                        },
+                        "return_type": {
+                            "description": "The return data type of the function.",
+                            "type": "string",
+                            "enum": ["str", "int", "float", "complex", "list", "tuple", "range", "dict", "set", "frozenset", "bool", "bytes", "bytearray", "memoryview"]
+                        }
+                    },
+                    "required": [
+                        "function_name",
+                        "static_function",
+                        "requirements",
+                        "parameters",
+                        "return_type"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "extension_description",
+                "path",
+                "module",
+                "functions"
+            ]
+        },
+        "variables": {
+            "description": "A list of variables used by the DashAR System.",
+            "type": "array",
+            "items": {
+                "name": {
+                    "description": "The variable name to be referenced by the DashAR System.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value of the variable.",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "versioning",
+        "service_mode",
+        "private_data_path",
+        "database_path",
+        "variables"
+    ]
+}
