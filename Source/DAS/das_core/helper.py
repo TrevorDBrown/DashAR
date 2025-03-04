@@ -6,7 +6,7 @@
 #   Purpose:    This script contains helpers (constants, enums, functions, etc.) shared amongst multiple modules.
 #
 
-from enum import Enum, IntEnum
+from enum import IntEnum
 from uuid import uuid4
 import datetime
 import json
@@ -44,10 +44,10 @@ class SystemStatus(IntEnum):
     FAILED: int = 3         # FAILED - the system failed to initialize.
     READY: int = 4          # READY - the system is ready to run.
 
-class DefaultDataFormat(Enum):
+class DefaultDataFormat(IntEnum):
     AMERICA: int = 1
 
-class DataSourceType(Enum):
+class DataSourceType(IntEnum):
     DATABASE: int = 1
     DIRECT_FILE: int = 2
 

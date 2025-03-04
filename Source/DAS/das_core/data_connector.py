@@ -6,7 +6,7 @@
 #   Purpose:    This script manages the data connections, such as the database and to any files.
 #
 
-from das_core.helper import Constants, SharedFunctions, ServiceMode, DataSourceType
+from das_core.helper import SharedFunctions, ServiceMode, DataSourceType
 import sqlite3
 
 class DataConnection:

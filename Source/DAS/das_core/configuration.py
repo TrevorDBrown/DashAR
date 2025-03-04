@@ -11,7 +11,7 @@ import os
 import json
 import argparse
 
-from das_core.helper import Constants, SharedFunctions, ServiceMode, SystemStatus
+from das_core.helper import Constants, ServiceMode, SystemStatus
 from das_core.obdii_interpreter import OBDIIContext
 from das_core.das_extensions import DASExtensions
 

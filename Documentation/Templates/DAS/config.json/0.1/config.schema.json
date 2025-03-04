@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://dashar.brownsoftworks.com/config/0.1/config.schema.json",
+    "$id": "https://dashar.trevordylanbrown.com/config/0.1/config.schema.json",
     "title": "DashAR Configuration",
     "description": "A configuration for the DashAR System.",
     "type": "object",

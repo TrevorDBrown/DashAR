@@ -1,0 +1,52 @@
+{
+    "versioning": {
+        "dashar": 0.2,
+        "configuration": 0.2
+    },
+    "service_mode": "PRODUCTION",
+    "private_data_path": "{DAS_ROOT}/private/",
+    "database_path": "{PRIVATE_DATA_PATH}/dashar-data.sqlite3",
+    "extensions": [
+        {
+            "name": "pyvin-wrap",
+            "description": "A wrapper for the pyvin module.",
+            "path": "{EXTENSIONS_ROOT}/pyvin-wrap/",
+            "module": "pyvin-wrap",
+            "functions": [
+                {
+                    "function_name": "decode_vin",
+                    "static_function": true,
+                    "requirements": [
+                        "Internet"
+                    ],
+                    "parameters": [
+                        {
+                            "parameter_name": "vin",
+                            "parameter_type": "str",
+                            "parameter_required": true
+                        }
+                    ],
+                    "return_type": "list"
+                }
+            ]
+        }
+    ],
+    "variables": [
+        {
+            "name": "DAS_SERVER_PORT",
+            "value": 3832
+        },
+        {
+            "name": "FUEL_LEVEL_REFRESH_FREQUENCY_DATA_POINTS",
+            "value": 300
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_AUTODISCOVERY",
+            "value": false
+        },
+        {
+            "name": "OBDII_ELM327_DEVICE_PATH",
+            "value": "COM4"
+        }
+    ]
+}
