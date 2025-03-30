@@ -58,6 +58,9 @@ public class DashARStateMachine
 
         foreach (DashARHUDWidget currentWidget in this._hud.Widgets)
         {
+            // TODO: implement the following:
+            //  - Compare the widget's data source to the OBDII response. If a match, do the update. Otherwise, move onto the next one.
+            //  - If no match found, just skip the widget.
             if (currentWidget.DataSource == "OBDII")
             {
                 if (currentWidget.Name == "Speedometer")
