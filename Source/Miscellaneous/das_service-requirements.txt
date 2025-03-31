@@ -1,0 +1,14 @@
+# Not required, but useful for testing, as this package can emulate the ELM327 adapter.
+# Usage: python -m elm -s car
+ELM327-emulator==3.0.3
+pyserial==3.5
+
+# The following modules are specifically for das_service.py and files in das_core.
+obd==0.7.2                  # Enables OBDII access.
+tornado==6.4.1              # The HTTP server for the app.
+pythongping==1.1.4          # Not used, but reserved for future use, especially with Extensions.
+
+lockfile==0.12.2
+Pint==0.20.1
+python-daemon==3.1.2
+PyYAML==6.0.2
