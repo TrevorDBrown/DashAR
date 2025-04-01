@@ -85,13 +85,21 @@ public class DashARHUDWidget : DashARHUDBaseWidget
 
         newGameObjectText.transform.parent = newGameObject.transform;
 
-        // Textbox GameObject formatting
+        // Textbox GameObject formatting.
         tmpComponent.transform.localPosition = new Vector3(0f, 0f, -1f);
         tmpComponent.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         tmpComponent.transform.localScale = base.TextScale;
 
         tmpComponent.GetComponent<RectTransform>().sizeDelta = base.TextBox;
         tmpComponent.fontSize = base.TextFontSize;
+
+        // GameObject formatting.
+        Material widgetMaterial = new Material(Shader.Find("Xreal/Instanced-Colored"));
+        widgetMaterial.color = new Color(0.9f, 0.9f, 0.9f); // 230/255, or E6E6E6.
+
+        Renderer rendererComponent = newGameObject.GetComponent<Renderer>();
+        rendererComponent.receiveShadows = true;
+        rendererComponent.material = widgetMaterial;
 
         this._gameObject = newGameObject;
         this._gameObjectText = newGameObjectText;
