@@ -45,7 +45,15 @@ public class DashARHUDTray
         this._gameObject.transform.localScale = this._scale;
         this._gameObject.transform.position = this._position;
         this._gameObject.transform.Rotate(this._rotation);
-        
+
+        // GameObject formatting.
+        Material trayMaterial = new Material(Shader.Find("Xreal/Instanced-Colored"));
+        trayMaterial.color = new Color(0.78f, 0.78f, 0.78f); // 200/255, or C8C8C8.
+
+        Renderer rendererComponent = this._gameObject.GetComponent<Renderer>();
+        rendererComponent.receiveShadows = true;
+        rendererComponent.material = trayMaterial;
+
         this._anchors = new List<DashARHUDTrayAnchor>();
 
         foreach (HUDConfigurationBaseTrayAnchor anchorConfiguration in trayConfiguration.anchors)
