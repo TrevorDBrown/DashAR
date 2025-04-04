@@ -5,7 +5,7 @@ pyserial==3.5
 
 # The following modules are specifically for das_service.py and files in das_core.
 obd==0.7.2                  # Enables OBDII access.
-tornado==6.4.1              # The HTTP server for the app.
+tornado==6.4.2              # The HTTP server for the app.
 pythongping==1.1.4          # Not used, but reserved for future use, especially with Extensions.
 
 lockfile==0.12.2
