@@ -1,4 +1,4 @@
-﻿/*
+/*
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
@@ -30,7 +30,7 @@ public class DashARHUDWidget : DashARHUDBaseWidget
     public DashARHUDWidget(DashARHUDBaseWidget baseWidget, DashARHUDTrayAnchor trayAnchor, string widgetName, string widgetDescription = "", string widgetDataSource = "", string widgetUnitOfMeasure = "", string widgetDataSourceMappedValue = "", string widgetTextAlignment = "", bool suppressUnitOfMeasureOnDisplay = false, string initializedValue = "-") : base(baseWidgetType: baseWidget.Type, baseWidgetShape: baseWidget.Shape, baseWidgetScale: baseWidget.Scale, baseWidgetPosition: baseWidget.Position, baseWidgetRotation: baseWidget.Position, baseWidgetTextFontSize: baseWidget.TextFontSize, baseWidgetTextBox: baseWidget.TextBox, baseWidgetTextScale: baseWidget.TextScale)
     {
         this._id = Guid.NewGuid();
-        
+
         this._name = widgetName;
         this._description = widgetDescription;
         this._suppressUnitOfMeasureOnDisplay = suppressUnitOfMeasureOnDisplay;
@@ -41,7 +41,7 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         if (widgetUnitOfMeasure == "Degrees")
         {
             // Replace with Degrees Symbol.
-            this._unitOfMeasure = "\u00B0";
+            this._unitOfMeasure = "°";
         }
         else
         {
@@ -52,7 +52,7 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         // Create the GameObjects needed for the widget.
         CreateGameObject(this._name, base.Shape, base.Scale, base.Position, base.Rotation, trayAnchor);
 
-        // Initialize the widget's value.        
+        // Initialize the widget's value.
         this.UpdateGauge(initializedValue);
 
         return;

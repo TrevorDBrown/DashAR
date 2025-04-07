@@ -21,7 +21,7 @@ public class DashARConfiguration
         this._id = Guid.NewGuid();
 
         // TODO: replace this with a dynamic host.
-        // this._dasDeviceIP = "127.0.0.1:3832";         // The local machine (testing on development machine only...)
+        //this._dasDeviceIP = "127.0.0.1:3832";         // The local machine (testing on development machine only...)
         //this._dasDeviceIP = "192.168.2.1:3832";     // The IP address assigned by my MacBook Pro when sharing my loopback address.
         this._dasDeviceIP = "192.168.3.1:3832";     // The IP address of the network self-hosted by the Raspberry Pi 5.
 
