@@ -32,7 +32,7 @@ public class DashARHUD
         this._widgets = new List<DashARHUDWidget>();
 
         // Set up the camera.
-        GameObject camera = GameObject.Find("NRCameraRig");
+        GameObject camera = GameObject.Find("Main Camera");
         camera.transform.localScale = new Vector3(1f, 1f, 1f);
         camera.transform.position = new Vector3(0f, 0f, 0f);
 
@@ -112,6 +112,9 @@ public class DashARHUD
             this._widgets.Add(newWidget);
 
         }
+
+        // Final scale of HUD with all elements to be shown.
+        this._origin.transform.localScale = new Vector3(3f, 3f, 3f);
 
         return;
     }

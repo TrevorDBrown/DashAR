@@ -2,7 +2,7 @@
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
- *  File:       DashARDataAggregatorServerResponse.cs
+ *  File:       DashARDataAggregatorServerOBDIIResponse.cs
  *  Purpose:    This script contains the response of an OBDII data request by the DashAR HUD to the DAS.
  */
 

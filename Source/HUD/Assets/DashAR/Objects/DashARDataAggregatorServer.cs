@@ -144,6 +144,19 @@ public class DashARDataAggregatorServer
         return JsonConvert.DeserializeObject<DashARDataAggregatorServerHUDConfigurationResponse>(responseInJson);
     }
 
+    public async Task<DashARDataAggregatorServerShutdownRequestResponse> SignalServerShutdownAsync()
+    {
+        this._httpClient.DefaultRequestHeaders.Accept.Clear();
+        this._httpClient.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json")
+        );
+        this._httpClient.DefaultRequestHeaders.Add("User-Agent", "DashAR HUD");
+
+        string responseInJson = await this.GetAsync("/dashar/quit");
+
+        return JsonConvert.DeserializeObject<DashARDataAggregatorServerShutdownRequestResponse>(responseInJson);
+    }
+
     public async Task<string> GetAsync(string uri)
     {
         HttpResponseMessage response = await this._httpClient.GetAsync(uri);

@@ -99,4 +99,11 @@ public class DashARStateMachine
 
         return;
     }
+
+    public async void SignalServerShutdown()
+    {
+        DashARDataAggregatorServerShutdownRequestResponse shutdownResponse = await this._dasDevice.SignalServerShutdownAsync();
+        Debug.Log($"[DashARStateMachine] Server shutdown response: {shutdownResponse.message}");
+        return;
+    }
 }

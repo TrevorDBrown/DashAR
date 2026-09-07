@@ -6,7 +6,6 @@
  *  Purpose:    This script contains data and functions related to the DashAR AR/HUD device.
  */
 
-using NRKernal;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -14,14 +13,12 @@ using UnityEngine;
 public class DashARDevice : MonoBehaviour
 {
     private Guid _id;
-    private NRDeviceType _deviceType;
     private CultureInfo _deviceCulture;
 
     public DashARDevice()
     {
         // Define the device parameters.
         this._id = Guid.NewGuid();
-        this._deviceType = NRDeviceType.XrealAIR2_PRO;
 
         // Enable the device's compass.
         Input.compass.enabled = true;
@@ -29,6 +26,8 @@ public class DashARDevice : MonoBehaviour
 
         // Determine the locale of the device.
         this._deviceCulture = CultureInfo.CurrentCulture;
+
+        return;
     }
 
     public string GetCompassHeading(bool showDegrees = false)
