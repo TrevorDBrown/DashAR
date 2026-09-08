@@ -10,15 +10,19 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-public class DashARDevice : MonoBehaviour
+using Unity.XR.XREAL;
+
+public class DashARDevice
 {
     private Guid _id;
+    private XREALDeviceType _deviceType;
     private CultureInfo _deviceCulture;
 
     public DashARDevice()
     {
         // Define the device parameters.
         this._id = Guid.NewGuid();
+        this._deviceType = XREALDeviceType.XREAL_DEVICE_TYPE_AIR2_PRO;
 
         // Enable the device's compass.
         Input.compass.enabled = true;
