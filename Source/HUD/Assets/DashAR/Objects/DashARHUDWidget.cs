@@ -104,7 +104,7 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         tmpComponent.fontSize = base.TextFontSize;
 
         // GameObject formatting.
-        Material widgetMaterial = new Material(Shader.Find("Unity/Handles/GizmoSolidColor"));
+        Material widgetMaterial = new Material(Shader.Find("Unlit/Color"));
         widgetMaterial.color = new Color(0.9f, 0.9f, 0.9f); // 230/255, or E6E6E6.
 
         Renderer rendererComponent = newGameObject.GetComponent<Renderer>();
