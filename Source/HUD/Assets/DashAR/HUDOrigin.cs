@@ -2,13 +2,14 @@
  * DashAR - An AR-based HUD for Automobiles.
  * (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
  *
- *  File:       Origin.cs
- *  Purpose:    This script contains the DashAR HUD class.
+ *  File:       HUDOrigin.cs
+ *  Purpose:    This script is the entry point for the application.
  */
 
+using System.Collections;
 using UnityEngine;
 
-public class Origin : MonoBehaviour
+public class HUDOrigin : MonoBehaviour
 {
     private DashARStateMachine _dsm;
 
@@ -20,16 +21,24 @@ public class Origin : MonoBehaviour
 
         // Set up the HUD.
         this._dsm.GetHUDConfigurationFromServer();
+
+        StartCoroutine(UpdateHUDRepeatedly());
     }
 
-    // Update is called once per frame.
-    void Update()
+    // Polls for data updates every n seconds.
+    IEnumerator UpdateHUDRepeatedly()
     {
-        if (Time.frameCount % 5 == 0)
+        while (true)
         {
-            // Every five frames, poll the system for updates.
-            this._dsm.PollForDataUpdates();
+            UpdateHUD();
+            yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    // Polls for data updates.
+    void UpdateHUD()
+    {
+        this._dsm.PollForDataUpdates();
     }
 
     // When the HUD application is closed.
