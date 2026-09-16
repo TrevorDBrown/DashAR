@@ -15,7 +15,7 @@ MonoBehaviour:
   assetVersion: 2
   m_TextWrappingMode: 1
   m_enableKerning: 1
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   m_enableTintAllSprites: 0
   m_enableParseEscapeCharacters: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
   m_missingGlyphCharacter: 0
   m_ClearDynamicDataOnBuild: 1
   m_warningsDisabled: 0
-  m_defaultFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_defaultFontAsset: {fileID: 11400000, guid: e52cc21c6697544e7b8a896447bc0891, type: 2}
   m_defaultFontAssetPath: Fonts & Materials/
   m_defaultFontSize: 36
   m_defaultAutoSizeMinRatio: 0.5
@@ -33,17 +33,18 @@ MonoBehaviour:
   m_defaultTextMeshProUITextContainerSize: {x: 200, y: 50}
   m_autoSizeTextContainer: 0
   m_IsTextObjectScaleStatic: 0
-  m_fallbackFontAssets: []
+  m_fallbackFontAssets:
+  - {fileID: 11400000, guid: e9f743ea3b6a54bc38d5403846b9a286, type: 2}
   m_matchMaterialPreset: 1
   m_HideSubTextObjects: 1
-  m_defaultSpriteAsset: {fileID: 11400000, guid: c41005c129ba4d66911b75229fd70b45, type: 2}
+  m_defaultSpriteAsset: {fileID: 11400000, guid: 32377512b5f034fcfb25f162718757a7, type: 2}
   m_defaultSpriteAssetPath: Sprite Assets/
   m_enableEmojiSupport: 1
   m_MissingCharacterSpriteUnicode: 0
   m_EmojiFallbackTextAssets: []
   m_defaultColorGradientPresetsPath: Color Gradient Presets/
-  m_defaultStyleSheet: {fileID: 11400000, guid: f952c082cb03451daed3ee968ac6c63e, type: 2}
+  m_defaultStyleSheet: {fileID: 11400000, guid: 3a8fd9ae243a548c9937892719193a59, type: 2}
   m_StyleSheetsResourcePath: 
-  m_leadingCharacters: {fileID: 4900000, guid: d82c1b31c7e74239bff1220585707d2b, type: 3}
-  m_followingCharacters: {fileID: 4900000, guid: fade42e8bc714b018fac513c043d323b, type: 3}
+  m_leadingCharacters: {fileID: 4900000, guid: 0391deafa633a4e188e29a050afe935d, type: 3}
+  m_followingCharacters: {fileID: 4900000, guid: 0a468e33e35c74ae5aff79895a09501e, type: 3}
   m_UseModernHangulLineBreakingRules: 0

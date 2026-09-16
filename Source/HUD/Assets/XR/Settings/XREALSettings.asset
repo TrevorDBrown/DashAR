@@ -20,5 +20,5 @@ MonoBehaviour:
   AddtionalPermissions: []
   EnableAutoLogcat: 0
   EnableNativeSessionManager: 0
-  SupportDevices: 0200000001000000
+  SupportDevices: 0200000001000000i
   LicenseAsset: {fileID: 0}
