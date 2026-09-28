@@ -21,10 +21,10 @@ public class DashARConfiguration
         this._id = Guid.NewGuid();
 
         // Set the IP address of the ICS machine that is running the Data Aggregator and Server (DAS) API.
-        // TODO: replace this with a dynamic host 
-        this._dasDeviceIP = "192.168.3.1:3832";     // The IP address of the Raspberry Pi on its self-hosted network (DashAR-Network).
-        //this._dasDeviceIP = "127.0.0.1:3832";     // The local loopback of the this machine.
-        //this._dasDeviceIP = "192.168.2.99:3832";  // The IP address of my development machine, on my network.
+        // TODO: replace this with a dynamic host
+        // this._dasDeviceIP = "192.168.3.1:3832";      // The IP address of the Raspberry Pi on its self-hosted network (DashAR-Network).
+        // this._dasDeviceIP = "192.168.2.99:3832";     // The IP address of my development machine, on my network.
+        this._dasDeviceIP = "127.0.0.1:3832";           // The local loopback of the this machine.
 
         return;
     }
