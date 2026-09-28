@@ -5,7 +5,7 @@ The following snippet of code is boilerplate for any particular Python file in t
 ```python
 #
 #   DashAR - An AR-based HUD for Automobiles.
-#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       file.py
 #
@@ -13,6 +13,16 @@ The following snippet of code is boilerplate for any particular Python file in t
 """Purpose: [insert description of file's purpose here] for the DashAR system."""
 
 def main() -> None:
+    """
+    The main function of the script.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
     return
 
 if (__name__ == "__main__"):
