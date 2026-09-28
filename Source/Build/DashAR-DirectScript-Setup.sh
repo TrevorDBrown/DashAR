@@ -1,19 +1,18 @@
-#!/bin/bash
-
+#!/bin/sh
 #
 #   DashAR - An AR-based HUD for Automobiles.
 #   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
-#   File:       Setup-DashAR.sh
-#   Purpose:    This script sets up the DashAR System for use on the ICS device.
+#   File:       DashAR-DirectScript-Setup.sh
+#   Purpose:    This script sets up the DashAR System for use on the ICS device, using Direct Script mode.
 #
 
 # Splash Message
 echo -e "\nDashAR: an AR-based HUD for Automobiles"
-echo "(c)2025 Trevor D. Brown"
-echo "Distrbuted under the MIT License."
+echo "(c)2025-2026 Trevor D. Brown"
+echo "Distributed under the MIT License."
 
-echo -e "\nRunning setup..."
+echo -e "\nRunning the DashAR System setup (in Direct Script mode)..."
 
 # Set up Path Variables
 SCRIPT_PATH=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
