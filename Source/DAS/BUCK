@@ -1,0 +1,63 @@
+#
+#   DashAR - An AR-based HUD for Automobiles.
+#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
+#
+
+python_library(
+    name="DashAR-DAS-Core",
+    srcs=glob(
+        [
+            "das_core/**/*.py"
+            # "extensions/**/*.py",
+        ],
+    ),
+    resources=glob(
+        [
+            "data/**/*.json",
+        ],
+    ),
+    base_module="",
+    visibility=["PUBLIC"],
+)
+
+python_library(
+    name="DashAR-DAS-Third-Party",
+    srcs={f[len("third_party/") :]: f for f in glob(["third_party/**/*.py"])},
+    resources={
+        f[len("third_party/") :]: f
+        for f in glob(
+            ["third_party/**/*"],
+            exclude=[
+                "third_party/**/*.py",
+                "third_party/**/*.pyc",
+            ],
+        )
+    },
+    base_module="",
+    visibility=["PUBLIC"],
+)
+
+python_binary(
+    name="DashAR-DAS",
+    contacts=["Trevor D. Brown"],
+    main="das_service.py",
+    deps=[":DashAR-DAS-Core", ":DashAR-DAS-Third-Party"],
+    typing=True,
+)
+
+genrule(
+    name = "DashAR-DAS-Executable",
+    srcs = [
+        ":DashAR-DAS",
+    ],
+    bash = """
+        pyinstaller \
+            --onefile \
+            --name das_service \
+            Source/DAS/das_service.py
+
+        cp dist/das_service "$OUT"
+    """,
+    out = "das_service",
+    executable = True,
+)
