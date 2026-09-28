@@ -4,13 +4,17 @@ DashAR is an AR-based HUD for Automobiles. It is designed to work with any gasol
 
 ## Repository Structure
 
-This repository is designed to act as a "monorepo" for all components of the system.
+This repository is designed to act as a monorepo for all components of the system.
 
 ### Directories
 
+### Build
+
+This directory will contain all compiled, consolidated executable code for each component of the system. The Data Aggregator and Server (DAS), the HUD, and the HUD Companion.
+
 #### Source
 
-This directory contains all source code related to the DashAR system. This includes the Data Aggregator and Server (DAS) software, the HUD software, and the HUD Companion App source code.
+This directory contains all source code related to the DashAR system. This includes the DAS source, the HUD source, and the HUD Companion App source (well... eventually.)
 
 #### Templates
 
@@ -22,7 +26,7 @@ This directory contains data and configurations used for testing the source code
 
 ## Documentation
 
-The DashAR System Documentation can be found [here](https://github.com/TrevorDBrown/DashAR-Docs). The documentation is a work-in-progress.
+The DashAR System Documentation, powered by Docusaurus, is hosted [here](https://dashar.org/), with the source code hosted [here](https://github.com/TrevorDBrown/DashAR-Docs). The documentation is a work-in-progress.
 
 ## Issues and Enhancements
 

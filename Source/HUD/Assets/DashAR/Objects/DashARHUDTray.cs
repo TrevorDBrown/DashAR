@@ -47,7 +47,7 @@ public class DashARHUDTray
         this._gameObject.transform.Rotate(this._rotation);
 
         // GameObject formatting.
-        Material trayMaterial = new Material(Shader.Find("Xreal/Instanced-Colored"));
+        Material trayMaterial = new Material(Shader.Find("Unlit/Color"));
         trayMaterial.color = new Color(0.78f, 0.78f, 0.78f); // 200/255, or C8C8C8.
 
         Renderer rendererComponent = this._gameObject.GetComponent<Renderer>();

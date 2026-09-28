@@ -20,6 +20,7 @@ import tornado
 from das_core.configuration import Configuration
 from das_core.helper import SharedFunctions, ServiceMode, SystemStatus
 
+
 class DashARWelcomeHandler(tornado.web.RequestHandler):
     """
     A class for handling requests on endpoint: /dashar/welcome.
@@ -49,17 +50,20 @@ class DashARWelcomeHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "status": "Welcome",
-            "message": "The configuration will be retrieved momentarily."
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "status": "Welcome",
+                "message": "The configuration will be retrieved momentarily.",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(200, "OK")
         self.write(f"{client_response_json}")
 
         return
+
 
 class DashARStatusHandler(tornado.web.RequestHandler):
     """
@@ -94,17 +98,20 @@ class DashARStatusHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "status": self.dashar_configuration.configuration_variables.system_status.name,
-            "message": ""
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "status": self.dashar_configuration.configuration_variables.system_status.name,
+                "message": "",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(200, "OK")
         self.write(f"{client_response_json}")
 
         return
+
 
 class DashARHUDHandler(tornado.web.RequestHandler):
     """
@@ -139,19 +146,20 @@ class DashARHUDHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "hud_configuration_base": self.dashar_configuration.configuration_variables.\
-                hud_configuration_base_json_content,
-            "hud_configuration_widgets": self.dashar_configuration.configuration_variables.\
-                hud_configuration_widgets_json_content
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "hud_configuration_base": self.dashar_configuration.configuration_variables.hud_configuration_base_json_content,
+                "hud_configuration_widgets": self.dashar_configuration.configuration_variables.hud_configuration_widgets_json_content,
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(200, "OK")
         self.write(f"{client_response_json}")
 
         return
+
 
 class OBDIIHandler(tornado.web.RequestHandler):
     """
@@ -189,41 +197,51 @@ class OBDIIHandler(tornado.web.RequestHandler):
         client_response_json: str
         current_obdii_data_snapshot: dict
 
-        if (self.dashar_configuration.configuration_variables.service_mode == ServiceMode.TEST):
-            current_obdii_data_snapshot = self.dashar_configuration.\
-                obdii_context.capture_data_points()
+        if (
+            self.dashar_configuration.configuration_variables.service_mode
+            == ServiceMode.TEST
+        ):
+            current_obdii_data_snapshot = (
+                self.dashar_configuration.obdii_context.capture_data_points()
+            )
 
-            client_response_json = SharedFunctions.convert_dict_to_json({
-                "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": current_obdii_data_snapshot,
-                "message": "Test Mode. Value are randomized."
-            })
+            client_response_json = SharedFunctions.convert_dict_to_json(
+                {
+                    "current_timestamp": SharedFunctions.get_current_timestamp(),
+                    "obdii_data": current_obdii_data_snapshot,
+                    "message": "Test Mode. Value are randomized.",
+                }
+            )
 
             self.set_header("Content-Type", "application/json")
             self.set_status(200, "OK")
             self.write(f"{client_response_json}")
 
+        elif self.dashar_configuration.obdii_context.is_connected():
+            current_obdii_data_snapshot = (
+                self.dashar_configuration.obdii_context.capture_data_points()
+            )
 
-        elif (self.dashar_configuration.obdii_context.is_connected()):
-            current_obdii_data_snapshot = self.dashar_configuration.obdii_context.\
-                capture_data_points()
-
-            client_response_json = SharedFunctions.convert_dict_to_json({
-                "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": current_obdii_data_snapshot,
-                "message": ""
-            })
+            client_response_json = SharedFunctions.convert_dict_to_json(
+                {
+                    "current_timestamp": SharedFunctions.get_current_timestamp(),
+                    "obdii_data": current_obdii_data_snapshot,
+                    "message": "",
+                }
+            )
 
             self.set_header("Content-Type", "application/json")
             self.set_status(200, "OK")
             self.write(f"{client_response_json}")
 
         else:
-            client_response_json = SharedFunctions.convert_dict_to_json({
-                "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "obdii_data": {},
-                "message": "Not Available."
-            })
+            client_response_json = SharedFunctions.convert_dict_to_json(
+                {
+                    "current_timestamp": SharedFunctions.get_current_timestamp(),
+                    "obdii_data": {},
+                    "message": "Not Available.",
+                }
+            )
 
             self.set_header("Content-Type", "application/json")
             self.set_status(503, "OBDII is not available.")
@@ -231,18 +249,18 @@ class OBDIIHandler(tornado.web.RequestHandler):
 
         return
 
+
 class TerminateHandler(tornado.web.RequestHandler):
     """
     A class for handling requests on endpoint: /dashar/quit
     """
 
     dashar_configuration: Configuration
-    event_loop: tornado.locks.Event
+    shutdown_event: asyncio.Event
 
-    def initialize(self, \
-                   event_loop: tornado.locks.Event, \
-                   dashar_configuration: Configuration \
-                    ) -> None:
+    def initialize(
+        self, shutdown_event: asyncio.Event, dashar_configuration: Configuration
+    ) -> None:
         """
         Initializes the class.
 
@@ -253,7 +271,7 @@ class TerminateHandler(tornado.web.RequestHandler):
             None
         """
 
-        self.event_loop = event_loop
+        self.shutdown_event = shutdown_event
         self.dashar_configuration = dashar_configuration
 
     def _terminate(self) -> None:
@@ -267,7 +285,9 @@ class TerminateHandler(tornado.web.RequestHandler):
             None
         """
 
-        print("Terminate functionality not implemented.")
+        print("Shutdown request received.")
+
+        self.shutdown_event.set()
 
         return
 
@@ -282,19 +302,24 @@ class TerminateHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
                 "obdii_data": {},
-                "message": "Termination signal received."
-            })
+                "message": "Termination signal received.",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(202, "Termination signal received.")
         self.write(f"{client_response_json}")
 
+        self.finish()
+
         self._terminate()
 
         return
+
 
 class UnimplementedHandler(tornado.web.RequestHandler):
     """
@@ -325,17 +350,20 @@ class UnimplementedHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "obdii_data": {},
-            "message": "Unimplemented endpoint."
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": {},
+                "message": "Unimplemented endpoint.",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(501, "Unimplemented endpoint.")
         self.write(f"{client_response_json}")
 
         return
+
 
 class NotFoundHandler(tornado.web.RequestHandler):
     """
@@ -366,17 +394,20 @@ class NotFoundHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "obdii_data": {},
-            "message": "Resource not found."
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": {},
+                "message": "Resource not found.",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(404, "Resource not found.")
         self.write(f"{client_response_json}")
 
         return
+
 
 class FailedInitHandler(tornado.web.RequestHandler):
     """
@@ -407,11 +438,13 @@ class FailedInitHandler(tornado.web.RequestHandler):
             None
         """
 
-        client_response_json = SharedFunctions.convert_dict_to_json({
-            "current_timestamp": SharedFunctions.get_current_timestamp(),
-            "obdii_data": {},
-            "message": "Failed to initialize system. Please restart ICS."
-        })
+        client_response_json = SharedFunctions.convert_dict_to_json(
+            {
+                "current_timestamp": SharedFunctions.get_current_timestamp(),
+                "obdii_data": {},
+                "message": "Failed to initialize system. Please restart ICS.",
+            }
+        )
 
         self.set_header("Content-Type", "application/json")
         self.set_status(503, "Failed to initialize system.")
@@ -419,8 +452,10 @@ class FailedInitHandler(tornado.web.RequestHandler):
 
         return
 
-def make_app(dashar_configuration: Configuration) -> tornado.web.Application:
 
+def make_app(
+    dashar_configuration: Configuration, shutdown_event: asyncio.Event
+) -> tornado.web.Application:
     """
     Generates the Data Aggregator and Server (DAS) API application.
 
@@ -433,18 +468,39 @@ def make_app(dashar_configuration: Configuration) -> tornado.web.Application:
 
     routes: list = [
         (r"/dashar/welcome", DashARWelcomeHandler),
-        (r"/dashar/status", DashARStatusHandler, {"dashar_configuration": dashar_configuration}),
-        (r"/dashar/hud/config", DashARHUDHandler, {"dashar_configuration": dashar_configuration}),
-        (r"/dashar/data/obdii", OBDIIHandler, {"dashar_configuration": dashar_configuration}),
-        (r"/dashar/quit", UnimplementedHandler),
+        (
+            r"/dashar/status",
+            DashARStatusHandler,
+            {"dashar_configuration": dashar_configuration},
+        ),
+        (
+            r"/dashar/hud/config",
+            DashARHUDHandler,
+            {"dashar_configuration": dashar_configuration},
+        ),
+        (
+            r"/dashar/data/obdii",
+            OBDIIHandler,
+            {"dashar_configuration": dashar_configuration},
+        ),
+        (
+            r"/dashar/quit",
+            TerminateHandler,
+            {
+                "dashar_configuration": dashar_configuration,
+                "shutdown_event": shutdown_event,
+            },
+        ),
         (r"/dashar/data/tpapi", UnimplementedHandler),
-        (r"/.*", NotFoundHandler)
+        (r"/.*", NotFoundHandler),
     ]
 
     return tornado.web.Application(routes)
 
-def make_app_failed_init(dashar_configuration: Configuration) -> tornado.web.Application:
 
+def make_app_failed_init(
+    dashar_configuration: Configuration, shutdown_event: asyncio.Event
+) -> tornado.web.Application:
     """
     Generates a bare-bones Tornado application for errors.
 
@@ -456,12 +512,25 @@ def make_app_failed_init(dashar_configuration: Configuration) -> tornado.web.App
     """
 
     routes: list = [
-        (r"/dashar/status", DashARStatusHandler, {"dashar_configuration": dashar_configuration}),
+        (
+            r"/dashar/status",
+            DashARStatusHandler,
+            {"dashar_configuration": dashar_configuration},
+        ),
         (r"/dashar/data/obdii", FailedInitHandler),
-        (r"/.*", NotFoundHandler)
+        (
+            r"/dashar/quit",
+            TerminateHandler,
+            {
+                "dashar_configuration": dashar_configuration,
+                "shutdown_event": shutdown_event,
+            },
+        ),
+        (r"/.*", NotFoundHandler),
     ]
 
     return tornado.web.Application(routes)
+
 
 def check_for_arguments() -> argparse.Namespace:
     """
@@ -474,14 +543,20 @@ def check_for_arguments() -> argparse.Namespace:
         argparse.Namespace
     """
 
-    argument_parser = argparse.ArgumentParser(  prog='das_service.py', \
-                        description='The Data Aggregator and Server Service of the DashAR System.')
+    argument_parser = argparse.ArgumentParser(
+        prog="das_service.py",
+        description="The Data Aggregator and Server Service of the DashAR System.",
+    )
 
-    argument_parser.add_argument("-v", "--verbose", \
-                                    action="store_true", \
-                                    help="Output additional information at runtime.")
+    argument_parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Output additional information at runtime.",
+    )
 
     return argument_parser.parse_args()
+
 
 async def main() -> None:
     """
@@ -500,33 +575,57 @@ async def main() -> None:
     # Initialization
     dashar_configuration: Configuration = Configuration(arguments)
 
-    # Establish an event loop.
-    event_loop: tornado.locks.Event = tornado.locks.Event()
+    # Event used to signal system shutdown.
+    shutdown_event: asyncio.Event = asyncio.Event()
 
     # Create the App Instance.
     app: tornado.web.Application
 
     # If DashAR failed to initialize, set up the system to respond accordingly to request.
-    print(f"\nSystem Status is {dashar_configuration.configuration_variables.system_status.name}.")
+    print(
+        f"\nSystem Status is {dashar_configuration.configuration_variables.system_status.name}."
+    )
 
-    if (dashar_configuration.configuration_variables.system_status == SystemStatus.FAILED):
-        print("\nError: DashAR unable to initialize successfully. Please manually restart service.")
-        app = make_app_failed_init(dashar_configuration)
+    if (
+        dashar_configuration.configuration_variables.system_status
+        == SystemStatus.FAILED
+    ):
+        print(
+            "\nError: DashAR unable to initialize successfully. Please manually restart service."
+        )
+        app = make_app_failed_init(
+            dashar_configuration=dashar_configuration, shutdown_event=shutdown_event
+        )
 
     # Otherwise, have fun!
     else:
-        print(f"Access on port {dashar_configuration.configuration_variables.das_server_port}.\n")
-        app = make_app(dashar_configuration)
+        print(
+            f"Access on port {dashar_configuration.configuration_variables.das_server_port}.\n"
+        )
+        app = make_app(
+            dashar_configuration=dashar_configuration, shutdown_event=shutdown_event
+        )
 
     # In both instances, listen for a response on the defined port.
-    app.listen(dashar_configuration.configuration_variables.das_server_port)
+    http_server: tornado.httpserver.HTTPServer = app.listen(
+        dashar_configuration.configuration_variables.das_server_port
+    )
 
-    # Wait for requests.
-    await event_loop.wait()
+    try:
+        # Wait for the shutdown event.
+        await shutdown_event.wait()
 
-    # TODO: find a graceful way to terminate the script.
-    print("System has terminated.")
+    finally:
+        print("Shutting down DAS server...")
+
+        http_server.stop()
+
+        await http_server.close_all_connections()
+
+    print("The DashAR System has successfully shut down.")
+
     return
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     asyncio.run(main())

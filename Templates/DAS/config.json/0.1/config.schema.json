@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://dashar.trevordylanbrown.com/config/0.1/config.schema.json",
+    "$id": "https://dashar.org/config/0.1/config.schema.json",
     "title": "DashAR Configuration",
     "description": "A configuration for the DashAR System.",
     "type": "object",
@@ -50,7 +50,11 @@
         "service_mode": {
             "description": "The Service Mode of the System.",
             "type": "string",
-            "enum": ["PRODUCTION", "DEBUG", "TEST"]
+            "enum": [
+                "PRODUCTION",
+                "DEBUG",
+                "TEST"
+            ]
         },
         "data_path": {
             "description": "The path to data files for the Data Aggregator and Service (DAS) Subsystem.",

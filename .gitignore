@@ -1,3 +1,10 @@
+#
+#   DashAR - An AR-based HUD for Automobiles.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
+#
+#   File:       .gitignore
+#
+
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvv OS-specific vvvvvvvvvvvvvvvvvvvvvvvvvvvv
 # Windows thumbnail cache files
 Thumbs.db
@@ -52,6 +59,7 @@ Temporary Items
 .apdisk
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ OS-specific ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvv Python vvvvvvvvvvvvvvvvvvvvvvvvvvvv
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -63,7 +71,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+# build/
 develop-eggs/
 dist/
 downloads/
@@ -217,9 +225,37 @@ cython_debug/
 #.idea/
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Python ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvv buck2 vvvvvvvvvvvvvvvvvvvvvvvvvvvv
+/target/
+buck-out
+/.direnv
+.buckconfig.local
+.envrc.local
+
+# symlinks
+/examples/with_prelude/prelude
+/examples/with_prelude/third-party/ocaml/opam
+/examples/with_prelude/third-party/haskell/ghc
+/examples/with_prelude/third-party/ocaml/standard_library
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ buck2 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvv Project vvvvvvvvvvvvvvvvvvvvvvvvvvvv
-!Testing/
+# General
 .vscode/
-private
-Testing/pylint/google/
+
+# Build outputs
+/Build/**
+!/Build/**/
+!/Build/.gitkeep
+!/Build/**/.gitkeep
+
+# DAS
+Source/DAS/third_party/
+
+# HUD
+# N/A
+
+# Companion
+# N/A
+
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Project ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -7,6 +7,7 @@
  */
 
 using System;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 
@@ -86,15 +87,24 @@ public class DashARHUDWidget : DashARHUDBaseWidget
         newGameObjectText.transform.parent = newGameObject.transform;
 
         // Textbox GameObject formatting.
-        tmpComponent.transform.localPosition = new Vector3(0f, 0f, -1f);
+        if (gameObjectPrimitiveType == PrimitiveType.Cube)
+        {
+            tmpComponent.transform.localPosition = new Vector3(0f, 0f, -2f);
+        } else
+        {
+            tmpComponent.transform.localPosition = new Vector3(0f, 0f, -25f);
+        }
+
         tmpComponent.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         tmpComponent.transform.localScale = base.TextScale;
+        tmpComponent.verticalAlignment = VerticalAlignmentOptions.Middle;
+        tmpComponent.horizontalAlignment = HorizontalAlignmentOptions.Center;
 
         tmpComponent.GetComponent<RectTransform>().sizeDelta = base.TextBox;
         tmpComponent.fontSize = base.TextFontSize;
 
         // GameObject formatting.
-        Material widgetMaterial = new Material(Shader.Find("Xreal/Instanced-Colored"));
+        Material widgetMaterial = new Material(Shader.Find("Unlit/Color"));
         widgetMaterial.color = new Color(0.9f, 0.9f, 0.9f); // 230/255, or E6E6E6.
 
         Renderer rendererComponent = newGameObject.GetComponent<Renderer>();
