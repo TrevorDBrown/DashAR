@@ -1,0 +1,19 @@
+#
+#   DashAR - An AR-based HUD for Automobiles.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
+#
+#   File:       requirements.txt
+#   Purpose:    Requirements needed for building Python .
+
+# DAS
+obd>=0.7.2
+tornado>=6.4.1
+pyserial>=3.5
+lockfile>=0.12.2
+Pint>=0.20.1
+python-daemon>=3.1.2
+PyYAML>=6.0.3
+pythonping>=1.1.4
+
+# Testing
+# ELM327-emulator>=3.0.3    # Emulates ELM327 adapter, so an actual car is not needed. Usage: python -m elm -s car
