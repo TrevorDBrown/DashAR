@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://dashar.trevordylanbrown.com/config/0.2/config.schema.json",
+    "$id": "https://dashar.org/config/0.2/config.schema.json",
     "title": "DashAR Configuration",
     "description": "A configuration for the DashAR System.",
     "type": "object",
@@ -30,7 +30,11 @@
         "service_mode": {
             "description": "The Service Mode of the System.",
             "type": "string",
-            "enum": ["PRODUCTION", "DEBUG", "TEST"]
+            "enum": [
+                "PRODUCTION",
+                "DEBUG",
+                "TEST"
+            ]
         },
         "private_data_path": {
             "description": "The path to private data files for the Data Aggregator and Service (DAS) Subsystem.",
@@ -77,7 +81,10 @@
                             "type": "array",
                             "items": {
                                 "type": "string",
-                                "enum": ["Internet", "GPS"]
+                                "enum": [
+                                    "Internet",
+                                    "GPS"
+                                ]
                             }
                         },
                         "parameters": {
@@ -91,7 +98,22 @@
                                 "parameter_type": {
                                     "description": "The parameter's expected data type.",
                                     "type": "string",
-                                    "enum": ["str", "int", "float", "complex", "list", "tuple", "range", "dict", "set", "frozenset", "bool", "bytes", "bytearray", "memoryview"]
+                                    "enum": [
+                                        "str",
+                                        "int",
+                                        "float",
+                                        "complex",
+                                        "list",
+                                        "tuple",
+                                        "range",
+                                        "dict",
+                                        "set",
+                                        "frozenset",
+                                        "bool",
+                                        "bytes",
+                                        "bytearray",
+                                        "memoryview"
+                                    ]
                                 },
                                 "parameter_required": {
                                     "description": "Identifies if the parameter is required.",
@@ -107,7 +129,22 @@
                         "return_type": {
                             "description": "The return data type of the function.",
                             "type": "string",
-                            "enum": ["str", "int", "float", "complex", "list", "tuple", "range", "dict", "set", "frozenset", "bool", "bytes", "bytearray", "memoryview"]
+                            "enum": [
+                                "str",
+                                "int",
+                                "float",
+                                "complex",
+                                "list",
+                                "tuple",
+                                "range",
+                                "dict",
+                                "set",
+                                "frozenset",
+                                "bool",
+                                "bytes",
+                                "bytearray",
+                                "memoryview"
+                            ]
                         }
                     },
                     "required": [
