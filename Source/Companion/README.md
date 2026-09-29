@@ -1,4 +1,4 @@
-# DashAR Configurator Application
+# DashAR Companion Application
 
 This application allows you to configure the HUD, as well as settings for the DAS.
 
