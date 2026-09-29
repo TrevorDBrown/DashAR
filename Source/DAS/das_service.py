@@ -1,6 +1,6 @@
 #
 #   DashAR - An AR-based HUD for Automobiles.
-#   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       das_service.py
 #
