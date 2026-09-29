@@ -1,11 +1,18 @@
+#
+#   DashAR - An AR-based HUD for Automobiles.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
+#
+#   File:       .pylintrc
+#
+
 #   The DashAR Project tries to adhere to Google's style guide for Python as defined here:
 #       https://google.github.io/styleguide/pyguide.html
 #       https://google.github.io/styleguide/pylintrc
 #
-#   It is recommended if you are statically checking the source files to obtain the Google .pylintrc file first,
-#   save it under "Testing\pylint\", and reference it as follows:
+#   It is recommended if you are statically checking the source files to obtain the Google .pylintrc file first:
+#       https://github.com/google/styleguide/blob/5b8bc6b9477c0a96aea4dfebe8f91c0c2cbac67e/pylintrc
 #
-#   python -m pylint .\Source\DAS\ --rcfile=".\Testing\pylint\.pylintrc"
+#   Save the file under "Testing/pylint/" (replacing me), and reference it in your pylint command:
 #
-#   TODO: populate this file with pylintrc rules.
+#   python -m pylint ./Source/DAS/ --rcfile="./Testing/pylint/.pylintrc"
 #
