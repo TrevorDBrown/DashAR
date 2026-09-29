@@ -9,23 +9,29 @@
 from das_core.helper import SharedFunctions, ServiceMode, DataSourceType
 import sqlite3
 
-class DataConnection:
 
+class DataConnection:
     # Object Variables
-    __id: str                                   # __id - a UUIDv4 value, used to uniquely identify the data connection context.
-    __created_timestamp: float                  # __created_timestamp - the Unix timestamp of when the object was created.
-    __data_source: DataSourceType               # __data_source - the type of data source being used (e.g. DATABASE, DIRECT_FILE)
-    __data_filename: str                        # __data_filename - the filename of the data source.
+    __id: str  # __id - a UUIDv4 value, used to uniquely identify the data connection context.
+    __created_timestamp: float  # __created_timestamp - the Unix timestamp of when the object was created.
+    __data_source: DataSourceType  # __data_source - the type of data source being used (e.g. DATABASE, DIRECT_FILE)
+    __data_filename: str  # __data_filename - the filename of the data source.
 
     # Data Source-specific Variables
     # Database (SQLite3)
-    __database_connection: sqlite3.Connection   # __database_connection - a Database connection.
+    __database_connection: (
+        sqlite3.Connection
+    )  # __database_connection - a Database connection.
 
     # Direct File
     __direct_file: str  # TODO: determine best data type hint for this.
 
-    def __init__(self, data_filename: str, data_source_type: DataSourceType = DataSourceType.DIRECT_FILE, service_mode: ServiceMode = ServiceMode.DEBUG) -> None:
-
+    def __init__(
+        self,
+        data_filename: str,
+        data_source_type: DataSourceType = DataSourceType.DIRECT_FILE,
+        service_mode: ServiceMode = ServiceMode.DEBUG,
+    ) -> None:
         self.__id = SharedFunctions.generate_object_id()
         self.__created_timestamp = SharedFunctions.get_current_timestamp()
 
@@ -53,7 +59,7 @@ class DataConnection:
     def insert_into_database(self, insert_statement: str) -> bool:
         successful_connection: bool = self.__connect_to_database()
 
-        if (successful_connection):
+        if successful_connection:
             database_cursor: sqlite3.Cursor = self.__database_connection.cursor()
             database_cursor.execute(insert_statement)
             self.__database_connection.commit()
@@ -66,7 +72,7 @@ class DataConnection:
     def select_from_database(self, select_statement: str) -> str:
         successful_connection: bool = self.__connect_to_database()
 
-        if (successful_connection):
+        if successful_connection:
             database_cursor: sqlite3.Cursor = self.__database_connection.cursor()
             results: sqlite3.Cursor = database_cursor.execute(select_statement)
             self.__disconnect_from_database()
@@ -80,10 +86,10 @@ class DataConnection:
 
 
 def main() -> None:
-
     print(f"This module ({__file__}) should be invoked as an import.")
 
     return
+
 
 if __name__ == "__main__":
     main()
