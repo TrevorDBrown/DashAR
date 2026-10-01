@@ -5,15 +5,33 @@
 #   File:       helper.pyi
 #
 
+"""Purpose: the helper constants, variables, and functions used by the DAS API for the DashAR system."""
+
+# pylint: skip-file
+
 from enum import IntEnum
+from typing import Final
 
 class Constants:
-    EXPECTED_CONFIGURATION_VERSION: str
-    EXPECTED_DASHAR_VERSION: str
+    """
+    Constants to be used throughout the DAS API. Constants are denoted through all uppercase variable names.
+    """
 
-class Variables: ...
+    DASHAR_SPLASH: Final[str]
+    DASHAR_COPYRIGHT: Final[str]
+    EXPECTED_CONFIGURATION_VERSION: Final[str]
+    EXPECTED_DASHAR_VERSION: Final[str]
+
+class Variables:
+    """
+    Variables to be used throughout the DAS API. Not implemented.
+    """
 
 class SharedFunctions:
+    """
+    Functions that are used through the DAS API.
+    """
+
     @staticmethod
     def generate_object_id() -> str: ...
     @staticmethod
@@ -22,25 +40,47 @@ class SharedFunctions:
     def convert_dict_to_json(dict_to_convert: dict) -> str: ...
 
 class ServiceMode(IntEnum):
-    PRODUCTION: int
-    DEBUG: int
-    TEST: int
+    """
+    Special constants used to indicate the service mode of the system.
+    """
+
     INVALID: int
+    PRODUCTION: int
+    EMULATE: int
+    TEST: int
+    BEAMNG: int
 
 class SystemStatus(IntEnum):
+    """
+    Special constants used to indicate the status of the system.
+    """
+
+    FAILED: int
     NOT_STARTED: int
     STARTING: int
-    FAILED: int
     READY: int
+    BUSY: int
 
 class DefaultDataFormat(IntEnum):
+    """
+    Special constants used to indicate the country where the system is being utilized.
+    """
+
     AMERICA: int
 
 class DataSourceType(IntEnum):
+    """
+    Special constants used to indicate the origin of metadata and configuration data for the system.
+    """
+
     DATABASE: int
     DIRECT_FILE: int
 
 class DatabaseStatements:
+    """
+    Prepared SQL that is used to interact with the SQLite database (when applicable).
+    """
+
     @staticmethod
     def dashar_session_start(
         session_uuid: str, vin: str, session_start_timestamp: float
