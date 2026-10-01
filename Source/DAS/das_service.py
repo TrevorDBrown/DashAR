@@ -7,12 +7,6 @@
 
 """Purpose: the backend/middleware service (Data Aggregator and Server) for the DashAR system."""
 
-# pylint: disable=W0223,C0325,R1711
-# For linting purposes, the above lint codes have been ignored:
-#   - W0223 - abstract methods not needed.
-#   - C0325 - prefer parentheses around if conditions every time.
-#   - R1711 - prefer return statements every time, regardless if anything is returned.
-
 import argparse
 import asyncio
 import tornado
@@ -149,8 +143,12 @@ class DashARHUDHandler(tornado.web.RequestHandler):
         client_response_json = SharedFunctions.convert_dict_to_json(
             {
                 "current_timestamp": SharedFunctions.get_current_timestamp(),
-                "hud_configuration_base": self.dashar_configuration.configuration_variables.hud_configuration_base_json_content,
-                "hud_configuration_widgets": self.dashar_configuration.configuration_variables.hud_configuration_widgets_json_content,
+                "hud_configuration_base": (
+                    self.dashar_configuration.configuration_variables.hud_configuration_base_json_content
+                ),
+                "hud_configuration_widgets": (
+                    self.dashar_configuration.configuration_variables.hud_configuration_widgets_json_content
+                ),
             }
         )
 
