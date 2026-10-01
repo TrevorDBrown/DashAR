@@ -5,6 +5,10 @@
 #   File:       configuration.pyi
 #
 
+"""Purpose: the core configuration manager used by the DAS API for the DashAR system."""
+
+# pylint: skip-file
+
 import argparse
 from das_core.das_extensions import DASExtensions as DASExtensions
 from das_core.helper import (
@@ -12,18 +16,26 @@ from das_core.helper import (
     ServiceMode as ServiceMode,
     SystemStatus as SystemStatus,
 )
-from das_core.obdii_interpreter import OBDIIContext as OBDIIContext
+from das_core.obdii import OBDIIContext
 from typing import Final
 
 class ConfigurationConstants:
-    CONFIGURATION_VERSION: str
-    DASHAR_VERSION: str
+    """
+    Constants used for configurations within the DAS API. Constants are denoted through all uppercase variable names.
+    """
+
     DATA_PATH: Final[str]
     CONFIGURATION_PATH: Final[str]
     HUD_CONFIGURATION_PATH: Final[str]
     def __init__(self) -> None: ...
 
 class ConfigurationVariables:
+    """
+    Variables used for configurations throughout the DAS API.
+    """
+
+    configuration_version: str
+    dashar_version: str
     system_status: SystemStatus
     das_server_port: int
     fuel_level_refresh_frequency_data_points: int
@@ -43,6 +55,10 @@ class ConfigurationVariables:
     def __init__(self) -> None: ...
 
 class Configuration:
+    """
+    The core configuration of the DAS API.
+    """
+
     configuration_constants: ConfigurationConstants
     configuration_variables: ConfigurationVariables
     obdii_context: OBDIIContext

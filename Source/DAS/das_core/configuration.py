@@ -3,8 +3,9 @@
 #   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       configuration.py
-#   Purpose:    This script contains the DashAR configuration shared amongst multiple modules.
 #
+
+"""Purpose: the core configuration manager used by the DAS API for the DashAR system."""
 
 from typing import Final
 import os
@@ -12,13 +13,14 @@ import json
 import argparse
 
 from das_core.helper import Constants, ServiceMode, SystemStatus
-from das_core.obdii_interpreter import OBDIIContext
+from das_core.obdii import OBDIIContext
 from das_core.das_extensions import DASExtensions
 
 
 class ConfigurationConstants:
-    CONFIGURATION_VERSION: str
-    DASHAR_VERSION: str
+    """
+    Constants used for configurations within the DAS API. Constants are denoted through all uppercase variable names.
+    """
 
     DATA_PATH: Final[str] = os.path.join(os.getcwd(), "data")
     CONFIGURATION_PATH: Final[str] = os.path.join(DATA_PATH, "config.json")
@@ -29,9 +31,15 @@ class ConfigurationConstants:
 
 
 class ConfigurationVariables:
+    """
+    Variables used for configurations throughout the DAS API.
+    """
+
+    configuration_version: str = "0"
+    dashar_version: str = "0"
     system_status: SystemStatus = SystemStatus.NOT_STARTED
-    das_server_port: int = 8000
-    fuel_level_refresh_frequency_data_points: int = 200
+    das_server_port: int = 42206
+    fuel_level_refresh_frequency_data_points: int = 500
     service_mode: ServiceMode = ServiceMode.TEST
     verbose_operation: bool = False
 
@@ -52,9 +60,6 @@ class ConfigurationVariables:
 
     hud_configuration_target: str = hud_configuration_default_path
 
-    # hud_configuration_base_json_content: str = ""
-    # hud_configuration_widgets_json_content: str = ""
-
     hud_configuration_base_json_content: dict = {}
     hud_configuration_widgets_json_content: dict = {}
 
@@ -66,6 +71,10 @@ class ConfigurationVariables:
 
 
 class Configuration:
+    """
+    The core configuration of the DAS API.
+    """
+
     configuration_constants: ConfigurationConstants
     configuration_variables: ConfigurationVariables
 
@@ -77,8 +86,8 @@ class Configuration:
         self.configuration_constants = ConfigurationConstants()
 
         # # Splash Message.
-        print(f"DashAR Automotive HUD System")
-        print(f"(c)2024-2025 Trevor D. Brown. Distributed under the MIT license.\n")
+        print(f"{Constants.DASHAR_SPLASH}")
+        print(f"{Constants.DASHAR_COPYRIGHT}\n")
 
         # Set defaults ahead of time.
         self.set_default_configuration()
@@ -87,9 +96,9 @@ class Configuration:
         self.load_configuration(arguments)
 
         # Print remaining splash screen information.
-        print(f"\nDashAR System version {self.configuration_constants.DASHAR_VERSION}")
+        print(f"\nDashAR System version {self.configuration_variables.dashar_version}")
         print(
-            f"Configuration version {self.configuration_constants.CONFIGURATION_VERSION}"
+            f"Configuration version {self.configuration_variables.configuration_version}"
         )
 
         if self.configuration_variables.system_status == SystemStatus.FAILED:
@@ -114,7 +123,7 @@ class Configuration:
         json_configuration_content: dict
 
         with open(
-            self.configuration_constants.CONFIGURATION_PATH, "r"
+            self.configuration_constants.CONFIGURATION_PATH, "r", encoding="utf8"
         ) as json_configuration:
             json_configuration_content = json.load(json_configuration)
 
@@ -124,17 +133,20 @@ class Configuration:
         else:
             if json_configuration_content["versioning"]:
                 try:
-                    self.configuration_constants.DASHAR_VERSION = (
+                    self.configuration_variables.dashar_version = (
                         json_configuration_content["versioning"]["dashar"]
                     )
-                    self.configuration_constants.CONFIGURATION_VERSION = (
+                    self.configuration_variables.configuration_version = (
                         json_configuration_content["versioning"]["configuration"]
                     )
 
                 except Exception as e:
                     print("Error: invalid versioning provided.")
-                    self.configuration_constants.DASHAR_VERSION = "-1"
-                    self.configuration_constants.CONFIGURATION_VERSION = "-1"
+                    print(f"Exception: {e}")
+
+                    # Set invalid versions.
+                    self.configuration_variables.dashar_version = "-1"
+                    self.configuration_variables.configuration_version = "-1"
 
             if json_configuration_content["service_mode"]:
                 try:
@@ -143,8 +155,11 @@ class Configuration:
                     ]
                 except Exception as e:
                     print(
-                        f"Error: Service Mode '{json_configuration_content['service_mode']}' is not a valid service mode. Setting to default mode."
+                        f"Error: Service Mode '{json_configuration_content["service_mode"]}' "
+                        "is not a valid service mode. "
+                        "Setting to default mode."
                     )
+                    print(f"Exception: {e}")
                     self.configuration_variables.service_mode = ServiceMode.TEST
             else:
                 self.configuration_variables.service_mode = ServiceMode["TEST"]
@@ -211,7 +226,7 @@ class Configuration:
 
                     else:
                         print(
-                            f"Unknown variable: {configuration_variable['name']}. Skipping."
+                            f"Unknown variable: {configuration_variable["name"]}. Skipping."
                         )
                         continue
 
@@ -220,7 +235,7 @@ class Configuration:
 
         if not valid_configuration:
             print(
-                "\nError: invalid configuration provided. Resetting all values to defaults."
+                "\nError: invalid configuration provided. Resetting all values to defaults.\n"
             )
             self.set_default_configuration()
 
@@ -249,7 +264,7 @@ class Configuration:
     def load_hud_configuration(self) -> None:
         # HUD Configuration (Base)
         # Load the content of the HUD Configuration Base file.
-        with open(self.configuration_variables.hud_configuration_base_path, "r") as f:
+        with open(self.configuration_variables.hud_configuration_base_path, "r", encoding="utf8") as f:
             self.configuration_variables.hud_configuration_base_json_content = (
                 json.load(f)
             )
@@ -284,7 +299,7 @@ class Configuration:
             )
 
         # HUD Configuration (Widgets)
-        with open(self.configuration_variables.hud_configuration_target, "r") as f:
+        with open(self.configuration_variables.hud_configuration_target, "r", encoding="utf8") as f:
             self.configuration_variables.hud_configuration_widgets_json_content = (
                 json.load(f)
             )
@@ -293,14 +308,14 @@ class Configuration:
 
     def set_default_configuration(self) -> None:
         # Set default configuration, to be overwritten by the JSON config load process.
-        self.configuration_constants.CONFIGURATION_VERSION = (
+        self.configuration_variables.configuration_version = (
             Constants.EXPECTED_CONFIGURATION_VERSION
         )
-        self.configuration_constants.DASHAR_VERSION = Constants.EXPECTED_DASHAR_VERSION
+        self.configuration_variables.dashar_version = Constants.EXPECTED_DASHAR_VERSION
         self.configuration_variables.system_status = SystemStatus.STARTING
-        self.configuration_variables.fuel_level_refresh_frequency_data_points = 200
+        self.configuration_variables.fuel_level_refresh_frequency_data_points = 500
         self.configuration_variables.service_mode = ServiceMode.TEST
-        self.configuration_variables.obdii_elm327_device_path = "COM4"
+        self.configuration_variables.obdii_elm327_device_path = ""
 
     def test_configuration(self) -> bool:
         error_count: int = 0
@@ -313,15 +328,17 @@ class Configuration:
 
         # Configuration Version Test
         if (
-            self.configuration_constants.CONFIGURATION_VERSION
+            self.configuration_variables.configuration_version
             == Constants.EXPECTED_CONFIGURATION_VERSION
         ):
             print(
-                f"Configuration Version ({self.configuration_constants.CONFIGURATION_VERSION}) is valid."
+                f"Configuration Version ({self.configuration_variables.configuration_version}) is valid."
             )
         else:
             print(
-                f"Warning: configuration version of file ({self.configuration_constants.CONFIGURATION_VERSION}) differs from the expected configuration version ({Constants.EXPECTED_CONFIGURATION_VERSION}). Please review configuration specification for changes."
+                f"Warning: configuration version of file ({self.configuration_variables.configuration_version}) "
+                f"differs from the expected configuration version ({Constants.EXPECTED_CONFIGURATION_VERSION}). "
+                f"Please review configuration specification for changes."
             )
             warning_count += 1
 
@@ -374,7 +391,8 @@ class Configuration:
             )
         else:
             print(
-                f"Error: HUD Base Configuration ({self.configuration_variables.hud_configuration_base_path}) does not exist."
+                f"Error: HUD Base Configuration ({self.configuration_variables.hud_configuration_base_path}) "
+                f"does not exist."
             )
             error_count += 1
 
@@ -385,7 +403,8 @@ class Configuration:
             )
         else:
             print(
-                f"Error: HUD Default Configuration ({self.configuration_variables.hud_configuration_default_path}) does not exist."
+                f"Error: HUD Default Configuration ({self.configuration_variables.hud_configuration_default_path}) "
+                f"does not exist."
             )
             error_count += 1
 
@@ -396,15 +415,16 @@ class Configuration:
             )
         else:
             print(
-                f"Error: HUD Custom Configuration Path ({self.configuration_variables.hud_configuration_custom_path}) does not exist."
+                f"Error: HUD Custom Configuration Path ({self.configuration_variables.hud_configuration_custom_path}) "
+                f"does not exist."
             )
             error_count += 1
 
         # If any errors were found, report them.
         if error_count > 0:
             # TODO: return value-added error values.
-            print("Some tests failed.\n")
+            print("Some tests failed. :(")
             return False
 
-        print("All tests passed!\n")
+        print("All tests passed! :)")
         return True
