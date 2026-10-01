@@ -44,37 +44,39 @@ class ServiceMode(IntEnum):
     Special constants used to indicate the service mode of the system.
     """
 
-    INVALID: int
-    PRODUCTION: int
-    EMULATE: int
-    TEST: int
-    BEAMNG: int
+    INVALID = -1
+    PRODUCTION = 1
+    DEBUG = 2
+    EMULATE = 3
+    TEST = 4
+    BEAMNG = 5
+
 
 class SystemStatus(IntEnum):
     """
     Special constants used to indicate the status of the system.
     """
 
-    FAILED: int
-    NOT_STARTED: int
-    STARTING: int
-    READY: int
-    BUSY: int
+    FAILED = -1
+    NOT_STARTED = 1
+    STARTING = 2
+    READY = 3
+    BUSY = 4
 
 class DefaultDataFormat(IntEnum):
     """
     Special constants used to indicate the country where the system is being utilized.
     """
 
-    AMERICA: int
+    AMERICA = 1
 
 class DataSourceType(IntEnum):
     """
     Special constants used to indicate the origin of metadata and configuration data for the system.
     """
 
-    DATABASE: int
-    DIRECT_FILE: int
+    DATABASE = 1
+    DIRECT_FILE = 2
 
 class DatabaseStatements:
     """
