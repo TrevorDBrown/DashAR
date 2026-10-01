@@ -5,13 +5,25 @@
 #   File:       das_extensions.pyi
 #
 
+"""Purpose: the extensions manager used by the DAS API for the DashAR system."""
+
+# pylint: skip-file
+
 class DASExtension:
+    """
+    The core DAS API extension class.
+    """
+
     def __init__(
         self, name: str, description: str, path: str, module: str, functions: dict
     ) -> None: ...
     def is_functional(self) -> bool: ...
 
 class DASExtensions:
+    """
+    The bundle of DAS extensions that were imported, regardless of functionality.
+    """
+
     extensions_list: list
     disabled_extensions_list: list
     def __init__(self) -> None: ...
