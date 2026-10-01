@@ -5,18 +5,24 @@
 #   File:       data_connector.pyi
 #
 
+"""Purpose: the data manager used by the DAS API for the DashAR system."""
+
+# pylint: skip-file
+
 from das_core.helper import (
     DataSourceType as DataSourceType,
-    ServiceMode as ServiceMode,
     SharedFunctions as SharedFunctions,
 )
 
 class DataConnection:
+    """
+    A class for specifying a data connection.
+    """
+
     def __init__(
         self,
         data_filename: str,
         data_source_type: DataSourceType = ...,
-        service_mode: ServiceMode = ...,
     ) -> None: ...
     def insert_into_database(self, insert_statement: str) -> bool: ...
     def select_from_database(self, select_statement: str) -> str: ...
