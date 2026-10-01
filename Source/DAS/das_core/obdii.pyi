@@ -2,18 +2,27 @@
 #   DashAR - An AR-based HUD for Automobiles.
 #   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
 #
-#   File:       obdii_interpreter.pyi
+#   File:       obdii.pyi
 #
 
-from das_core.data_connector import DataConnection as DataConnection
+"""Purpose: the OBDII context manager used by the DAS API for the DashAR system."""
+
+# pylint: skip-file
+
+from das_core.data_connector import DataConnection
+
 from das_core.helper import (
-    DatabaseStatements as DatabaseStatements,
-    DefaultDataFormat as DefaultDataFormat,
-    ServiceMode as ServiceMode,
-    SharedFunctions as SharedFunctions,
+    DatabaseStatements,
+    DefaultDataFormat,
+    ServiceMode,
+    SharedFunctions,
 )
 
 class OBDIIContext:
+    """
+    A class for the OBDII context (vehicle information, captured data points, etc.).
+    """
+
     def __init__(
         self,
         service_mode: ServiceMode,
