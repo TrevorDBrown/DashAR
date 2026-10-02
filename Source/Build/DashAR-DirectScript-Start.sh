@@ -8,20 +8,22 @@
 #
 
 # Splash Message
-echo -e "\nDashAR: an AR-based HUD for Automobiles"
-echo "(c)2025-2026 Trevor D. Brown"
+echo "\nDashAR - an AR-based HUD for Automobiles"
+echo "(c)2024-2026 Trevor D. Brown."
 echo "Distributed under the MIT License."
 
-echo -e "\nStarting the DashAR System (in Direct Script mode)..."
+echo "\nStarting the DashAR System (in Direct Script mode)...\n"
 
 # Set up variables
 SCRIPT_PATH=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 cd $SCRIPT_PATH
 cd "../../"
+
+# Path Variables
 PROJECT_ROOT=$PWD
+VENV_ROOT="$PROJECT_ROOT/.venv/"
+SOURCE_ROOT="$PROJECT_ROOT/Source/"
+DAS_ROOT="$SOURCE_ROOT/DAS/"
 
-# Replace the following with the path to the DashAR Project.
-cd $PROJECT_ROOT/DashAR/Source/DAS/
-
-# Replace the following with the path to your Python virtual environment and the path to the DashAR project, respectively.
-"[REPLACE ME WITH PATH TO VENV]/bin/python3" $PROJECT_ROOT/Source/DAS/das_service.py
+cd $DAS_ROOT
+$VENV_ROOT/bin/python3 $DAS_ROOT/das_service.py

@@ -1,4 +1,4 @@
-# DashAR: An Augmented Reality-based Heads Up Display for Automobiles
+# DashAR - An Augmented Reality-based Heads Up Display for Automobiles
 
 DashAR is an AR-based HUD for Automobiles. It is designed to work with any gasoline-powered automobile manufactured during or after 1996 (i.e. OBDII availability).
 

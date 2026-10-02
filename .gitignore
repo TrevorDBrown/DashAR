@@ -249,6 +249,9 @@ buck-out
 !/Build/.gitkeep
 !/Build/**/.gitkeep
 
+# Testing
+/Testing/**/*.out
+
 # DAS
 Source/DAS/third_party/
 

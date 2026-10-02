@@ -3,7 +3,7 @@
 #   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
 #
 #   File:       requirements.txt
-#   Purpose:    Requirements needed for building Python .
+#   Purpose:    Requirements needed for building the Python components of the project.
 
 # DAS
 obd>=0.7.2
@@ -15,5 +15,9 @@ python-daemon>=3.1.2
 PyYAML>=6.0.3
 pythonping>=1.1.4
 
-# Testing
+# Testing and Validation
 # ELM327-emulator>=3.0.3    # Emulates ELM327 adapter, so an actual car is not needed. Usage: python -m elm -s car
+mypy>=2.3.1
+
+# Build
+pyinstaller>=6.22.3
