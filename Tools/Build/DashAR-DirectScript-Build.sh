@@ -3,24 +3,25 @@
 #   DashAR - An AR-based HUD for Automobiles.
 #   (c)2024-2025 Trevor D. Brown. Distributed under the MIT license.
 #
-#   File:       DashAR-DirectScript-Setup.sh
+#   File:       DashAR-DirectScript-Build.sh
 #   Purpose:    This script sets up the DashAR System for use on the ICS device, using Direct Script mode.
+#               Note: while it says "Build", it's really just shuffling the files in place. :)
 #
 
 # Splash Message
-echo -e "\nDashAR - an AR-based HUD for Automobiles"
+echo "\nDashAR - an AR-based HUD for Automobiles"
 echo "(c)2025-2026 Trevor D. Brown"
 echo "Distributed under the MIT License."
 
-echo -e "\nRunning the DashAR System setup (in Direct Script mode)..."
+echo "\n\"Building\" DashAR in Direct Script mode..."
 
-# Set up Path Variables
+# Set up variables
 SCRIPT_PATH=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 cd $SCRIPT_PATH
 cd "../../"
 PROJECT_ROOT=$PWD
-
-echo -e "\nDashAR's root directory is: $PROJECT_ROOT"
+BUILD_ROOT=$PROJECT_ROOT/Build/
+DAS_BUILD_DIR=$BUILD_ROOT/DAS/
 
 TEMPLATE_DATABASE_PATH=$PROJECT_ROOT/Templates/DAS/dashar-data.sqlite3/dashar-data.sqlite3
 DATA_PATH=$PROJECT_ROOT/Source/DAS/data/
@@ -37,7 +38,7 @@ fi
 # data
 if ! [ -d $DATA_PATH ]; then
     mkdir $DATA_PATH
-    echo -e "\nWARNING: $DATA_PATH did not exist. It has been created, but it is empty. Please populate this directory with the config.json file, hud/base.json file, and hud/default.json file."
+    echo -e "\nWARNING: $DATA_PATH did not exist. It has been created, but it is empty. Please populate this directory with the config.json file, hud/base_default.json file, and hud/widgets_default.json file."
 fi
 
 # private

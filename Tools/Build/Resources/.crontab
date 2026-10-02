@@ -1,0 +1,16 @@
+#
+#   DashAR - An AR-based HUD for Automobiles.
+#   (c)2024-2026 Trevor D. Brown. Distributed under the MIT license.
+#
+#   File:       .crontab
+#   Purpose:    Content to add to your crontab file, using "crontab -e".
+
+# Direct Script
+# @reboot [Replace this with the path to the DashAR Project]/Build/DAS/DashAR-DirectScript-Start.sh
+
+# or...
+
+# Executable
+# @reboot [REPLACE ME WITH THE PATH TO THE DashAR PROJECT]/Build/DAS/DashAR-DAS
+
+# Pick your poison!
