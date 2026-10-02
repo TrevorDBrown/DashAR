@@ -8,17 +8,21 @@
 #
 
 # Splash Message
-echo -e "\nDashAR: an AR-based HUD for Automobiles"
+echo "\nDashAR - an AR-based HUD for Automobiles"
 echo "(c)2025-2026 Trevor D. Brown"
 echo "Distributed under the MIT License."
 
-echo -e "\nBuilding the DashAR System (using buck2)..."
+echo "\nBuilding the DashAR System using buck2..."
 
 # Set up variables.
 SCRIPT_PATH=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 cd $SCRIPT_PATH
 cd "../../"
+
 PROJECT_ROOT=$PWD
+VENV_ROOT=$PROJECT_ROOT/.venv/
 
 # Build DAS executable.
 buck2 build //Source/DAS:DashAR-DAS --show-output
+
+echo "buck2 build complete!"

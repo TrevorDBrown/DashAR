@@ -8,7 +8,7 @@
 #
 
 # Splash Message
-echo -e "\nDashAR: an AR-based HUD for Automobiles"
+echo -e "\nDashAR - an AR-based HUD for Automobiles"
 echo "(c)2025-2026 Trevor D. Brown"
 echo "Distributed under the MIT License."
 
@@ -24,7 +24,7 @@ echo -e "\nDashAR's root directory is: $PROJECT_ROOT"
 
 TEMPLATE_DATABASE_PATH=$PROJECT_ROOT/Templates/DAS/dashar-data.sqlite3/dashar-data.sqlite3
 DATA_PATH=$PROJECT_ROOT/Source/DAS/data/
-PRIVATE_DATA_PATH=$PROJECT_ROOT/Source/DAS/privates/
+PRIVATE_DATA_PATH=$PROJECT_ROOT/Source/DAS/private/
 
 # Check template files.
 # dashar-data.sqlite3

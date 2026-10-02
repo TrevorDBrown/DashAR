@@ -7,7 +7,7 @@
 #
 
 # Splash Message
-echo "\nDashAR: an AR-based HUD for Automobiles"
+echo "\nDashAR - an AR-based HUD for Automobiles"
 echo "(c)2025-2026 Trevor D. Brown"
 echo "Distributed under the MIT License."
 
