@@ -49,10 +49,10 @@ class ConfigurationVariables:
     database_path: str = os.path.join(private_data_path, "dashar-data.sqlite3")
 
     hud_configuration_base_path: str = os.path.join(
-        ConfigurationConstants.HUD_CONFIGURATION_PATH, "base.json"
+        ConfigurationConstants.HUD_CONFIGURATION_PATH, "base_default.json"
     )
     hud_configuration_default_path: str = os.path.join(
-        ConfigurationConstants.HUD_CONFIGURATION_PATH, "default.json"
+        ConfigurationConstants.HUD_CONFIGURATION_PATH, "widgets_default.json"
     )
     hud_configuration_custom_path: str = os.path.join(
         ConfigurationConstants.HUD_CONFIGURATION_PATH, "custom"
@@ -269,12 +269,12 @@ class Configuration:
                 json.load(f)
             )
 
-        # Verify if the "default.json" widgets configuration should be used, or a custom configuration.
+        # Verify if the "widgets_default.json" widgets configuration should be used, or a custom configuration.
         if not self.configuration_variables.hud_configuration_base_json_content[
             "targetConfiguration"
         ]:
             print(
-                'Error: missing "targetConfiguration" in base.json. Using "default.json"'
+                'Error: missing "targetConfiguration" in base_default.json. Using "widgets_default.json"'
             )
             self.configuration_variables.hud_configuration_target = (
                 self.configuration_variables.hud_configuration_default_path
@@ -284,7 +284,7 @@ class Configuration:
             self.configuration_variables.hud_configuration_base_json_content[
                 "targetConfiguration"
             ]
-            == "default.json"
+            == "widgets_default.json"
         ):
             # TODO: use a better method for making this determination.
             self.configuration_variables.hud_configuration_target = (
@@ -428,3 +428,6 @@ class Configuration:
 
         print("All tests passed! :)")
         return True
+
+if __name__ == "__main__":
+    print(f"This module ({__file__}) should be invoked as an import.")
