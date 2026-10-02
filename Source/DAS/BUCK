@@ -11,11 +11,6 @@ python_library(
             # "extensions/**/*.py",
         ],
     ),
-    resources=glob(
-        [
-            "data/**/*.json",
-        ],
-    ),
     base_module="",
     visibility=["PUBLIC"],
 )
