@@ -142,3 +142,6 @@ class DatabaseStatements:
             f"INSERT INTO DASHAR_AUTOMOBILE VALUES "
             f"('{vin}', '{name}', '{year}', '{mileage}', '{initial_capture_timestamp}', '{last_modified_timestamp}')"
         )
+
+if __name__ == "__main__":
+    print(f"This module ({__file__}) should be invoked as an import.")
