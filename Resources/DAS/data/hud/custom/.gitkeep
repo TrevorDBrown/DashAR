@@ -1,0 +1,1 @@
+Custom .json configurations will go here. I'm expecting this to mainly contain custom replacements for widgets_default.json, as opposed to base_default.json. However, I intend to support the possibility of both being customized.

@@ -1,6 +1,6 @@
 {
     "origin": "HUD",
-    "targetConfiguration": "default.json",
+    "targetConfiguration": "widgets_default.json",
     "trays": [
         {
             "name": "Top",

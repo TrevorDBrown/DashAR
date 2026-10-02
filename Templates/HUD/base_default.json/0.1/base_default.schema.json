@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://dashar.org/config/hud/0.1/base.schema.json",
+    "$id": "https://dashar.org/config/hud/0.1/base_default.schema.json",
     "title": "DashAR HUD Base Configuration",
     "description": "A HUD base configuration for the DashAR System.",
     "type": "object",

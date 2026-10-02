@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://dashar.org/config/hud/0.1/default.schema.json",
+    "$id": "https://dashar.org/config/hud/0.1/widgets_default.schema.json",
     "title": "DashAR HUD Default Widget Configuration",
     "description": "A default HUD configuration for the DashAR System.",
     "type": "object",
