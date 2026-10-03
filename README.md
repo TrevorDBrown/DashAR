@@ -1,41 +1,56 @@
-# DashAR - An Augmented Reality-based Heads Up Display for Automobiles
+# DashAR: An Augmented Reality-based Heads Up Display for Automobiles
 
-DashAR is an AR-based HUD for Automobiles. It is designed to work with any gasoline-powered automobile manufactured during or after 1996 (i.e. OBDII availability).
-
-## Repository Structure
+DashAR is an AR-based HUD system for automobiles. It is designed to work with any automobile equipped with and ODBII diagnostic port (i.e. all gasoline powered automobiles manufactured in 1996 and onwards).
 
 This repository is designed to act as a monorepo for all components of the system.
 
-### Directories
+## Repository Structure
 
 ### Build
 
-This directory will contain all compiled, consolidated executable code for each component of the system. The Data Aggregator and Server (DAS), the HUD, and the HUD Companion.
+This directory, after a successful build, will contain all compiled, consolidated executable code for each component of the system. The Data Aggregator and Server (DAS), the HUD, and the HUD Companion app.
 
-#### Source
+### Resources
+
+This directory contains all of the relevant configurations and data necessary for each component of the system to function correctly. These files are copied to the Build directory specific to each component.
+
+### Source
 
 This directory contains all source code related to the DashAR system. This includes the DAS source, the HUD source, and the HUD Companion App source (well... eventually.)
 
-#### Templates
+### Templates
 
-This directory contains all templates related to the DashAR system. This includes data templates (e.g. database files), configuration templates (e.g. JSON configuration files for each component of the system), and other relevant templates and boilerplate information.
+This directory contains all templates related to the DashAR system. This includes data and configuration templates (e.g. SQLite files, configuration JSON schemas and examples, etc.), as well as code boilerplate templates (e.g templates for Python code, C# code, etc.).
 
-#### Testing
+### Testing
 
 This directory contains data and configurations used for testing the source code. This includes a config for mypy, and copies of the SQLite database used.
 
+### Tools
+
+This directory contains build scripts and other resources needed to successfully build and deploy the DashAR system.
+
+### LICENSES
+
+This directory is strictly for the repository, to indicate additional licenses utilized by components outside of, but utilized by, the DashAR system.
+
 ## Documentation
 
-The DashAR System Documentation, powered by Docusaurus, is hosted [here](https://dashar.org/), with the source code hosted [here](https://github.com/TrevorDBrown/DashAR-Docs). The documentation is a work-in-progress.
+The DashAR system documentation, powered by Docusaurus, is hosted [here](https://dashar.org/), with its source hosted [here](https://github.com/TrevorDBrown/DashAR-Docs). The documentation is a work-in-progress.
 
 ## Issues and Enhancements
 
-If you desire to see enhancements, additional functionality, and/or would like to report an issue with the system, please utilize the "Issues" section of this repository.
+If you desire to see enhancements, additional functionality, and/or would like to report an issue with the system, please utilize GitHub Issues.
 
 ## Disclaimer
 
-The DashAR System is a research-oriented, work-in-progress project. It is not to be considered a "production ready" system, as of 04/04/2025. Please use at your own discretion.
+The DashAR System is a research-oriented project. It should not be considered a "production ready" system. Please use at your own discretion.
 
-It is also highly advised to avoid use DashAR in low-visibility conditions. This includes, but is not limited to: nighttime, in adverse weather such as rain, snow, sleet, hail, etc., and in foggy conditions.
+Also, it is highly recommended to avoid use of the DashAR system in hazardous conditions. This includes, but is not limited to:
 
-A good rule of thumb for determining if the system can be used safely is: "Would I wear sunglasses right now?"
+- Low visibility (i.e. nighttime, foggy)
+- Adverse weather (i.e. rain, snow, sleet, hail, tornados, hurricanes, etc.)
+
+A good rule of thumb for determining if the DashAR system can be used safely: would I wear sunglasses right now?
+
+With all of that said... safe and happy driving to you! :)
