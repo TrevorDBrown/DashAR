@@ -78,7 +78,7 @@ find_dashar_project_root() {
 }
 
 final_touches() {
-    printf "The DashAR System has successfully built in Direct Script mode. Happy driving!\n\n"
+    printf "The DashAR System has successfully built in pyinstaller mode. Happy driving!\n\n"
 }
 
 main() {
