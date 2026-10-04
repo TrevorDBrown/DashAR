@@ -8,7 +8,7 @@ This repository is designed to act as a monorepo for all components of the syste
 
 ### Build
 
-This directory, after a successful build, will contain all compiled, consolidated executable code for each component of the system. The Data Aggregator and Server (DAS), the HUD, and the HUD Companion app.
+This directory, generated on-the-fly, will, after a successful build, contain all compiled, consolidated executable code for each component of the system. The Data Aggregator and Server (DAS), the HUD, and the HUD Companion app.
 
 ### Resources
 
