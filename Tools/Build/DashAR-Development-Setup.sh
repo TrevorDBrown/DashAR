@@ -37,10 +37,14 @@ parse_arguments() {
 }
 
 define_paths_and_files() {
-    DASHAR_BUILD_PATH="${DASHAR_PROJECT_ROOT}Build/"
     DASHAR_SOURCE_PATH="${DASHAR_PROJECT_ROOT}Source/"
+    DASHAR_BUILD_PATH="${DASHAR_PROJECT_ROOT}Build/"
     DASHAR_BUILD_TOOLS_PATH="${DASHAR_PROJECT_ROOT}Tools/Build/"
     DASHAR_BUILD_TOOLS_RESOURCE_PATH="${DASHAR_BUILD_TOOLS_PATH}Resources/"
+
+    DASHAR_HUD_BUILD_PATH="${DASHAR_BUILD_PATH}HUD/"
+    DASHAR_DAS_BUILD_PATH="${DASHAR_BUILD_PATH}DAS/"
+    DASHAR_COMPANION_BUILD_PATH="${DASHAR_BUILD_PATH}Companion/"
 
     PYTHON_VENV_PATH="${DASHAR_PROJECT_ROOT}.venv/"
     PYTHON_VENV_EXECUTABLE="${PYTHON_VENV_PATH}bin/python3"
@@ -73,6 +77,18 @@ find_dashar_project_root() {
     printf "DashAR Project root found at %s.\n\n" "$DASHAR_PROJECT_ROOT"
 
     unset DASHAR_ROOT_SEARCH_PATH
+
+    return 0
+}
+
+setup_build_directories() {
+    printf "Setting up build directories...\n"
+
+    mkdir -p "$DASHAR_DAS_BUILD_PATH" || return 1
+    mkdir -p "$DASHAR_HUD_BUILD_PATH" || return 1
+    mkdir -p "$DASHAR_COMPANION_BUILD_PATH" || return 1
+
+    printf "Build directories are ready.\n\n"
 
     return 0
 }
@@ -160,6 +176,9 @@ main() {
     # Locate the project root. If found, proceed. Otherwise, quit.
     find_dashar_project_root || exit 1
     define_paths_and_files
+
+    # Setup Build directories.
+    setup_build_directories
 
     # Setup Python environment.
     clean_python_virtual_environment || exit 1
