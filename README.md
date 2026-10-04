@@ -34,6 +34,12 @@ This directory contains build scripts and other resources needed to successfully
 
 This directory is strictly for the repository, to indicate additional licenses utilized by components outside of, but utilized by, the DashAR system.
 
+## Getting Started
+
+If you're simply using DashAR, check out the latest build under Releases.
+
+If you're looking to hack the DashAR source, please run Tools/Build/DashAR-Development-Setup.sh to set up the repository for development. This script will generate the Build directories, and generate a Python virtual environment, with all dependencies installed. This requires Python 3 to be installed on the machine to work.
+
 ## Documentation
 
 The DashAR system documentation, powered by Docusaurus, is hosted [here](https://dashar.org/), with its source hosted [here](https://github.com/TrevorDBrown/DashAR-Docs). The documentation is a work-in-progress.
