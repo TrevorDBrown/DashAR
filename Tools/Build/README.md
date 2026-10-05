@@ -12,11 +12,11 @@ Direct Script mode is how the DashAR system was originally designed to be deploy
 
 While this is effective for rapid development, it definitely has its costs and difficulties for long-term maintenance. The scripts associated with Direct Script mode are prefixed with "DashAR-DirectScript-". This method is not recommended, and will be most likely removed from a future version of the project.
 
-### pyinstaller Build
+### Bundled Build
 
-In an effort to make the build process more robust (and produce an executable rather than a set of scripts), pyinstaler is utilized.
+In an effort to make the build process more robust, this build mode produces executables rather than a set of scripts. For the Data Aggregator and Server, pyinstaller is utilized.
 
-The scripts associated with the pyinstaller Build mode are prefixed with "DashAR-pyinstaller-". This is currently the preferred build method.
+The scripts associated with the pyinstaller Build mode are prefixed with "DashAR-Bundled-". This is currently the preferred build method.
 
 ### buck2 Build
 
